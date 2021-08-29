@@ -1,0 +1,114 @@
+apply plugin: 'java'
+apply plugin: 'de.fuerstenau.buildconfig'
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'gradle.plugin.de.fuerstenau:BuildConfigPlugin:1.1.8'
+    }
+}
+
+//sourceSets {
+//    main {
+//        java.srcDirs 'src/main/java', 'build/gen/buildconfig/src/main/'
+//    }
+//}
+
+build.doLast {
+    println("build.doLast(), entry")
+
+    // copy file with flavor name
+    tasks.copyFlavorFile.execute()
+
+    // convert to dex file with flavor name
+    tasks.dxConvert.execute()
+}
+
+
+def FLAVOR = ""
+task initBuildConfig() {
+
+    if (project.hasProperty("FLAVOR")) {
+        FLAVOR = project.getProperty("FLAVOR")
+    } else {
+        println("initBuildConfig(), build test_auto_browse param error, no FLAVOR, default set to GQMS")
+        FLAVOR = "GQMS"
+    }
+    println("initBuildConfig(), build test_auto_browse FLAVOR=" + FLAVOR)
+
+    buildConfig {
+        println("initBuildConfig.buildConfig, flavor:" + FLAVOR)
+        version=1.0
+        clsName = 'BuildConfigGen'
+        packageName = "com.navercorp.ncp.mqms"
+        charset = 'UTF-8'
+        buildConfigField("String", "FLAVOR", FLAVOR)
+    }
+}
+
+def isWindows() {
+    println("os:" + System.properties['os.name'])
+    return System.properties['os.name'].contains('Windows');
+}
+def isLinux() {
+    return System.properties['os.name'].contains('Linux');
+}
+def isMacOS() {
+    return System.properties['os.name'].contains('Mac');
+}
+
+task copyFlavorFile(type: Exec) {
+    println("copyFile(), entry")
+
+    def buildOutput
+    def outputFile
+    def outputFileWithFlavor
+    def copyCmd
+
+    if (isWindows()) {
+        // win
+        buildOutput = ".\\build\\libs\\"
+        outputFile = buildOutput + project.name + ".jar"
+        outputFileWithFlavor = buildOutput + project.name + "_" + FLAVOR + ".jar"
+        copyCmd = "copy " + outputFile + " " + outputFileWithFlavor
+        commandLine 'cmd', '/c', copyCmd
+    } else if (isLinux() || isMacOS()) {
+        // linux or mac os
+        buildOutput = "build/libs/"
+        outputFile = buildOutput + project.name + ".jar"
+        outputFileWithFlavor = buildOutput + project.name + "_" + FLAVOR + ".jar"
+        commandLine "cp", outputFile, outputFileWithFlavor
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation files('libs/android.jar')
+    implementation files('libs/uiautomator.jar')
+    implementation 'junit:junit:4.12'
+}
+
+task dxConvert(type : Exec) {
+    def AndroidHome = System.getenv("ANDROID_HOME")
+
+    if (isLinux() || isMacOS()) {
+        def srcFile = "./build/libs/test_auto_browse_" + FLAVOR + ".jar"
+        def outputFileName = "./build/libs/test_auto_browse_" + FLAVOR + "_dex.jar"
+        commandLine "${AndroidHome}/build-tools/28.0.3/dx", "--dex", "--output=" + outputFileName, srcFile
+    } else if (isWindows()) {
+        def srcFile = ".\\build\\libs\\test_auto_browse_" + FLAVOR + ".jar"
+        def outputFileName = ".\\build\\libs\\test_auto_browse_" + FLAVOR + "_dex.jar"
+        commandLine "${AndroidHome}\\build-tools\\28.0.3\\dx.bat", "--dex", "--output=" + outputFileName, srcFile
+    }
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

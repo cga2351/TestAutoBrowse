@@ -1,0 +1,4 @@
+include ':auto_browse_daemon'
+include ':test_auto_browse'
+include ':app'
+rootProject.name = "TestAutoBrowse"
