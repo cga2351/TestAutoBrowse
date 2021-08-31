@@ -51,12 +51,10 @@ public class DianTaoWorkRepeatTaskWatchLive3Min extends DianTaoWorkRepeatTask{
     protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
-        // open get energy task list
-        UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
-
         // click watch live 3min
-        UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_3Min);
-        if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
+//        UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_3Min);
+//        if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
+        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_3Min))) {
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
                 // enter live window, and wait 3min
                 int watchDuration = 1000 * 60 * 3 + 1000 * 10;
@@ -71,6 +69,9 @@ public class DianTaoWorkRepeatTaskWatchLive3Min extends DianTaoWorkRepeatTask{
         }
 
         UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_" + getClass().getSimpleName());
+        if (null != UiDriver.find(new UiSelector().textContains("休息会呗"))) {
+            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/screenshots/debugScreenshots/checkWorkWatchLiveFailure_3Min.xml");
+        }
 
         // return to work page
         backToWorkPage();

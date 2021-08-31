@@ -51,9 +51,6 @@ public class DianTaoWorkRepeatTaskWatchLive5Min extends DianTaoWorkRepeatTask{
     protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
-        // open get energy task list
-        UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
-
         // click watch live 5min
         UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_5Min);
         if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
@@ -71,6 +68,9 @@ public class DianTaoWorkRepeatTaskWatchLive5Min extends DianTaoWorkRepeatTask{
         }
 
         UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_" + getClass().getSimpleName());
+        if (null != UiDriver.find(new UiSelector().textContains("休息会呗"))) {
+            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/screenshots/debugScreenshots/checkWorkWatchLiveFailure_5Min.xml");
+        }
 
         // return to work page
         backToWorkPage();

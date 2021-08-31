@@ -199,7 +199,7 @@ public class AutoBrowseApp {
     }
 
     private void initAllRepeatTask() {
-        currentRepeatTask = 0;
+        currentRepeatTask = 1;
         allRepeatTasks.add(TouTiaoBrowseVideoRepeatTask.getInstance());     // 0
         allRepeatTasks.add(DianTaoBrowseVideoRepeatTask.getInstance());     // 1
         allRepeatTasks.add(DianTaoBrowseLiveRepeatTask.getInstance());      // 2

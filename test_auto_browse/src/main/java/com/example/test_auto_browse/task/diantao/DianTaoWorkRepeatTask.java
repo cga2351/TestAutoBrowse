@@ -2,6 +2,7 @@ package com.example.test_auto_browse.task.diantao;
 
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
+import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.utils.Logger;
 
@@ -24,6 +25,10 @@ public abstract class DianTaoWorkRepeatTask extends DianTaoBaseTask {
                 // wait page load end
                 if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_WORK_SIGN), Constant.WAIT_TIME_10_SEC)) {
                     Thread.sleep(2000);
+
+                    // open get energy task list
+                    UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
+
                     result = true;
                 } else {
                     Logger.debug("DianTaoWorkRepeatTask.initTask(), work page load not ended");

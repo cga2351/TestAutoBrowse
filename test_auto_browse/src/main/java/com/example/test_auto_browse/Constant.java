@@ -276,15 +276,15 @@ public class Constant {
     public static final int KUAI_SHOU_REWARD_MAX_EXEC_COUNT = 10;
     public static final int KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT = 2;
 
-    public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 0;
-    public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 20;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
 
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;

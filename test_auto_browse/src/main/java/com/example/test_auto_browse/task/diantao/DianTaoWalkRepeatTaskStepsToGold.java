@@ -36,52 +36,25 @@ public class DianTaoWalkRepeatTaskStepsToGold extends DianTaoWalkRepeatTask {
         boolean result = false;
 
         if (super.initTask()) {
+            UiDriver.saveDebugScreenshotWithDelay("StepsToGoldFailure_beforeClickDepart_" + getClass().getSimpleName(), 2000);
             // convert all available steps to gold
             // click depart first, if no available steps, click
             if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_DEPART), Constant.WAIT_TIME_15_SEC)) {
-                ///////////////////////////////////////////////////////////////////////////////////
-//                // depart success, get all gold
-//                if (null != UiDriver.find(new UiSelector().text(Constant.STR_DIAN_TAO_FINISH_TASK_TO_GET_STEPS))) {
-//                    Logger.debug("DianTaoWalkRepeatTaskStepsToGold.initTask(), no available steps");
-//                    UiDriver.click_Top300px_Center();
-//                }
-//
-//                // dismiss the popup
-//                if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_CHECK_MORE_TASKS))) {
-//                    Thread.sleep(2000);
-//                    UiDriver.click_Top300px_Center();
-//                    Logger.debug("DianTaoWalkRepeatTaskStepsToGold.initTask(), has get more steps prompt popup");
-//                } else {
-//                    Logger.debug("DianTaoWalkRepeatTaskStepsToGold.initTask(), no get more steps prompt popup");
-//                }
-//
-//                UiDriver.dumpXml2File(Constant.SD_PATH_APP_ROOT + "StepsToGoldFailure.xml");
-//                // get screenshot and save pic
-//                String savePath = Constant.SD_PATH_FAILED_SCREENSHOTS
-//                        + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_UNDERLINE, System.currentTimeMillis())
-//                        + "_StepsToGoldFailure1_" + getClass().getSimpleName()
-//                        + ".jpg";
-//                UiDriver.saveScreenshot(new File(savePath));
+                UiDriver.saveDebugScreenshotWithDelay("StepsToGoldFailure_beforeWait5s_" + getClass().getSimpleName(), 1000);
+                // wait 7s and then press back first, and re-entry the walk page
+                Thread.sleep(7000);
 
-                /////////////////////////////////////////////////////////////////////////////////
-                // press back first, and re-entry the walk page
-                UiDriver.saveDebugScreenshot("StepsToGoldFailure_beforeWait5s_" + getClass().getSimpleName());
-                Thread.sleep(5000);
-                UiDriver.saveDebugScreenshot("StepsToGoldFailure_beforePressBack_" + getClass().getSimpleName());
+                // save debug screen
+                UiDriver.saveDebugScreenshotWithDelay("StepsToGoldFailure_beforePressBack_" + getClass().getSimpleName(), 2000);
                 UiDriver.pressBack();
-                UiDriver.saveDebugScreenshot("StepsToGoldFailure_afterPressBack_" + getClass().getSimpleName());
+                UiDriver.saveDebugScreenshotWithDelay("StepsToGoldFailure_afterPressBack_" + getClass().getSimpleName(), 2000);
 
                 if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WALK_GET_GOLD))) {
                     Logger.debug("DianTaoWalkRepeatTaskStepsToGold.initTask(), re-enter walk page success");
                 } else {
                     Logger.debug("DianTaoWalkRepeatTaskStepsToGold.initTask(), re-enter walk page failed");
                 }
-                UiDriver.saveDebugScreenshot("StepsToGoldFailure_afterReEnterWalkPage_" + getClass().getSimpleName());
-
-                /////////////////////////////////////////////////////////////////////////////////
-
-
-
+                UiDriver.saveDebugScreenshotWithDelay("StepsToGoldFailure_afterReEnterWalkPage_" + getClass().getSimpleName(), 2000);
             } else {
                 Logger.debug("DianTaoWalkRepeatTaskStepsToGold.initTask(), click depart failed");
             }

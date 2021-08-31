@@ -103,7 +103,12 @@ public class UiDriver {
         Logger.debug("saveScreenshot(), save screenshot result = " + result + ", saveFile = " + saveFile.getAbsolutePath());
     }
 
-    public static void saveDebugScreenshot(String fileDescription) {
+    public static void saveDebugScreenshot(String fileDescription) throws InterruptedException {
+        saveDebugScreenshotWithDelay(fileDescription, 0);
+    }
+
+    public static void saveDebugScreenshotWithDelay(String fileDescription, int delay) throws InterruptedException {
+        Thread.sleep(delay);
         String savePath = Constant.SD_PATH_DEBUG_SCREENSHOTS
                 + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_UNDERLINE, System.currentTimeMillis())
                 + "_" + fileDescription

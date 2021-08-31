@@ -56,9 +56,6 @@ public class DianTaoWorkRepeatTaskWatchLive60Sec extends DianTaoWorkRepeatTask{
     protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
-        // open get energy task list
-        UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
-
         // 先完成一天只有一次的单次任务
         checkOneTimeTask();
 

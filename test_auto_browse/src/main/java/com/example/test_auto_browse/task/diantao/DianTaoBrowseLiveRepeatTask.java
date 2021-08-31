@@ -42,16 +42,12 @@ public class DianTaoBrowseLiveRepeatTask extends DianTaoBaseTask {
     public boolean initTask() throws InterruptedException {
         boolean result = false;
         if (super.initTask()) {
-            // swipe up to click watch video to get gold
-            UiDriver.swipeUp800pxSlowly();
-            Thread.sleep(1000);
-            UiDriver.swipeUp800pxSlowly();
-
-            // click watch video to get gold
-            if (null != UiDriver.find(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_GOLD))) {
+            UiSelector uiSelector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_GOLD);
+            if (UiDriver.swipeUpToFindObject(uiSelector)) {
+                // click watch live to get gold
                 result = true;
             } else {
-                Logger.debug("DianTaoBrowseLiveTask.initTask(), no watch live to get gold");
+                Logger.debug("DianTaoBrowseVideoTask.initTask(), swipe up to find watch live failed");
             }
         } else {
             Logger.debug("DianTaoBrowseLiveTask.initTask(), super.initTask() failed");

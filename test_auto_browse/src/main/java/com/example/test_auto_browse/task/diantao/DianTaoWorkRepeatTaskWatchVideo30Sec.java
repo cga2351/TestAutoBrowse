@@ -48,9 +48,6 @@ public class DianTaoWorkRepeatTaskWatchVideo30Sec extends DianTaoWorkRepeatTask{
     protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
-        // open get energy task list
-        UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
-
         // click watch video 3min
         UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_VIDEO_30Sec);
         if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
