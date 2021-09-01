@@ -1,5 +1,9 @@
 package com.example.test_auto_browse.task.diantao;
 
+import android.graphics.Rect;
+
+import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.CoordsAdapter;
@@ -221,7 +225,10 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         boolean result;
         long startTime = System.currentTimeMillis();
         while ((System.currentTimeMillis() - startTime) < watchDuration) {
-            Thread.sleep(8000);
+            // check if has verification swipe of "向右滑动验证"
+            checkSwipeRightVerification();
+
+            Thread.sleep(5000);
             if (autoSwipe) {
                 UiDriver.swipeUp800pxFast();
             }
@@ -234,6 +241,35 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         }
 
         return result;
+    }
+
+    private void checkSwipeRightVerification() throws InterruptedException {
+        try {
+            UiObject uiObject = UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_SWIPE_RIGHT_TO_VERIFY), 2000);
+            if (null != uiObject) {
+                Rect rect = uiObject.getVisibleBounds();
+                int startX = rect.left + 50;
+                int startY = rect.centerY();
+                int endX = rect.right - 50;
+                int endY = rect.centerY();;
+
+                // dump bounds:  <node bounds="[135,1127][945,1242]" checkable="false"
+                Logger.debug("DianTaoBaseTask.checkSwipeRightVerification(), has swipe verification"
+                        + ", getVisibleBounds = " + rect
+                        + ", startX = " + startX
+                        + ", startY = " + startY
+                        + ", endX = " + endX
+                        + ", endY = " + endY
+                );
+
+                UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_beforeSwipe_" + getClass().getSimpleName());
+                UiDriver.swipe(startX, startY, endX, endY, 10);
+                UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_afterSwipe_" + getClass().getSimpleName());
+                UiDriver.saveDebugScreenshotWithDelay("checkWorkWatchLiveFailure_afterSwipeAndWait2s_" + getClass().getSimpleName(), 2000);
+            }
+        } catch (UiObjectNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     protected boolean waitWatchVideoOrLiveCountDownEnd() throws InterruptedException {

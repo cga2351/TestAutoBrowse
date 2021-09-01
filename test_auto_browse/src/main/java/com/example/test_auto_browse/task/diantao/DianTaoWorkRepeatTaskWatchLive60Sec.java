@@ -60,8 +60,7 @@ public class DianTaoWorkRepeatTaskWatchLive60Sec extends DianTaoWorkRepeatTask{
         checkOneTimeTask();
 
         // click watch live 60sec
-        UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_60Sec);
-        if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
+        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_60Sec))) {
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
                 // enter live window, and wait 60sec
                 int watchDuration = 1000 * 60 + 1000 * 10;

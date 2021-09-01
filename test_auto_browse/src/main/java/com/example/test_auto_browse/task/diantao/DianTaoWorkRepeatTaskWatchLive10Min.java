@@ -52,8 +52,7 @@ public class DianTaoWorkRepeatTaskWatchLive10Min extends DianTaoWorkRepeatTask{
         boolean result = false;
 
         // click watch live 10min
-        UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_10Min);
-        if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
+        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_10Min))) {
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
                 // enter live window, and wait 10min
                 int watchDuration = 1000 * 60 * 10 + 1000 * 10;

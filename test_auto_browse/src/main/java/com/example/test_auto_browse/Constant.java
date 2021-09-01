@@ -150,6 +150,7 @@ public class Constant {
     public static final String STR_DIAN_TAO_START_WORK = "开始打工";
     public static final String STR_DIAN_TAO_START_NO_AVAILABLE_ENERGY = "体力不足";
     public static final String STR_DIAN_TAO_START_GET_ENERGY = "体力+";
+    public static final String STR_DIAN_TAO_SWIPE_RIGHT_TO_VERIFY = "向右滑动验证";
 
     public static final String STR_WEI_SHI_JUMP_ADS = "跳过";
     public static final String STR_WEI_SHI_TEEN_PROTECTION = "青少年保护功能提示";
