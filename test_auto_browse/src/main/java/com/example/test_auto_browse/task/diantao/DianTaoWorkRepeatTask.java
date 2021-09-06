@@ -26,8 +26,11 @@ public abstract class DianTaoWorkRepeatTask extends DianTaoBaseTask {
                 if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_WORK_SIGN), Constant.WAIT_TIME_10_SEC)) {
                     Thread.sleep(2000);
 
-                    // open get energy task list
-                    UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
+                    // DianTaoWorkTimedTaskCheckWork task need not to open the task list
+                    if (!(this instanceof DianTaoWorkTimedTaskCheckWork)) {
+                        // open get energy task list
+                        UiDriver.click(CoordsAdapter.getDianTaoGetEnergyCoords());
+                    }
 
                     result = true;
                 } else {

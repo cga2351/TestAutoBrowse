@@ -269,7 +269,7 @@ public class Constant {
     // all task execute count (normal) ------------------------------------------
     public static final int TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 100;
     public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 1;
-    public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 3;
+    public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 10;
     public static final int TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT = 10;
 
     public static final int KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT = 10;
