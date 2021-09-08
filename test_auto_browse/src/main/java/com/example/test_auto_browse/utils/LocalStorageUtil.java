@@ -57,6 +57,7 @@ public class LocalStorageUtil {
             // reset all tasks exec count to 0
             taskExecCount = new TaskExecCount();
             taskExecCount.setSaveDate(now.getTimeInMillis());
+            taskExecCount.setNextTaskIndex(1);
             LocalStorageUtil.writeTaskExecCount(taskExecCount);
         }
 
@@ -86,6 +87,7 @@ public class LocalStorageUtil {
             // reset all tasks exec count to 0
             cachedTaskExecCount = new TaskExecCount();
             cachedTaskExecCount.setSaveDate(now.getTimeInMillis());
+            cachedTaskExecCount.setNextTaskIndex(1);
             LocalStorageUtil.writeTaskExecCount(cachedTaskExecCount);
 
 //            updateCachedTaskExecCount(new TaskExecCount().setSaveDate(now.getTimeInMillis()));

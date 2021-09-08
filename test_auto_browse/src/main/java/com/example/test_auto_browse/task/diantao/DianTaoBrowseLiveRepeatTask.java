@@ -22,6 +22,11 @@ public class DianTaoBrowseLiveRepeatTask extends DianTaoBaseTask {
     }
 
     @Override
+    public int waitTaskEndMaxTime() {
+        return 1000 * 60 * 3 + 1000 * 30;
+    }
+
+    @Override
     protected int getMaxExecCount() {
         return Constant.DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT;
     }
@@ -62,21 +67,20 @@ public class DianTaoBrowseLiveRepeatTask extends DianTaoBaseTask {
         Logger.debug("DianTaoBrowseLiveTask.autoBrowse(), entry");
 
         while (!getForceStop()) {
-            // check if has get gold on the right top
-            getGoldOnRightTop();
-
             // click "看直播，赚元宝" may failed, try forever
             while (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_GOLD))) {
                 Thread.sleep(1000);
             }
 
-            // auto watch live for 12s, and get gold
-            Thread.sleep(15000);
-            if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_GOLD))) {
-                Logger.debug("DianTaoBrowseLiveTask.autoBrowse(), click get gold");
-            }
-            UiDriver.pressBack();
-            Thread.sleep(3000);
+            watchVideoOrLive(1000 * 60 * 3, false, true);
+
+//            // auto watch live for 12s, and get gold
+//            Thread.sleep(15000);
+//            if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_GOLD))) {
+//                Logger.debug("DianTaoBrowseLiveTask.autoBrowse(), click get gold");
+//            }
+//            UiDriver.pressBack();
+//            Thread.sleep(3000);
         }
 
         Logger.debug("DianTaoBrowseLiveTask.autoBrowse(), exit");

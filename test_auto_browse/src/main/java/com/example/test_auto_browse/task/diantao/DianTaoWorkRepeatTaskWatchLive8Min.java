@@ -56,7 +56,7 @@ public class DianTaoWorkRepeatTaskWatchLive8Min extends DianTaoWorkRepeatTask{
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
                 // enter live window, and wait 8min
                 int watchDuration = 1000 * 60 * 8 + 1000 * 10;
-                result = watchVideoOrLive(watchDuration, false);
+                result = watchVideoOrLive(watchDuration, false, true);
                 Logger.debug("DianTaoWorkRepeatTaskWatchLive8Min.autoBrowse(), watchVideoOrLive result = " + result);
             } else {
                 // entry live window failed, exit task

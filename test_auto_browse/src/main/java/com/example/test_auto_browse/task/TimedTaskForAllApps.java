@@ -5,6 +5,7 @@ import com.example.test_auto_browse.task.diantao.DianTaoWorkTimedTaskCheckWork;
 import com.example.test_auto_browse.task.douyin.DouYinTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.douyin.DouYinWatchAdsTimedTask;
 import com.example.test_auto_browse.task.kuaishou.KuaiShouTreasureBoxTimedTask;
+import com.example.test_auto_browse.task.qiyi.QiYiTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.qukan.QuKanLuckyMoneyGoldTimedTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseGoodsTimedTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoTreasureBoxTimedTask;
@@ -82,6 +83,16 @@ public class TimedTaskForAllApps extends BrowseBaseTask {
                 task.endTask();
                 Logger.debug("TimedTaskForAllApps.autoBrowse(), QuKanLuckyMoneyGoldTimedTask end, taskResult=" + taskResult);
             }
+
+            // qi yi treasure box gold
+            task = QiYiTreasureBoxTimedTask.getInstance();
+            if (task.initTask()) {
+                taskResult = task.runTask();
+                task.endTask();
+                Logger.debug("TimedTaskForAllApps.autoBrowse(), QiYiTreasureBoxTimedTask end, taskResult=" + taskResult);
+            }
+
+
 
 //            // dou yin treasure box task
 //            task = DouYinTreasureBoxTimedTask.getInstance();

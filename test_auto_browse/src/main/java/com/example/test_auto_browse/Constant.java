@@ -98,6 +98,7 @@ public class Constant {
     public static final String ID_DIAN_TAO_HOME_TAB_ITEM = "com.taobao.live:id/tab_container";
     public static final String STR_DIAN_TAO_GOLD_CENTER = "元宝中心";
     public static final String STR_DIAN_TAO_GO_TO_SIGN = "去签到";
+    public static final String STR_DIAN_TAO_WATCH_LIVE_GET_100_GOLD = "去看直播赚100元宝";
     public static final String STR_DIAN_TAO_CLICK_TO_SIGN = "点击签到";
     public static final String STR_DIAN_TAO_WATCH_VIDEO_GET_GOLD = "看视频，赚元宝";
     public static final String STR_DIAN_TAO_WATCH_LIVE_GET_GOLD = "看直播，赚元宝";
@@ -231,6 +232,10 @@ public class Constant {
     public static final String STR_QI_YI_OK_I_KNOW = "好，我知道了";
     public static final String STR_QI_YI_WAIT_ADS_END = "后可领取奖励";
     public static final String STR_QI_YI_CLOSE_ADS = "关闭广告";
+    public static final String STR_QI_YI_HOME_PAGE = "首页";
+    public static final String STR_QI_YI_GET_GOLD = "领金币";
+    public static final String STR_QI_YI_GET_MORE = "再赚";
+    public static final String STR_QI_YI_OPEN_TREASURE_BOX = "开宝箱领金币";
 
     public static final String STR_DOU_YIN_I_KNOW = "我知道了";
     public static final String STR_DOU_YIN_RECOMMEND_FRIENDS = "朋友推荐";
@@ -291,7 +296,7 @@ public class Constant {
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT = 0;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 5;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 1;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 1;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
@@ -307,6 +312,7 @@ public class Constant {
     public static final int QU_KAN_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
 
     public static final int QI_YI_BROWSE_ADS_MAX_EXEC_COUNT = 10;
+    public static final int QI_YI_TREASURE_BOX_MAX_EXEC_COUNT = 10;
 
     public static final int DOU_YIN_BROWSE_ADS_MAX_EXEC_COUNT = 50;
     // all task execute count (normal) ------------------------------------------
@@ -399,6 +405,6 @@ public class Constant {
 
 
     // build config
-//    public static String BUILD_CONFIG = "debug";
-    public static String BUILD_CONFIG = "release";
+    public static String BUILD_CONFIG = "debug";
+//    public static String BUILD_CONFIG = "release";
 }

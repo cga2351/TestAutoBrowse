@@ -28,7 +28,6 @@ import com.example.test_auto_browse.task.diantao.DianTaoWorkRepeatTaskWatchVideo
 import com.example.test_auto_browse.task.diantao.DianTaoWorkRepeatTaskWatchVideo5Min;
 import com.example.test_auto_browse.task.IBrowseTask;
 import com.example.test_auto_browse.task.diantao.DianTaoWorkRepeatTaskWatchVideo60Sec;
-import com.example.test_auto_browse.task.diantao.DianTaoWorkTimedTaskCheckWork;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseActivityRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseGoodsRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseVideoRepeatTask;
@@ -37,13 +36,11 @@ import com.example.test_auto_browse.task.SleepTask;
 import com.example.test_auto_browse.task.kuaishou.KuaiShouRewardRepeatTask;
 import com.example.test_auto_browse.task.kuaishou.KuaiShouWatchLiveRepeatTask;
 import com.example.test_auto_browse.task.qiyi.QiYiBrowseAdsRepeatTask;
+import com.example.test_auto_browse.task.qiyi.QiYiTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseArticleRepeatTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseShortVideoRepeatTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseVideoRepeatTask;
-import com.example.test_auto_browse.task.qukan.QuKanLuckyMoneyGoldTimedTask;
-import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseGoodsTimedTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseVideoRepeatTask;
-import com.example.test_auto_browse.task.toutiao.TouTiaoWatchAdsTimedTask;
 import com.example.test_auto_browse.utils.DateUtil;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
@@ -68,9 +65,6 @@ import java.util.concurrent.TimeUnit;
 
 public class AutoBrowseApp {
     private static AutoBrowseApp instance = null;
-
-    // repeat task index
-    private int currentRepeatTask = 0;
 
     // task scheduling thread
     private HandlerThread taskScheduleThread = null;
@@ -122,7 +116,7 @@ public class AutoBrowseApp {
             startSleepTaskTimer();
 
             // start repeat task
-            sendCurrentRepeatTaskMsg();
+            sendRepeatTaskMsg(LocalStorageUtil.getCachedTaskExecCount().getNextTaskIndex());
         }
 
         /////////////////////////////////////////////////////////////////////////////////
@@ -199,7 +193,10 @@ public class AutoBrowseApp {
     }
 
     private void initAllRepeatTask() {
-        currentRepeatTask = 1;
+        if (Constant.BUILD_CONFIG.equals("debug")) {
+            LocalStorageUtil.getCachedTaskExecCount().setNextTaskIndex(0);
+        }
+
         allRepeatTasks.add(TouTiaoBrowseVideoRepeatTask.getInstance());     // 0
         allRepeatTasks.add(DianTaoBrowseVideoRepeatTask.getInstance());     // 1
         allRepeatTasks.add(DianTaoBrowseLiveRepeatTask.getInstance());      // 2
@@ -303,92 +300,30 @@ public class AutoBrowseApp {
 
 
     public void sendNextRepeatTaskMsg() {
-        currentRepeatTask++;
-        currentRepeatTask %= allRepeatTasks.size();
-        sendCurrentRepeatTaskMsg();
+        int nextTaskIndex = LocalStorageUtil.getCachedTaskExecCount().getNextTaskIndex();
+        Logger.debug("sendNextRepeatTaskMsg(), nextTaskIndex=" + nextTaskIndex);
+        sendRepeatTaskMsg(nextTaskIndex);
     }
-    public void sendCurrentRepeatTaskMsg() {
-        Logger.debug("sendCurrentRepeatTaskMsg(), currentRepeatTask=" + currentRepeatTask);
+    public void sendRepeatTaskMsg(int repeatTask) {
+        Logger.debug("sendRepeatTaskMsg(), repeatTask=" + repeatTask);
 
-        if (0 == currentRepeatTask) {
-            Logger.debug("sendCurrentRepeatTaskMsg(), all tasks have run once");
+        if (0 == repeatTask) {
+            Logger.debug("sendRepeatTaskMsg(), all tasks have run once");
         }
 
         Message msg = Message.obtain();
         msg.what = Constant.TASK_MSG_REPEAT_TASK;
-        msg.obj = allRepeatTasks.get(currentRepeatTask);
+        msg.obj = allRepeatTasks.get(repeatTask);
 
         Logger.debug("sendBrowseRepeatedTaskMsg(), browse repeatedly task=" + msg.obj.getClass().getSimpleName());
         taskScheduleThreadHandler.sendMessage(msg);
-    }
 
-//    public void sendCurrentRepeatTaskMsg() {
-//        Logger.debug("sendCurrentRepeatTaskMsg(), currentRepeatTask=" + currentRepeatTask);
-//        Message msg = Message.obtain();
-//        switch (currentRepeatTask) {
-//            case 0:
-//                msg.what = Constant.TASK_MSG_TOU_TIAO_BROWSE_VIDEO_REPEAT_TASK;
-//                msg.obj = TouTiaoBrowseVideoRepeatTask.getInstance();
-//                break;
-//            case 1:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_BROWSE_VIDEO_REPEAT_TASK;
-//                msg.obj = DianTaoBrowseVideoRepeatTask.getInstance();
-//                break;
-//            case 2:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_BROWSE_LIVE_REPEAT_TASK;
-//                msg.obj = DianTaoBrowseLiveRepeatTask.getInstance();
-//                break;
-//            case 3:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_LIVE_30Sec;
-//                msg.obj = DianTaoWalkRepeatTaskWatchLive30Sec.getInstance();
-//                break;
-//            case 4:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_VIDEO_60Sec;
-//                msg.obj = DianTaoWalkRepeatTaskWatchVideo60Sec.getInstance();
-//                break;
-//            case 5:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_VIDEO_5Min;
-//                msg.obj = DianTaoWalkRepeatTaskWatchVideo5Min.getInstance();
-//                break;
-//            case 6:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_LIVE_3Min;
-//                msg.obj = DianTaoWalkRepeatTaskWatchLive3Min.getInstance();
-//                break;
-//            case 7:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_LIVE_5Min;
-//                msg.obj = DianTaoWalkRepeatTaskWatchLive5Min.getInstance();
-//                break;
-//            case 8:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_LIVE_8Min;
-//                msg.obj = DianTaoWalkRepeatTaskWatchLive8Min.getInstance();
-//                break;
-//            case 9:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_WATCH_LIVE_10Min;
-//                msg.obj = DianTaoWalkRepeatTaskWatchLive10Min.getInstance();
-//                break;
-//            case 10:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_SCRATCH;
-//                msg.obj = DianTaoWalkRepeatTaskScratch.getInstance();
-//                break;
-//            case 11:
-//                msg.what = Constant.TASK_MSG_DIAN_TAO_WALK_REPEAT_TASK_STEPS_TO_GOLD;
-//                msg.obj = DianTaoWalkRepeatTaskStepsToGold.getInstance();
-//                break;
-//            case 12:
-//                msg.what = Constant.TASK_MSG_KUAI_SHOU_BROWSE_VIDEO_REPEAT_TASK;
-//                msg.obj = KuaiShouBrowseVideoRepeatTask.getInstance();
-//                break;
-//
-//            default:
-//                Logger.debug("sendBrowseRepeatedTaskMsg(), error, nextRepeatTask=" + currentRepeatTask + ", reset nextRepeatTask");
-//                currentRepeatTask = 0;
-//                msg.what = Constant.TASK_MSG_TOU_TIAO_BROWSE_VIDEO_REPEAT_TASK;
-//                msg.obj = TouTiaoBrowseVideoRepeatTask.getInstance();
-//        }
-//
-//        Logger.debug("sendBrowseRepeatedTaskMsg(), browse repeatedly task=" + msg.obj.getClass().getSimpleName());
-//        taskScheduleThreadHandler.sendMessage(msg);
-//    }
+        // update next task index
+        repeatTask++;
+        repeatTask %= allRepeatTasks.size();
+        LocalStorageUtil.updateCachedTaskExecCount(
+                LocalStorageUtil.getCachedTaskExecCount().setNextTaskIndex(repeatTask));
+    }
 
 //    public void sendAllAppsTimedTaskMsg() {
 //        Message msg = Message.obtain();
@@ -398,46 +333,6 @@ public class AutoBrowseApp {
 //    }
 
     ///////////////////////////////////////////////////////////////////////////////////////
-
-//    private void startTimedTaskThread(final IAutoBrowseTask autoBrowseTask) {
-//        Logger.debug("startTimedTaskThread(), entry");
-//        synchronized (timedTaskSyncObj) {
-//            Logger.debug("startTimedTaskThread(), create timedTaskThread");
-//            timedTaskThread = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    timedTaskRunning = true;
-//
-//                    // stop auto browse thread firstly
-//                    boolean stopResult = stopRepeatTaskThread();
-//                    if (stopResult) {
-//                        try {
-//                            // run open treasure box task
-//                            if (autoBrowseTask.initTask()) {
-//                                autoBrowseTask.runTask();
-//                            } else {
-//                                Logger.debug("startTimedTaskThread, timedTaskThread init failed");
-//                            }
-//                            autoBrowseTask.endTask();
-//
-//                        } catch (InterruptedException e) {
-//                            Logger.debug("startTimedTaskThread, autoBrowseTask exception, info:" + e.getMessage());
-//                            e.printStackTrace();
-//                        }
-//                    } else {
-//                        Logger.debug("startTimedTaskThread, stopRepeatTaskThread failed");
-//                    }
-//
-//                    timedTaskRunning = false;
-//
-//                    // timed task run end, continue current repeat task
-//                    sendCurrentRepeatTaskMsg();
-//                }
-//            });
-//            timedTaskThread.start();
-//        }
-//        Logger.debug("startTimedTaskThread(), exit");
-//    }
 
     private void startSleepTask(final IBrowseTask autoBrowseTask) {
         Logger.debug("startSleepTask(), entry");
@@ -769,20 +664,22 @@ public class AutoBrowseApp {
 //            startSleepTaskTimer();
 //
 //            // start repeat task
-//            sendCurrentRepeatTaskMsg();
+//            sendRepeatTaskMsg(LocalStorageUtil.getCachedTaskExecCount().getNextTaskIndex());
             /////////////////////////////////////////////////////////////////////////////
 //            UiDriver.dumpXml2File("/sdcard/dump.xml");
             /////////////////////////////////////////////////////////////////////////////
 
-//            IBrowseTask task = QiYiBrowseAdsRepeatTask.getInstance();
-//            if (task.initTask()) {
-//                boolean taskResult = task.runTask();
+            IBrowseTask task = DianTaoBrowseVideoRepeatTask.getInstance();
+            if (task.initTask()) {
+                boolean taskResult = task.runTask();
 //                task.endTask();
-//                Logger.debug("QiYiBrowseAdsRepeatTask end, taskResult=" + taskResult);
-//            }
+                Logger.debug("DianTaoBrowseLiveRepeatTask end, taskResult=" + taskResult);
+            }
 
 
-            UiDriver.findAndClick(new UiSelector().textMatches("^[+]\\d{1,4}[步]$"));
+//            UiDriver.findAndClick(new UiSelector().text("开宝箱领金币"));
+
+
 
         }
 

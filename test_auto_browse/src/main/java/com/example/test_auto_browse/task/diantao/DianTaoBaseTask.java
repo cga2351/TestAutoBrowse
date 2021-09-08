@@ -13,7 +13,6 @@ import com.example.test_auto_browse.utils.DateUtil;
 import com.example.test_auto_browse.utils.Logger;
 import com.example.test_auto_browse.utils.SysUtil;
 
-import java.io.File;
 import java.util.Calendar;
 
 public abstract class DianTaoBaseTask extends BrowseBaseTask {
@@ -37,10 +36,6 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
 
     @Override
     public void exeDailyTasks() throws InterruptedException {
-
-        // check if has get gold on the right top
-        getGoldOnRightTop();
-
         // get sign gold
         getSignGold();
 
@@ -79,6 +74,9 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
 
                     // check daily task
                     checkDailyTask();
+
+                    // check if has get gold on the right top
+                    getRightTopGold();
 
                     Thread.sleep(3000);
                     result = true;
@@ -121,14 +119,23 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         SysUtil.killApp(Constant.PKG_NAME_DIAN_TAO);
     }
 
-    public void getGoldOnRightTop() throws InterruptedException {
+    public void getRightTopGold() throws InterruptedException {
         // if has get gold on right top, click directly
-        if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_GOLD_ON_RIGHT_TOP))) {
+        if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_GOLD_ON_RIGHT_TOP), Constant.WAIT_TIME_10_SEC)) {
+
+            // 可以点  "去看直播赚100元宝"  看60秒直播再得100元宝
+            if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_100_GOLD))) {
+                Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live 60s to get more 100 gold");
+                boolean watchLiveResult = watchVideoOrLive(1000 * 60, false, true);
+                Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live 60s watchLiveResult = " + watchLiveResult);
+            }
+
+            // wait 2s and press back
             Thread.sleep(2000);
             UiDriver.pressBack();
-            Logger.debug("DianTaoBaseTask.getGoldOnRightTop(), success");
+            Logger.debug("DianTaoBaseTask.getRightTopGold(), success");
         } else {
-            Logger.debug("DianTaoBaseTask.getGoldOnRightTop(), no right top gold");
+            Logger.debug("DianTaoBaseTask.getRightTopGold(), no right top gold");
         }
     }
 
@@ -221,14 +228,21 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         }
     }
 
-    protected boolean watchVideoOrLive(int watchDuration, boolean autoSwipe) throws InterruptedException {
+    protected boolean watchVideoOrLive(int watchDuration, boolean autoSwipe, boolean checkGoldEgg) throws InterruptedException {
         boolean result;
         long startTime = System.currentTimeMillis();
         while ((System.currentTimeMillis() - startTime) < watchDuration) {
+            Thread.sleep(5000);
+
             // check if has verification swipe of "向右滑动验证"
             checkSwipeRightVerification();
 
-            Thread.sleep(5000);
+            // check if has "6/6", if has, need to click to continue get gold
+            if (checkGoldEgg) {
+                checkGoldEgg();
+            }
+
+            // watch video need to swipe the video
             if (autoSwipe) {
                 UiDriver.swipeUp800pxFast();
             }
@@ -241,6 +255,19 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         }
 
         return result;
+    }
+
+    private void checkGoldEgg() throws InterruptedException  {
+        if (UiDriver.findAndClick(new UiSelector().text("6/6"), 2000)) {
+            if (null == UiDriver.find(new UiSelector().text("1/6"))) {
+                Logger.debug("DianTaoBaseTask.checkGoldEgg(), 6/6 have not finish, press back to return the live page");
+                UiDriver.pressBack();
+            } else {
+                Logger.debug("DianTaoBaseTask.checkGoldEgg(), click golden egg success");
+            }
+        } else {
+            Logger.debug("DianTaoBaseTask.checkGoldEgg(), no golden egg");
+        }
     }
 
     private void checkSwipeRightVerification() throws InterruptedException {
@@ -263,7 +290,7 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
                 );
 
                 UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_beforeSwipe_" + getClass().getSimpleName());
-                UiDriver.swipe(startX, startY, endX, endY, 10);
+                UiDriver.swipe(startX, startY, endX, endY, 30);
                 UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_afterSwipe_" + getClass().getSimpleName());
                 UiDriver.saveDebugScreenshotWithDelay("checkWorkWatchLiveFailure_afterSwipeAndWait2s_" + getClass().getSimpleName(), 2000);
             }

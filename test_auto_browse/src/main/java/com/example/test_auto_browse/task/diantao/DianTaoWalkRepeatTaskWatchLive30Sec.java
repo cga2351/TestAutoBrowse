@@ -73,7 +73,7 @@ public class DianTaoWalkRepeatTaskWatchLive30Sec extends DianTaoWalkRepeatTask {
                 if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
                     // enter live window, and wait 40s
                     int watchDuration = 1000 * 30 + 1000 * 10;
-                    result = watchVideoOrLive(watchDuration, false);
+                    result = watchVideoOrLive(watchDuration, false, true);
                     Logger.debug("DianTaoWalkRepeatTaskWatchLive30Sec.autoBrowse(), watch result = " + result);
                 } else {
                     // entry live window failed, exit task

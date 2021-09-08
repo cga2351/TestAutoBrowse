@@ -22,6 +22,11 @@ public class DianTaoBrowseVideoRepeatTask extends DianTaoBaseTask {
     }
 
     @Override
+    public int waitTaskEndMaxTime() {
+        return 1000 * 60 * 3 + 1000 * 30;
+    }
+
+    @Override
     protected int getMaxExecCount() {
         return Constant.DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT;
     }
@@ -45,9 +50,9 @@ public class DianTaoBrowseVideoRepeatTask extends DianTaoBaseTask {
             UiSelector uiSelector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_VIDEO_GET_GOLD);
             if (UiDriver.swipeUpToFindObject(uiSelector)) {
                 // click watch video to get gold
-                result = UiDriver.findAndClick(uiSelector);
+                result = true;
             } else {
-                Logger.debug("DianTaoBrowseVideoTask.initTask(), swipe up to fine watch video failed");
+                Logger.debug("DianTaoBrowseVideoTask.initTask(), swipe up to find watch video failed");
             }
         } else {
             Logger.debug("DianTaoBrowseVideoTask.initTask(), super.initTask() failed");
@@ -63,14 +68,18 @@ public class DianTaoBrowseVideoRepeatTask extends DianTaoBaseTask {
         Logger.debug("DianTaoBrowseVideoTask.autoBrowse(), entry");
 
         while (!getForceStop()) {
-            // auto watch video for 15s, and swipe to next video
-            Thread.sleep(8000);
-
-            if (UiDriver.findAndClick(new UiSelector().resourceId("com.taobao.live:id/gold_new_progress_get"), 3000)) {
-                Logger.debug("DianTaoBrowseVideoTask.autoBrowse(), click get new gold");
+            // click "看视频，赚元宝" may failed, try forever
+            while (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_VIDEO_GET_GOLD))) {
+                Thread.sleep(1000);
             }
 
-            UiDriver.swipeUp600pxFast();
+            watchVideoOrLive(1000 * 60 * 3, true, false);
+
+//            if (UiDriver.findAndClick(new UiSelector().resourceId("com.taobao.live:id/gold_new_progress_get"), 3000)) {
+//                Logger.debug("DianTaoBrowseVideoTask.autoBrowse(), click get new gold");
+//            }
+//
+//            UiDriver.swipeUp600pxFast();
         }
 
         Logger.debug("DianTaoBrowseVideoTask.autoBrowse(), exit");

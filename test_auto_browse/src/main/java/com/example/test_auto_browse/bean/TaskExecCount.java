@@ -4,7 +4,7 @@ import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.utils.DateUtil;
 
 public class TaskExecCount {
-
+    int nextTaskIndex;
     long saveDate;
     int touTiaoTreasureBoxExecCount;        //TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 50
     int touTiaoBrowseVideoExecCount;        //TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 2
@@ -39,10 +39,12 @@ public class TaskExecCount {
     int quKanBrowseArticleExecCount;         //QU_KAN_BROWSE_ARTICLE_MAX_EXEC_COUNT = 50;
     int quKanBrowseVideoExecCount;         //QU_KAN_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
     int qiYiBrowseAdsExecCount;         //
+    int qiYiTreasureBoxExecCount;         //
     int douYinBrowseAdsExecCount;         //
 
     public TaskExecCount() {}
     public TaskExecCount(TaskExecCount taskExecCount) {
+        nextTaskIndex = taskExecCount.nextTaskIndex;
         saveDate = taskExecCount.saveDate;
         touTiaoTreasureBoxExecCount = taskExecCount.touTiaoTreasureBoxExecCount;
         touTiaoBrowseVideoExecCount = taskExecCount.touTiaoBrowseVideoExecCount;
@@ -77,6 +79,7 @@ public class TaskExecCount {
         quKanBrowseArticleExecCount = taskExecCount.quKanBrowseArticleExecCount;
         quKanBrowseVideoExecCount = taskExecCount.quKanBrowseVideoExecCount;
         qiYiBrowseAdsExecCount = taskExecCount.qiYiBrowseAdsExecCount;
+        qiYiTreasureBoxExecCount = taskExecCount.qiYiTreasureBoxExecCount;
         douYinBrowseAdsExecCount = taskExecCount.douYinBrowseAdsExecCount;
     }
 
@@ -114,6 +117,7 @@ public class TaskExecCount {
         quKanBrowseArticleExecCount = Constant.QU_KAN_BROWSE_ARTICLE_MAX_EXEC_COUNT;
         quKanBrowseVideoExecCount = Constant.QU_KAN_BROWSE_VIDEO_MAX_EXEC_COUNT;
         qiYiBrowseAdsExecCount = Constant.QI_YI_BROWSE_ADS_MAX_EXEC_COUNT;
+        qiYiTreasureBoxExecCount = Constant.QI_YI_TREASURE_BOX_MAX_EXEC_COUNT;
         douYinBrowseAdsExecCount = Constant.DOU_YIN_BROWSE_ADS_MAX_EXEC_COUNT;
     }
 
@@ -121,7 +125,8 @@ public class TaskExecCount {
     @Override
     public String toString() {
         return "TaskExecCount{" +
-                "saveDate=" + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_HYPHEN, saveDate) +
+                "nextTaskIndex=" + nextTaskIndex +
+                ", saveDate=" + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_HYPHEN, saveDate) +
                 ", touTiaoTreasureBoxExecCount=" + touTiaoTreasureBoxExecCount +
                 ", touTiaoBrowseVideoExecCount=" + touTiaoBrowseVideoExecCount +
                 ", touTiaoBrowseGoodsExecCount=" + touTiaoBrowseGoodsExecCount +
@@ -155,8 +160,18 @@ public class TaskExecCount {
                 ", quKanBrowseArticleExecCount=" + quKanBrowseArticleExecCount +
                 ", quKanBrowseVideoExecCount=" + quKanBrowseVideoExecCount +
                 ", qiYiBrowseAdsExecCount=" + qiYiBrowseAdsExecCount +
+                ", qiYiTreasureBoxExecCount=" + qiYiTreasureBoxExecCount +
                 ", douYinBrowseAdsExecCount=" + douYinBrowseAdsExecCount +
                 '}';
+    }
+
+    public int getNextTaskIndex() {
+        return nextTaskIndex;
+    }
+
+    public TaskExecCount setNextTaskIndex(int nextTaskIndex) {
+        this.nextTaskIndex = nextTaskIndex;
+        return this;
     }
 
     public long getSaveDate() {
@@ -615,6 +630,19 @@ public class TaskExecCount {
 
     public void setQiYiBrowseAdsExecCount(int qiYiBrowseAdsExecCount) {
         this.qiYiBrowseAdsExecCount = qiYiBrowseAdsExecCount;
+    }
+
+    public int getQiYiTreasureBoxExecCount() {
+        return qiYiTreasureBoxExecCount;
+    }
+
+    public TaskExecCount increaseQiYiTreasureBoxExecCount() {
+        this.qiYiTreasureBoxExecCount++;
+        return this;
+    }
+
+    public void setQiYiTreasureBoxExecCount(int qiYiTreasureBoxExecCount) {
+        this.qiYiTreasureBoxExecCount = qiYiTreasureBoxExecCount;
     }
 
     public int getDouYinBrowseAdsExecCount() {
