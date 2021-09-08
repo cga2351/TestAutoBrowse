@@ -282,8 +282,8 @@ public class Constant {
     public static final int KUAI_SHOU_REWARD_MAX_EXEC_COUNT = 10;
     public static final int KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT = 2;
 
-    public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 20;
-    public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
@@ -405,6 +405,6 @@ public class Constant {
 
 
     // build config
-    public static String BUILD_CONFIG = "debug";
-//    public static String BUILD_CONFIG = "release";
+//    public static String BUILD_CONFIG = "debug";
+    public static String BUILD_CONFIG = "release";
 }
