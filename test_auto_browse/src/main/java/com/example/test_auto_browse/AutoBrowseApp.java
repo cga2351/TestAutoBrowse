@@ -28,6 +28,8 @@ import com.example.test_auto_browse.task.diantao.DianTaoWorkRepeatTaskWatchVideo
 import com.example.test_auto_browse.task.diantao.DianTaoWorkRepeatTaskWatchVideo5Min;
 import com.example.test_auto_browse.task.IBrowseTask;
 import com.example.test_auto_browse.task.diantao.DianTaoWorkRepeatTaskWatchVideo60Sec;
+import com.example.test_auto_browse.task.douyin.DouYinTreasureBoxTimedTask;
+import com.example.test_auto_browse.task.douyin.DouYinWatchAdsTimedTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseActivityRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseGoodsRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseVideoRepeatTask;
@@ -669,14 +671,15 @@ public class AutoBrowseApp {
 //            UiDriver.dumpXml2File("/sdcard/dump.xml");
             /////////////////////////////////////////////////////////////////////////////
 
-            IBrowseTask task = DianTaoBrowseVideoRepeatTask.getInstance();
+            IBrowseTask task = DouYinWatchAdsTimedTask.getInstance();
             if (task.initTask()) {
                 boolean taskResult = task.runTask();
 //                task.endTask();
-                Logger.debug("DianTaoBrowseLiveRepeatTask end, taskResult=" + taskResult);
+                Logger.debug("DouYinTreasureBoxTimedTask end, taskResult=" + taskResult);
             }
 
 
+//            UiDriver.swipeUpToFindAndClickObject(new UiSelector().text("看广告赚金币"));
 //            UiDriver.findAndClick(new UiSelector().text("开宝箱领金币"));
 
 

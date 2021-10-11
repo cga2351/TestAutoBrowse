@@ -1,5 +1,7 @@
 package com.example.test_auto_browse.utils;
 
+import com.example.test_auto_browse.Constant;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInput;
@@ -61,6 +63,19 @@ public class FileUtil {
             fileWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void deleteDir(File file) {
+        if (file.isFile()) {
+            file.delete();
+        } else if (file.isDirectory()) {
+            String[] childFilePaths = file.list();
+            for (String childFilePath : childFilePaths) {
+                File childFile = new File(file.getAbsolutePath() + Constant.SEPARATOR + childFilePath);
+                deleteDir(childFile);
+            }
+            file.delete();
         }
     }
 }

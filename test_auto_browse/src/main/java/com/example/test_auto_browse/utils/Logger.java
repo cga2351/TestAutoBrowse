@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.test_auto_browse.Constant;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
@@ -107,41 +108,41 @@ public class Logger {
             Logger.debug("checkOldLogFiles(), time goes to the second day, save log to new file, logFileName=" + logFileName);
 
             // delete in java agent
-            //delete old files
-//            CommonUtil.deleteOldFiles();
+            // delete old files
+            CommonUtil.deleteOldFiles();
         }
     }
 
-//    public static void deleteOldLogFile() {
-//        // delete log file 5 days ago
-//        File logDir = new File(Constant.SD_PATH_MQMS_LOG);
-//        File[] logFiles = logDir.listFiles();
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(Calendar.HOUR_OF_DAY, 0);
-//        calendar.set(Calendar.MINUTE, 0);
-//        calendar.set(Calendar.SECOND, 0);
-//        calendar.set(Calendar.MILLISECOND, 0);
-//        long curTimeStamp = calendar.getTimeInMillis();
-//        long timeToDelete = curTimeStamp - LOG_FILE_KEEP_PERIOD; // last update time is 5 days ago. to delete
-//        FileInputStream logFileInputStream;
-//        long modifyTime = 0;
-//
-//        for (File logFile : logFiles) {
-//            try {
-//                modifyTime = logFile.lastModified();
-//                logFileInputStream = new FileInputStream(logFile);
-//
-//                if ((logFile.getName().endsWith(Constant.AUTO_AGENT_LOG_FILE_SUFFIX)) &&
-//                        (modifyTime < timeToDelete || logFileInputStream.available() > LOG_FILE_MAX_SIZE)) {
-//                    logFile.delete();
-//                }
-//
-//                logFileInputStream.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    public static void deleteOldLogFile() {
+        // delete log file 5 days ago
+        File logDir = new File(Constant.SD_PATH_LOG_DIR);
+        File[] logFiles = logDir.listFiles();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        long curTimeStamp = calendar.getTimeInMillis();
+        long timeToDelete = curTimeStamp - LOG_FILE_KEEP_PERIOD; // last update time is 5 days ago. to delete
+        FileInputStream logFileInputStream;
+        long modifyTime = 0;
+
+        for (File logFile : logFiles) {
+            try {
+                modifyTime = logFile.lastModified();
+                logFileInputStream = new FileInputStream(logFile);
+
+                if ((logFile.getName().endsWith(Constant.AUTO_AGENT_LOG_FILE_SUFFIX)) &&
+                        (modifyTime < timeToDelete || logFileInputStream.available() > LOG_FILE_MAX_SIZE)) {
+                    logFile.delete();
+                }
+
+                logFileInputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static void debug(final String des) {
         Log.d(Logger.prefix, des);

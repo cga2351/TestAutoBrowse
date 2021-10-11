@@ -46,19 +46,19 @@ public class SysUtil {
         // init all apps' package name
         allAppsPackageName.add(Constant.PKG_NAME_TOU_TIAO_LITE);
         allAppsPackageName.add(Constant.PKG_NAME_DIAN_TAO);
-        allAppsPackageName.add(Constant.PKG_NAME_WEI_SHI);
+//        allAppsPackageName.add(Constant.PKG_NAME_WEI_SHI);
         allAppsPackageName.add(Constant.PKG_NAME_KUAI_SHOU);
         allAppsPackageName.add(Constant.PKG_NAME_JING_DONG);
         allAppsPackageName.add(Constant.PKG_NAME_QU_KAN);
         allAppsPackageName.add(Constant.PKG_NAME_QI_YI);
         allAppsPackageName.add(Constant.PKG_NAME_DOU_YIN);
 
-        allAppsPackageName.add(Constant.PKG_NAME_ALI_PAY);
+//        allAppsPackageName.add(Constant.PKG_NAME_ALI_PAY);
         allAppsPackageName.add(Constant.PKG_NAME_K_GE);
         allAppsPackageName.add(Constant.PKG_NAME_WAN_DOU_JIA);
         allAppsPackageName.add(Constant.PKG_NAME_XIMALAYA);
         allAppsPackageName.add(Constant.PKG_NAME_BAIDU);
-        allAppsPackageName.add(Constant.PKG_NAME_WEI_XIN);
+//        allAppsPackageName.add(Constant.PKG_NAME_WEI_XIN);
     }
 
     public static boolean isEmulator() {

@@ -43,7 +43,7 @@ public class DouYinWatchAdsTimedTask extends DouYinBaseTask {
         boolean result = false;
 
         Thread.sleep(3000);
-        if (UiDriver.findAndClick(new UiSelector().description(Constant.STR_DOU_YIN_WATCH_ADS_TO_GET_GOLD))) {
+        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().description(Constant.STR_DOU_YIN_WATCH_ADS_TO_GET_GOLD))) {
             // watch ads
             result = douYinWatchAds();
             Logger.debug("DouYinWatchAdsTimedTask.autoBrowse(), watch ads result = " + result);
