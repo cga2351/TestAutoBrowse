@@ -7,6 +7,8 @@ import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
 import com.example.test_auto_browse.utils.Logger;
 
+import java.util.Calendar;
+
 public class DianTaoWalkRepeatTaskScratch extends DianTaoWalkRepeatTask {
     private DianTaoWalkRepeatTaskScratch() {}
     private static DianTaoWalkRepeatTaskScratch instance;
@@ -22,15 +24,20 @@ public class DianTaoWalkRepeatTaskScratch extends DianTaoWalkRepeatTask {
     }
 
     @Override
-    public boolean isTaskAvailable() {
-//        // task execute after 20:00, return 1 means can execute task
-//        if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10) {
-//            return true;
-//        } else {
-//            return false;
-//        }
+    public int waitTaskEndMaxTime() {
+        return 1000 * 60 * 3;
+    }
 
-        return false;
+    @Override
+    public boolean isTaskAvailable() {
+        // task execute after 10:00, return 1 means can execute task
+        if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10) {
+            return true;
+        } else {
+            return false;
+        }
+
+//        return false;
     }
 
     @Override
@@ -63,8 +70,7 @@ public class DianTaoWalkRepeatTaskScratch extends DianTaoWalkRepeatTask {
 
             // watch live or ads to get more
             if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_WATCH_LIVE_TO_GET_MORE))) {
-                Thread.sleep(1000 * 60);
-                result = waitWatchVideoOrLiveCountDownEnd();
+                result = watchVideoOrLive(1000 * 60, false, true);
                 Logger.debug("DianTaoWalkRepeatTaskScratch.autoBrowse(), watch live or ads result = " + result);
                 UiDriver.pressBack();
                 Thread.sleep(3000);

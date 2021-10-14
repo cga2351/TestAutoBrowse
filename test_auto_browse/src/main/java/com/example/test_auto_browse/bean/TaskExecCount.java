@@ -6,38 +6,42 @@ import com.example.test_auto_browse.utils.DateUtil;
 public class TaskExecCount {
     int nextTaskIndex;
     long saveDate;
-    int touTiaoTreasureBoxExecCount;        //TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 50
-    int touTiaoBrowseVideoExecCount;        //TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 2
-    int touTiaoBrowseGoodsExecCount;            //TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 3;
-    int touTiaoWatchAdsExecCount;           //TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT = 10;
-    int kuaiShouTreasureBoxExecCount;           //KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT = 10;
-    int kuaiShouWatchLiveExecCount;             //KUAI_SHOU_WATCH_LIVE_MAX_EXEC_COUNT = 10;
-    int kuaiShouRewardExecCount;                    //KUAI_SHOU_REWARD_MAX_EXEC_COUNT = 10;
-    int kuaiShouBrowseVideoExecCount;                    //KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT = 20;
-    int dianTaoBrowseLiveExecCount;             //DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 1;
-    int dianTaoBrowseVideoExecCount;             //DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 1;
-    int dianTaoWalkWatchVideo60SecExecCount;        //DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
-    int dianTaoWalkWatchVideo30SecExecCount;         //DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 3;
-    int dianTaoWalkWatchLive30SecExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
-    int dianTaoWalkWatchLive3MinExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
-    int dianTaoWalkWatchLive5MinExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
-    int dianTaoWalkWatchLive8MinExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
-    int dianTaoWalkWatchLive10MinExecCount;         //DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 3;
-    int dianTaoWorkWatchVideo60SecExecCount;         //DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
-    int dianTaoWorkWatchVideo30SecExecCount;         //DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 3;
-    int dianTaoWorkWatchVideo5MinExecCount;         //DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT = 3;
-    int dianTaoWorkWatchLive60SecExecCount;         //DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 5;
-    int dianTaoWorkWatchLive3MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
-    int dianTaoWorkWatchLive5MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 1;
-    int dianTaoWorkWatchLive8MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
-    int dianTaoWorkWatchLive10MinExecCount;         //DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
-    int jingDongBrowseActivityExecCount;         //JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT = 5;
-    int jingDongBrowseGoodsExecCount;         //JING_DONG_BROWSE_GOODS_MAX_EXEC_COUNT = 5;
-    int jingDongBrowseVideoExecCount;         //JING_DONG_BROWSE_VIDEO_MAX_EXEC_COUNT = 10;
-    int quKanBrowseShortVideoExecCount;         //QU_KAN_BROWSE_SHORT_VIDEO_MAX_EXEC_COUNT = 50;
-    int quKanLuckyMoneyGoldExecCount;         //QU_KAN_LUCKY_MONEY_GOLD_MAX_EXEC_COUNT = 100;
-    int quKanBrowseArticleExecCount;         //QU_KAN_BROWSE_ARTICLE_MAX_EXEC_COUNT = 50;
-    int quKanBrowseVideoExecCount;         //QU_KAN_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
+    int touTiaoTreasureBoxExecCount;        //TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT
+    int touTiaoBrowseVideoExecCount;        //TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT
+    int touTiaoBrowseGoodsExecCount;            //TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT
+    int touTiaoWatchAdsExecCount;           //TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT
+    int kuaiShouTreasureBoxExecCount;           //KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT
+    int kuaiShouWatchLiveExecCount;             //KUAI_SHOU_WATCH_LIVE_MAX_EXEC_COUNT
+    int kuaiShouRewardExecCount;                    //KUAI_SHOU_REWARD_MAX_EXEC_COUNT
+    int kuaiShouBrowseVideoExecCount;                    //KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT
+    int dianTaoBrowseLiveExecCount;             //DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT
+    int dianTaoBrowseVideoExecCount;             //DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT
+    int dianTaoWalkWatchVideo60SecExecCount;        //DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT
+    int dianTaoWalkWatchVideo30SecExecCount;         //DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT
+    int dianTaoWalkWatchLive30SecExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT
+    int dianTaoWalkWatchLive3MinExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT
+    int dianTaoWalkWatchLive5MinExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT
+    int dianTaoWalkWatchLive8MinExecCount;          //DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT
+    int dianTaoWalkWatchLive10MinExecCount;         //DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT
+    int dianTaoWorkWatchVideo60SecExecCount;         //DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT
+    int dianTaoWorkWatchVideo30SecExecCount;         //DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT
+    int dianTaoWorkWatchVideo5MinExecCount;         //DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT
+    int dianTaoWorkWatchGoldenLive30SecExecCount;         //DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT
+    int dianTaoWorkWatchGoldenLive60SecExecCount;         //DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT
+    int dianTaoWorkWatchGoldenLive3MinExecCount;         //DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT
+    int dianTaoWorkWatchLive30SecExecCount;         //DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT
+    int dianTaoWorkWatchLive60SecExecCount;         //DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT
+    int dianTaoWorkWatchLive3MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT
+    int dianTaoWorkWatchLive5MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT
+    int dianTaoWorkWatchLive8MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT
+    int dianTaoWorkWatchLive10MinExecCount;         //DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT
+    int jingDongBrowseActivityExecCount;         //JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT
+    int jingDongBrowseGoodsExecCount;         //JING_DONG_BROWSE_GOODS_MAX_EXEC_COUNT
+    int jingDongBrowseVideoExecCount;         //JING_DONG_BROWSE_VIDEO_MAX_EXEC_COUNT
+    int quKanBrowseShortVideoExecCount;         //QU_KAN_BROWSE_SHORT_VIDEO_MAX_EXEC_COUNT
+    int quKanLuckyMoneyGoldExecCount;         //QU_KAN_LUCKY_MONEY_GOLD_MAX_EXEC_COUNT
+    int quKanBrowseArticleExecCount;         //QU_KAN_BROWSE_ARTICLE_MAX_EXEC_COUNT
+    int quKanBrowseVideoExecCount;         //QU_KAN_BROWSE_VIDEO_MAX_EXEC_COUNT
     int qiYiBrowseAdsExecCount;         //
     int qiYiTreasureBoxExecCount;         //
     int douYinBrowseAdsExecCount;         //
@@ -66,6 +70,10 @@ public class TaskExecCount {
         dianTaoWorkWatchVideo60SecExecCount = taskExecCount.dianTaoWorkWatchVideo60SecExecCount;
         dianTaoWorkWatchVideo30SecExecCount = taskExecCount.dianTaoWorkWatchVideo30SecExecCount;
         dianTaoWorkWatchVideo5MinExecCount = taskExecCount.dianTaoWorkWatchVideo5MinExecCount;
+        dianTaoWorkWatchGoldenLive30SecExecCount = taskExecCount.dianTaoWorkWatchGoldenLive30SecExecCount;
+        dianTaoWorkWatchGoldenLive60SecExecCount = taskExecCount.dianTaoWorkWatchGoldenLive60SecExecCount;
+        dianTaoWorkWatchGoldenLive3MinExecCount = taskExecCount.dianTaoWorkWatchGoldenLive3MinExecCount;
+        dianTaoWorkWatchLive30SecExecCount = taskExecCount.dianTaoWorkWatchLive30SecExecCount;
         dianTaoWorkWatchLive60SecExecCount = taskExecCount.dianTaoWorkWatchLive60SecExecCount;
         dianTaoWorkWatchLive3MinExecCount = taskExecCount.dianTaoWorkWatchLive3MinExecCount;
         dianTaoWorkWatchLive5MinExecCount = taskExecCount.dianTaoWorkWatchLive5MinExecCount;
@@ -104,6 +112,10 @@ public class TaskExecCount {
         dianTaoWorkWatchVideo60SecExecCount = Constant.DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT;
         dianTaoWorkWatchVideo30SecExecCount = Constant.DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT;
         dianTaoWorkWatchVideo5MinExecCount = Constant.DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT;
+        dianTaoWorkWatchGoldenLive30SecExecCount = Constant.DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT;
+        dianTaoWorkWatchGoldenLive60SecExecCount = Constant.DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT;
+        dianTaoWorkWatchGoldenLive3MinExecCount = Constant.DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT;
+        dianTaoWorkWatchLive30SecExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT;
         dianTaoWorkWatchLive60SecExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT;
         dianTaoWorkWatchLive3MinExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT;
         dianTaoWorkWatchLive5MinExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT;
@@ -147,6 +159,10 @@ public class TaskExecCount {
                 ", dianTaoWorkWatchVideo60SecExecCount=" + dianTaoWorkWatchVideo60SecExecCount +
                 ", dianTaoWorkWatchVideo30SecExecCount=" + dianTaoWorkWatchVideo30SecExecCount +
                 ", dianTaoWorkWatchVideo5MinExecCount=" + dianTaoWorkWatchVideo5MinExecCount +
+                ", dianTaoWorkWatchGoldenLive30SecExecCount=" + dianTaoWorkWatchGoldenLive30SecExecCount +
+                ", dianTaoWorkWatchGoldenLive60SecExecCount=" + dianTaoWorkWatchGoldenLive60SecExecCount +
+                ", dianTaoWorkWatchGoldenLive3MinExecCount=" + dianTaoWorkWatchGoldenLive3MinExecCount +
+                ", dianTaoWorkWatchLive30SecExecCount=" + dianTaoWorkWatchLive30SecExecCount +
                 ", dianTaoWorkWatchLive60SecExecCount=" + dianTaoWorkWatchLive60SecExecCount +
                 ", dianTaoWorkWatchLive3MinExecCount=" + dianTaoWorkWatchLive3MinExecCount +
                 ", dianTaoWorkWatchLive5MinExecCount=" + dianTaoWorkWatchLive5MinExecCount +
@@ -455,6 +471,62 @@ public class TaskExecCount {
 
     public TaskExecCount setDianTaoWorkWatchVideo5MinExecCount(int dianTaoWorkWatchVideo5MinExecCount) {
         this.dianTaoWorkWatchVideo5MinExecCount = dianTaoWorkWatchVideo5MinExecCount;
+        return this;
+    }
+
+    public int getDianTaoWorkWatchGoldenLive30SecExecCount() {
+        return dianTaoWorkWatchGoldenLive30SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoWorkWatchGoldenLive30SecExecCount() {
+        this.dianTaoWorkWatchGoldenLive30SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoWorkWatchGoldenLive30SecExecCount(int dianTaoWorkWatchGoldenLive30SecExecCount) {
+        this.dianTaoWorkWatchGoldenLive30SecExecCount = dianTaoWorkWatchGoldenLive30SecExecCount;
+        return this;
+    }
+
+    public int getDianTaoWorkWatchGoldenLive60SecExecCount() {
+        return dianTaoWorkWatchGoldenLive60SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoWorkWatchGoldenLive60SecExecCount() {
+        this.dianTaoWorkWatchGoldenLive60SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoWorkWatchGoldenLive60SecExecCount(int dianTaoWorkWatchGoldenLive60SecExecCount) {
+        this.dianTaoWorkWatchGoldenLive60SecExecCount = dianTaoWorkWatchGoldenLive60SecExecCount;
+        return this;
+    }
+
+    public int getDianTaoWorkWatchGoldenLive3MinExecCount() {
+        return dianTaoWorkWatchGoldenLive3MinExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoWorkWatchGoldenLive3MinExecCount() {
+        this.dianTaoWorkWatchGoldenLive3MinExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoWorkWatchGoldenLive3MinExecCount(int dianTaoWorkWatchGoldenLive3MinExecCount) {
+        this.dianTaoWorkWatchGoldenLive3MinExecCount = dianTaoWorkWatchGoldenLive3MinExecCount;
+        return this;
+    }
+
+    public int getDianTaoWorkWatchLive30SecExecCount() {
+        return dianTaoWorkWatchLive30SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoWorkWatchLive30SecExecCount() {
+        this.dianTaoWorkWatchLive30SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoWorkWatchLive30SecExecCount(int dianTaoWorkWatchLive30SecExecCount) {
+        this.dianTaoWorkWatchLive30SecExecCount = dianTaoWorkWatchLive30SecExecCount;
         return this;
     }
 

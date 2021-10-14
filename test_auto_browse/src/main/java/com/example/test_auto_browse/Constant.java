@@ -111,6 +111,9 @@ public class Constant {
     public static final String STR_DIAN_TAO_WATCH_VIDEO_30Sec = "看视频30秒";
     public static final String STR_DIAN_TAO_WATCH_VIDEO_3Min = "看视频3分钟";
     public static final String STR_DIAN_TAO_WATCH_VIDEO_5Min = "看视频5分钟";
+    public static final String STR_DIAN_TAO_WATCH_GOLDEN_LIVE_30Sec = "看黄金8点档直播30秒";
+    public static final String STR_DIAN_TAO_WATCH_GOLDEN_LIVE_60Sec = "看黄金8点档直播60秒";
+    public static final String STR_DIAN_TAO_WATCH_GOLDEN_LIVE_3Min = "看黄金8点档直播3分钟";
     public static final String STR_DIAN_TAO_WATCH_LIVE_30Sec = "看直播30秒";
     public static final String STR_DIAN_TAO_WATCH_LIVE_60Sec = "看直播60秒";
     public static final String STR_DIAN_TAO_WATCH_LIVE_3Min = "看直播3分钟";
@@ -284,22 +287,26 @@ public class Constant {
 
     public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 1;
     public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
+    public static final int DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 5;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 0;
 
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 2;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
 
     public static final int JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT = 0;

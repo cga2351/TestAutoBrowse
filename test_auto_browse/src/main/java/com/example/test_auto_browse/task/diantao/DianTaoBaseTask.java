@@ -65,6 +65,10 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         if (super.initTask()) {
             // switch to the my tab page
             if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.ID_DIAN_TAO_HOME_TAB_ITEM).instance(3), Constant.WAIT_TIME_20_SEC)) {
+
+//                // check if has verification swipe of "向右滑动验证"
+//                checkSwipeRightVerification(5000);
+
                 // open gold center
                 if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER), Constant.WAIT_TIME_15_SEC)) {
                     // dismiss popup window
@@ -235,7 +239,7 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
             Thread.sleep(5000);
 
             // check if has verification swipe of "向右滑动验证"
-            checkSwipeRightVerification();
+            checkSwipeRightVerification(2000);
 
             // check if has "6/6", if has, need to click to continue get gold
             if (checkGoldEgg) {
@@ -270,9 +274,9 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         }
     }
 
-    private void checkSwipeRightVerification() throws InterruptedException {
+    private void checkSwipeRightVerification(long timeout) throws InterruptedException {
         try {
-            UiObject uiObject = UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_SWIPE_RIGHT_TO_VERIFY), 2000);
+            UiObject uiObject = UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_SWIPE_RIGHT_TO_VERIFY), timeout);
             if (null != uiObject) {
                 Rect rect = uiObject.getVisibleBounds();
                 int startX = rect.left + 50;

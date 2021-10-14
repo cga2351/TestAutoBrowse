@@ -48,11 +48,13 @@ public abstract class DianTaoWorkRepeatTask extends DianTaoBaseTask {
     }
 
     protected void backToWorkPage() throws InterruptedException {
-        // press back and dismiss task list
+        // press back
         UiDriver.pressBack();
         Thread.sleep(7000);
-        UiDriver.click_Top300px_Center();
-        Thread.sleep(2000);
+
+        // dismiss task list
+//        UiDriver.click_Top300px_Center();
+//        Thread.sleep(2000);
     }
 
 }

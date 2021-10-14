@@ -58,9 +58,7 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
                 //
                 Logger.debug("DianTaoWorkTimedTaskCheckWork.watchAdsToGetMore(), watch ads to get more");
-                Thread.sleep(1000 * 60);
-
-                boolean checkResult = waitWatchVideoOrLiveCountDownEnd();
+                boolean checkResult = watchVideoOrLive(1000 * 60, false, true);
                 Logger.debug("DianTaoWorkTimedTaskCheckWork.watchAdsToGetMore(), wait ads end result =" + checkResult);
 
                 // close live ads window
