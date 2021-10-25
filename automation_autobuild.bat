@@ -54,20 +54,20 @@ call adb %DEVICES_UDID_PARAM% shell chmod 777 /data/local/tmp/auto_browse_daemon
 
 :: kill and re-launch uiautomator
 echo kill uiautomator
-call adb %DEVICES_UDID_PARAM% shell "ps -e|grep uiautomator|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
-call adb %DEVICES_UDID_PARAM% shell "ps|grep uiautomator|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
+call adb %DEVICES_UDID_PARAM% shell "ps -e|/data/local/tmp/busybox grep uiautomator|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
+call adb %DEVICES_UDID_PARAM% shell "ps|/data/local/tmp/busybox grep uiautomator|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
 
 echo run uiautomator
-::call adb %DEVICES_UDID_PARAM% shell "nohup uiautomator runtest %ANDROID_TEST_LIB% %OUTPUT_FILE_NAME%.jar -c com.example.test_auto_browse.AutomationAgentBootstrap"
+::call adb %DEVICES_UDID_PARAM% shell "nohup uiautomator runtest %ANDROID_TEST_LIB% %OUTPUT_FILE_NAME%.jar -c com.example.test_auto_browse.AutomationAgentBootstrap > /dev/null 2>&1"
 
 
 :: kill and re-launch daemon
 echo kill auto_browse_daemon...
-call adb %DEVICES_UDID_PARAM% shell "ps -e|grep auto_browse_daemon|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
-call adb %DEVICES_UDID_PARAM% shell "ps|grep auto_browse_daemon|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
+call adb %DEVICES_UDID_PARAM% shell "ps -e|/data/local/tmp/busybox grep auto_browse_daemon|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
+call adb %DEVICES_UDID_PARAM% shell "ps|/data/local/tmp/busybox grep auto_browse_daemon|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
 
 echo run auto_browse_daemon...
-call adb %DEVICES_UDID_PARAM% shell "nohup /data/local/tmp/auto_browse_daemon"
+call adb %DEVICES_UDID_PARAM% shell "nohup /data/local/tmp/auto_browse_daemon > /dev/null 2>&1"
 
 
 echo completed...

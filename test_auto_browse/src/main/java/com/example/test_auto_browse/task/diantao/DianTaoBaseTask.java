@@ -128,7 +128,7 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_GOLD_ON_RIGHT_TOP), Constant.WAIT_TIME_10_SEC)) {
 
             // 可以点  "去看直播赚100元宝"  看60秒直播再得100元宝
-            if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_100_GOLD))) {
+            if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_MORE))) {
                 Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live 60s to get more 100 gold");
                 boolean watchLiveResult = watchVideoOrLive(1000 * 60, false, true);
                 Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live 60s watchLiveResult = " + watchLiveResult);
@@ -263,11 +263,13 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
 
     private void checkGoldEgg() throws InterruptedException  {
         if (UiDriver.findAndClick(new UiSelector().text("6/6"), 2000)) {
-            if (null == UiDriver.find(new UiSelector().text("1/6"))) {
+            // wait the page load
+            Thread.sleep(3000);
+            if (null != UiDriver.find(new UiSelector().textMatches("^[16]/6"), 2000)) { // 匹配 "1/6" 或 "6/6"
+                Logger.debug("DianTaoBaseTask.checkGoldEgg(), click golden egg success");
+            } else {
                 Logger.debug("DianTaoBaseTask.checkGoldEgg(), 6/6 have not finish, press back to return the live page");
                 UiDriver.pressBack();
-            } else {
-                Logger.debug("DianTaoBaseTask.checkGoldEgg(), click golden egg success");
             }
         } else {
             Logger.debug("DianTaoBaseTask.checkGoldEgg(), no golden egg");

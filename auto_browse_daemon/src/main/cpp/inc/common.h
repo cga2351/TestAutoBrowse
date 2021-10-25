@@ -31,9 +31,9 @@
 #endif
 
 #define AUTOMATION_AGENT_START_COMMAND   "uiautomator runtest /system/framework/android.test.base.jar mqms_automation_agent.jar -c com.navercorp.ncp.mqms.automationagent.AutomationAgentBootstrap&"
-#define CHECK_AUTO_BROWSE_UIAUTOMATOR_COMMAND   "ps|grep uiautomator"
-#define AUTO_BROWSE_UIAUTOMATOR_STOP_COMMAND   "ps|grep uiautomator|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
-#define AUTO_BROWSE_UIAUTOMATOR_START_COMMAND   "nohup uiautomator runtest  test_auto_browse.jar -c com.example.test_auto_browse.AutomationAgentBootstrap&"
+#define CHECK_AUTO_BROWSE_UIAUTOMATOR_COMMAND   "ps|/data/local/tmp/busybox grep uiautomator"
+#define AUTO_BROWSE_UIAUTOMATOR_STOP_COMMAND   "ps|/data/local/tmp/busybox grep uiautomator|/data/local/tmp/busybox awk '{print$2}'|/data/local/tmp/busybox xargs kill -9 $1"
+#define AUTO_BROWSE_UIAUTOMATOR_START_COMMAND   "nohup uiautomator runtest  test_auto_browse.jar -c com.example.test_auto_browse.AutomationAgentBootstrap > /dev/null 2>&1 &"
 #define MQMS_DAEMON_AGENT_PORT     65300
 
 #ifndef _countof

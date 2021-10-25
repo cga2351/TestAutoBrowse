@@ -98,7 +98,7 @@ public class Constant {
     public static final String ID_DIAN_TAO_HOME_TAB_ITEM = "com.taobao.live:id/tab_container";
     public static final String STR_DIAN_TAO_GOLD_CENTER = "元宝中心";
     public static final String STR_DIAN_TAO_GO_TO_SIGN = "去签到";
-    public static final String STR_DIAN_TAO_WATCH_LIVE_GET_100_GOLD = "去看直播赚100元宝";
+    public static final String STR_DIAN_TAO_WATCH_LIVE_GET_MORE = "去看直播赚";
     public static final String STR_DIAN_TAO_CLICK_TO_SIGN = "点击签到";
     public static final String STR_DIAN_TAO_WATCH_VIDEO_GET_GOLD = "看视频，赚元宝";
     public static final String STR_DIAN_TAO_WATCH_LIVE_GET_GOLD = "看直播，赚元宝";
@@ -130,6 +130,7 @@ public class Constant {
     public static final String STR_DIAN_TAO_GET_STEPS_GOLD = "领取";
     public static final String STR_DIAN_TAO_GET_ENERGY_DRINK_FAILED = "哇哦, 被您的激情打败啦, 稍后再试哦";
     public static final String STR_DIAN_TAO_WATCH_LIVE_TO_GET_MORE = "再得";
+//    public static final String STR_DIAN_TAO_I_KNOW = "我知道了";
     public static final String STR_DIAN_TAO_REGULATION = "规则";
     public static final String STR_DIAN_TAO_NO_AVAILABLE_STEPS = "可用步数不足";
     public static final String STR_DIAN_TAO_GO_ON_SCRATCH = "继续刮奖";
@@ -177,7 +178,7 @@ public class Constant {
     public static final String STR_KUAI_SHOU_OPEN_TREASURE_BOX = "开宝箱得金币";
     public static final String STR_KUAI_SHOU_WATCH_VIDEO_TO_GET_MORE = "看精彩视频赚更多";
     public static final String STR_KUAI_SHOU_WAIT_ADS_END = "s后可领取奖励";
-    public static final String STR_KUAI_SHOU_WATCH_LIVE_GET_GOLD = "看直播领1100金币";
+    public static final String STR_KUAI_SHOU_1100_GOLD_WATCH_LIVE_TASK = "1100金币";
     public static final String STR_KUAI_SHOU_1000_REWARD_TASK = "金币悬赏";
     public static final String STR_KUAI_SHOU_1000_REWARD_TASK_END = "s后可领取奖励";
     public static final String STR_KUAI_SHOU_GIVE_UP_REWARD = "放弃奖励";
@@ -271,7 +272,7 @@ public class Constant {
 
     public static final long SLEEP_TASK_PERIOD = 1000 * 60 * 3;
     public static final long DEFAULT_SLEEP_DURATION = 1000 * 60 * 10;
-    public static final long BATTERY_LEVEL_THRESHOLD = 30;
+    public static final long BATTERY_LEVEL_THRESHOLD = 80;
     public static final long BATTERY_TEMPERATURE_THRESHOLD = 360;
 
     // all task execute count (normal) ------------------------------------------
@@ -304,9 +305,9 @@ public class Constant {
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 2;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 4;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 4;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
 
     public static final int JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT = 0;

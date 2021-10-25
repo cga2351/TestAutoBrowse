@@ -202,7 +202,17 @@ public class AutoBrowseApp {
         if (Constant.BUILD_CONFIG.equals("debug")) {
             Logger.debug("initAllRepeatTask(), set next task index");
 //            LocalStorageUtil.updateCachedTaskExecCount(LocalStorageUtil.getCachedTaskExecCount().setNextTaskIndex(0));
-            LocalStorageUtil.updateCachedTaskExecCount(LocalStorageUtil.getCachedTaskExecCount().setNextTaskIndex(11));
+            LocalStorageUtil.updateCachedTaskExecCount(LocalStorageUtil.getCachedTaskExecCount().setNextTaskIndex(10));
+            LocalStorageUtil.updateCachedTaskExecCount(LocalStorageUtil.getCachedTaskExecCount()
+                    .setDianTaoWorkWatchLive3MinExecCount(0)
+                    .setDianTaoWorkWatchLive5MinExecCount(0)
+                    .setDianTaoWorkWatchLive8MinExecCount(0)
+                    .setDianTaoWorkWatchLive10MinExecCount(0)
+                    .setDianTaoWorkWatchLive60SecExecCount(1)
+                    .setDianTaoWalkWatchLive3MinExecCount(0)
+                    .setDianTaoWalkWatchLive5MinExecCount(2)
+                    .setDianTaoWalkWatchLive8MinExecCount(0)
+            );
         }
 
         allRepeatTasks.add(TouTiaoBrowseVideoRepeatTask.getInstance());     // 0
@@ -682,14 +692,17 @@ public class AutoBrowseApp {
 //            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/errorDump.xml");
             /////////////////////////////////////////////////////////////////////////////
 
-            IBrowseTask task = DianTaoWalkRepeatTaskScratch.getInstance();
+//            while (true) {
+//                UiDriver.find(new UiSelector().textMatches("^[16]/6"));
+//            }
 
+            IBrowseTask task = DianTaoWorkRepeatTaskWatchLive10Min.getInstance();
             if (task.initTask()) {
                 int count = 0;
                 while (count < 30) {
                     boolean taskResult = task.runTask();
 //                task.endTask();
-                    Logger.debug("DianTaoWalkRepeatTaskScratch end, taskResult=" + taskResult);
+                    Logger.debug("DianTaoWorkRepeatTaskWatchLive10Min end, taskResult=" + taskResult);
                     if (taskResult) {
                         count++;
                     }

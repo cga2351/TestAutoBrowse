@@ -138,7 +138,7 @@ void* DaemonAgent::innerServerListenThreadProc() {
 bool DaemonAgent::checkUiAutomatorAlive() {
     LOGD("DaemonAgent::checkUiAutomatorAlive(), entry");
     bool result = false;
-    std::string uiautomatorProc = shellCmd("ps|grep uiautomator");
+    std::string uiautomatorProc = shellCmd("ps|/data/local/tmp/busybox grep uiautomator");
     int pos = uiautomatorProc.find("uiautomator");
     if (pos == std::string::npos) {
         result = false;

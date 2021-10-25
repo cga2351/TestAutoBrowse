@@ -64,7 +64,7 @@ public class SysUtil {
     public static boolean isEmulator() {
         if (!initIsEmulator) {
             initIsEmulator = true;
-            String result = ShellUtil.command(false, "getprop|grep ro.product.cpu.abi]");
+            String result = ShellUtil.command(false, "getprop|/data/local/tmp/busybox grep ro.product.cpu.abi]");
             if (result.contains("x86")) {
                 isEmulator = true;
             } else {
@@ -191,7 +191,7 @@ public class SysUtil {
 
     public static int getBatteryLevel() {
         int batteryLevel = 0;
-        String batteryInfo = ShellUtil.command(false, "dumpsys battery|grep level");
+        String batteryInfo = ShellUtil.command(false, "dumpsys battery|/data/local/tmp/busybox grep level");
         if (!TextUtils.isEmpty(batteryInfo)) {
             batteryInfo = batteryInfo.trim();
             String[] infos = batteryInfo.split(":");
@@ -209,8 +209,8 @@ public class SysUtil {
 
     public static int getBatteryVoltage() {
         int batteryLevel = 0;
-//        String batteryInfo = ShellUtil.command(false, "dumpsys battery|grep voltage");
-        String batteryInfo = ShellUtil.command(false, "dumpsys battery|grep -w \"^  voltage\"");
+//        String batteryInfo = ShellUtil.command(false, "dumpsys battery|/data/local/tmp/busybox grep voltage");
+        String batteryInfo = ShellUtil.command(false, "dumpsys battery|/data/local/tmp/busybox grep -w \"^  voltage\"");
         if (!TextUtils.isEmpty(batteryInfo)) {
             batteryInfo = batteryInfo.trim();
             String[] infos = batteryInfo.split(":");
@@ -229,7 +229,7 @@ public class SysUtil {
     public static int getBatteryTemperature() {
         int temperature = 0;
 
-        String result = ShellUtil.command(false, "dumpsys battery|grep temperature");
+        String result = ShellUtil.command(false, "dumpsys battery|/data/local/tmp/busybox grep temperature");
         Logger.debug("getBatteryTemperature(), temperature result=" + result);
 
         if (!TextUtils.isEmpty(result)) {

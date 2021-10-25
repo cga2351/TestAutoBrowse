@@ -60,7 +60,7 @@ bool isEmulator() {
     char cmdOutput[1024] = {0};
     bool isEmulator = false;
 
-    cmdOutputStream = popen("getprop|grep ro.product.cpu.abi]", "r");    // ends with "ro.product.cpu.abi]"
+    cmdOutputStream = popen("getprop|/data/local/tmp/busybox grep ro.product.cpu.abi]", "r");    // ends with "ro.product.cpu.abi]"
     fread(cmdOutput, sizeof(char), sizeof(cmdOutput), cmdOutputStream);
     LOGD("-mqmsdebug, isEmulator(), get abi result:%s", cmdOutput);
     if (strstr(cmdOutput, "x86")) {

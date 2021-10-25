@@ -46,7 +46,7 @@ public class QiYiBrowseAdsRepeatTask extends QiYiBaseTask {
         boolean needRetry = true;
         while (needRetry && (System.currentTimeMillis() - startTime) < 1000 * 60) {
             if (UiDriver.findAndClick(new UiSelector().descriptionContains(Constant.STR_QI_YI_WATCH_ADS)) ||
-                    UiDriver.findAndClick(new UiSelector().text(Constant.STR_QI_YI_GET_MORE_100_GOLD))) {
+                    UiDriver.findAndClick(new UiSelector().textStartsWith(Constant.STR_QI_YI_GET_MORE))) {
                 if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_QI_YI_WAIT_ADS_END))) {
                     // wait ads end for max 60s
                     result = watchAds(1000 * 60);

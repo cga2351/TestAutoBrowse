@@ -47,7 +47,7 @@ public class KuaiShouWatchLiveRepeatTask extends KuaiShouBaseTask {
     public boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
-        UiSelector uiSelector = new UiSelector().text(Constant.STR_KUAI_SHOU_WATCH_LIVE_GET_GOLD);
+        UiSelector uiSelector = new UiSelector().textContains(Constant.STR_KUAI_SHOU_1100_GOLD_WATCH_LIVE_TASK);
         if (UiDriver.swipeUpToFindObject(uiSelector)) {
             if (UiDriver.findAndClick(uiSelector)) {
                 Thread.sleep(1000 * 90 + 1000 * 10);

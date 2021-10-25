@@ -93,6 +93,12 @@ public class DianTaoWalkRepeatTaskStepsToGold extends DianTaoWalkRepeatTask {
                         Logger.debug("DianTaoWalkRepeatTaskStepsToGold.autoBrowse(), watch live ads success");
                     }
                     UiDriver.pressBack();
+                } else {
+                    if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_I_KNOW))) {
+                        Logger.debug("DianTaoWalkRepeatTaskStepsToGold.autoBrowse(), no ads to get more, click I know button");
+                    } else {
+                        Logger.debug("DianTaoWalkRepeatTaskStepsToGold.autoBrowse(), failed, unknown error");
+                    }
                 }
 
                 result = true;

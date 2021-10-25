@@ -52,7 +52,7 @@ public class ProcessUtil {
                 psCmd += "-e ";
             }
             Logger.debug("-mqmsdebug", "getTargetAppPid(), psCmd=" + psCmd);
-            String psCmdResult = ShellUtil.command(false, psCmd + "| grep " + packageName + " > " + Constant.SHELL_PS_INFO);
+            String psCmdResult = ShellUtil.command(false, psCmd + "|/data/local/tmp/busybox grep " + packageName + " > " + Constant.SHELL_PS_INFO);
             Logger.debug("-mqmsdebug", "getTargetAppPid(), psCmdResult=" + psCmdResult);
 
             if (!file.exists()) {

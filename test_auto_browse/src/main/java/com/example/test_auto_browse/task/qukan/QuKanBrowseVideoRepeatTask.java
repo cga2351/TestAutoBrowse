@@ -66,7 +66,7 @@ public class QuKanBrowseVideoRepeatTask extends QuKanBaseTask {
 
         while (!getForceStop()) {
             // click play button and wait
-            UiSelector playButton = new UiSelector().textMatches("\\d{2}:\\d{2}");
+            UiSelector playButton = new UiSelector().textMatches("\\d{2}:\\d{2}");  // 匹配类似时间 12:33, 两位数字:两位数字
             if (UiDriver.findAndClick(playButton)) {
                 // click play button, and wait 30s
                 Logger.debug("QuKanBrowseVideoRepeatTask.autoBrowse(), watch video for 30s");
