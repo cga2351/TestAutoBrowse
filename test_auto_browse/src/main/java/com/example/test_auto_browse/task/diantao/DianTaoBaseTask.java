@@ -48,11 +48,15 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
 
     private void getSignGold() throws InterruptedException {
         // if no sign, click to sign
-        // click sing may failed, retry in 1 min
+        // click sign may failed, retry 10s
         long startTime = System.currentTimeMillis();
-        while (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_CLICK_TO_SIGN)) &&
-                (System.currentTimeMillis() - startTime) < 1000 * 30) {
-            Thread.sleep(5000);
+        while (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_GO_TO_SIGN)) &&
+                (System.currentTimeMillis() - startTime) < 1000 * 10) {
+            Thread.sleep(2000);
+        }
+
+        if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_CLICK_TO_SIGN), 2000)) {
+            Logger.debug("DianTaoBaseTask.getSignGold(), sign success");
         }
     }
 
@@ -127,11 +131,11 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         // if has get gold on right top, click directly
         if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_GOLD_ON_RIGHT_TOP), Constant.WAIT_TIME_10_SEC)) {
 
-            // 可以点  "去看直播赚100元宝"  看60秒直播再得100元宝
+            // 可以点  "去看直播赚xxx元宝"  看xx秒直播再得xxx元宝
             if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_WATCH_LIVE_GET_MORE))) {
-                Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live 60s to get more 100 gold");
+                Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live to get more gold");
                 boolean watchLiveResult = watchVideoOrLive(1000 * 60, false, true);
-                Logger.debug("DianTaoBaseTask.getRightTopGold(), watch live 60s watchLiveResult = " + watchLiveResult);
+                Logger.debug("DianTaoBaseTask.getRightTopGold(), watchLiveResult = " + watchLiveResult);
             }
 
             // wait 2s and press back

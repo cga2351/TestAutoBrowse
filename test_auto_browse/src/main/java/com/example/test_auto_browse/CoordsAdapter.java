@@ -24,6 +24,7 @@ public class CoordsAdapter {
     private static final String JingDongGetGold = "JingDongGetGold";  // 京东极速版主界面，"赚金币"
     private static final String QuKanLuckyMoney = "QuKanLuckyMoney";  // 趣头条主界面右下角红包，"最高+500金币"
     private static final String DouYinGoldCenter = "DouYinGoldCenter";  // 抖音极速版中间tab，"来赚钱"
+    private static final String DianTaoWorkSign = "DianTaoWorkSign";  // 点淘打工界面，签到领体力，"签到"
 
 
     // <modelName, <UIObjectName, Point>>
@@ -49,6 +50,7 @@ public class CoordsAdapter {
         HuaWeiP8MaxMap.put(JingDongGetGold, new Point( 560, 860));
         HuaWeiP8MaxMap.put(QuKanLuckyMoney, new Point( 960, 1600));
         HuaWeiP8MaxMap.put(DouYinGoldCenter, new Point( 550, 1760));
+        HuaWeiP8MaxMap.put(DianTaoWorkSign, new Point( 640, 1560));
 
         // for "Hisense F23"
         HashMap<String, Point> HISENSE_F23Map = coordsMap.get(MODEL_NAME_HISENSE_F23);
@@ -105,5 +107,9 @@ public class CoordsAdapter {
 
     public static Point getDouYinGoldCenterCoords() {
         return coordsMap.get(modelName).get(DouYinGoldCenter);
+    }
+
+    public static Point getDianTaoWorkSign() {
+        return coordsMap.get(modelName).get(DianTaoWorkSign);
     }
 }

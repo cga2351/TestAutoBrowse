@@ -1,4 +1,4 @@
-package com.example.test_auto_browse.task.diantao;
+package com.example.test_auto_browse.task.diantao.work;
 
 import android.graphics.Point;
 
@@ -30,6 +30,9 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
 
         // wait page load end and get energy
         getTimedEnergy();
+
+        // click sign to get energy
+        UiDriver.click(CoordsAdapter.getDianTaoWorkSign());
 
         // get work gold
         UiObject getWorkGold = UiDriver.find(new UiSelector().textStartsWith(Constant.STR_DIAN_TAO_GET_WORK_GOLD));

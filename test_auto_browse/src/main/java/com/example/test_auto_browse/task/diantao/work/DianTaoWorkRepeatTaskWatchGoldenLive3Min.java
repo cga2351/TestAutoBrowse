@@ -1,4 +1,4 @@
-package com.example.test_auto_browse.task.diantao;
+package com.example.test_auto_browse.task.diantao.work;
 
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;

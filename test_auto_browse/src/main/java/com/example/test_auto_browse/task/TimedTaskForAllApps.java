@@ -1,9 +1,7 @@
 package com.example.test_auto_browse.task;
 
 import com.example.test_auto_browse.Constant;
-import com.example.test_auto_browse.task.diantao.DianTaoWorkTimedTaskCheckWork;
-import com.example.test_auto_browse.task.douyin.DouYinTreasureBoxTimedTask;
-import com.example.test_auto_browse.task.douyin.DouYinWatchAdsTimedTask;
+import com.example.test_auto_browse.task.diantao.work.DianTaoWorkTimedTaskCheckWork;
 import com.example.test_auto_browse.task.kuaishou.KuaiShouTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.qiyi.QiYiTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.qukan.QuKanLuckyMoneyGoldTimedTask;

@@ -1,9 +1,10 @@
-package com.example.test_auto_browse.task.diantao;
+package com.example.test_auto_browse.task.diantao.work;
 
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
+import com.example.test_auto_browse.task.diantao.DianTaoBaseTask;
 import com.example.test_auto_browse.utils.Logger;
 
 public abstract class DianTaoWorkRepeatTask extends DianTaoBaseTask {

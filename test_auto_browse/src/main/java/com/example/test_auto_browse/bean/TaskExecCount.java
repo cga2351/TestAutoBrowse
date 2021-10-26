@@ -35,6 +35,13 @@ public class TaskExecCount {
     int dianTaoWorkWatchLive5MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT
     int dianTaoWorkWatchLive8MinExecCount;          //DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT
     int dianTaoWorkWatchLive10MinExecCount;         //DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchVideo30SecExecCount;     //DIAN_TAO_LOTTERY_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchVideo60SecExecCount;     //DIAN_TAO_LOTTERY_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchVideo3MinExecCount;      //DIAN_TAO_LOTTERY_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchLive60SecExecCount;      //DIAN_TAO_LOTTERY_WATCH_LIVE_60SEC_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchLive3MinExecCount;       //DIAN_TAO_LOTTERY_WATCH_LIVE_3MIN_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchGoldenLive30SecExecCount;        //DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT
+    int dianTaoLotteryWatchGoldenLive60SecExecCount;        //DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT
     int jingDongBrowseActivityExecCount;         //JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT
     int jingDongBrowseGoodsExecCount;         //JING_DONG_BROWSE_GOODS_MAX_EXEC_COUNT
     int jingDongBrowseVideoExecCount;         //JING_DONG_BROWSE_VIDEO_MAX_EXEC_COUNT
@@ -79,6 +86,13 @@ public class TaskExecCount {
         dianTaoWorkWatchLive5MinExecCount = taskExecCount.dianTaoWorkWatchLive5MinExecCount;
         dianTaoWorkWatchLive8MinExecCount = taskExecCount.dianTaoWorkWatchLive8MinExecCount;
         dianTaoWorkWatchLive10MinExecCount = taskExecCount.dianTaoWorkWatchLive10MinExecCount;
+        dianTaoLotteryWatchVideo30SecExecCount = taskExecCount.dianTaoLotteryWatchVideo30SecExecCount;
+        dianTaoLotteryWatchVideo60SecExecCount = taskExecCount.dianTaoLotteryWatchVideo60SecExecCount;
+        dianTaoLotteryWatchVideo3MinExecCount = taskExecCount.dianTaoLotteryWatchVideo3MinExecCount;
+        dianTaoLotteryWatchLive60SecExecCount = taskExecCount.dianTaoLotteryWatchLive60SecExecCount;
+        dianTaoLotteryWatchLive3MinExecCount = taskExecCount.dianTaoLotteryWatchLive3MinExecCount;
+        dianTaoLotteryWatchGoldenLive30SecExecCount = taskExecCount.dianTaoLotteryWatchGoldenLive30SecExecCount;
+        dianTaoLotteryWatchGoldenLive60SecExecCount = taskExecCount.dianTaoLotteryWatchGoldenLive60SecExecCount;
         jingDongBrowseActivityExecCount = taskExecCount.jingDongBrowseActivityExecCount;
         jingDongBrowseGoodsExecCount = taskExecCount.jingDongBrowseGoodsExecCount;
         jingDongBrowseVideoExecCount = taskExecCount.jingDongBrowseVideoExecCount;
@@ -121,6 +135,13 @@ public class TaskExecCount {
         dianTaoWorkWatchLive5MinExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT;
         dianTaoWorkWatchLive8MinExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT;
         dianTaoWorkWatchLive10MinExecCount = Constant.DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchVideo30SecExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchVideo60SecExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchVideo3MinExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchLive60SecExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_LIVE_60SEC_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchLive3MinExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_LIVE_3MIN_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchGoldenLive30SecExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT;
+        dianTaoLotteryWatchGoldenLive60SecExecCount = Constant.DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT;
         jingDongBrowseActivityExecCount = Constant.JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT;
         jingDongBrowseGoodsExecCount = Constant.JING_DONG_BROWSE_GOODS_MAX_EXEC_COUNT;
         jingDongBrowseVideoExecCount = Constant.JING_DONG_BROWSE_VIDEO_MAX_EXEC_COUNT;
@@ -168,6 +189,13 @@ public class TaskExecCount {
                 ", dianTaoWorkWatchLive5MinExecCount=" + dianTaoWorkWatchLive5MinExecCount +
                 ", dianTaoWorkWatchLive8MinExecCount=" + dianTaoWorkWatchLive8MinExecCount +
                 ", dianTaoWorkWatchLive10MinExecCount=" + dianTaoWorkWatchLive10MinExecCount +
+                ", dianTaoLotteryWatchVideo30SecExecCount=" + dianTaoLotteryWatchVideo30SecExecCount +
+                ", dianTaoLotteryWatchVideo60SecExecCount=" + dianTaoLotteryWatchVideo60SecExecCount +
+                ", dianTaoLotteryWatchVideo3MinExecCount=" + dianTaoLotteryWatchVideo3MinExecCount +
+                ", dianTaoLotteryWatchLive60SecExecCount=" + dianTaoLotteryWatchLive60SecExecCount +
+                ", dianTaoLotteryWatchLive3MinExecCount=" + dianTaoLotteryWatchLive3MinExecCount +
+                ", dianTaoLotteryWatchGoldenLive30SecExecCount=" + dianTaoLotteryWatchGoldenLive30SecExecCount +
+                ", dianTaoLotteryWatchGoldenLive60SecExecCount=" + dianTaoLotteryWatchGoldenLive60SecExecCount +
                 ", jingDongBrowseActivityExecCount=" + jingDongBrowseActivityExecCount +
                 ", jingDongBrowseGoodsExecCount=" + jingDongBrowseGoodsExecCount +
                 ", jingDongBrowseVideoExecCount=" + jingDongBrowseVideoExecCount +
@@ -597,6 +625,104 @@ public class TaskExecCount {
 
     public TaskExecCount setDianTaoWorkWatchLive10MinExecCount(int dianTaoWorkWatchLive10MinExecCount) {
         this.dianTaoWorkWatchLive10MinExecCount = dianTaoWorkWatchLive10MinExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchVideo30SecExecCount() {
+        return dianTaoLotteryWatchVideo30SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchVideo30SecExecCount() {
+        this.dianTaoLotteryWatchVideo30SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchVideo30SecExecCount(int dianTaoLotteryWatchVideo30SecExecCount) {
+        this.dianTaoLotteryWatchVideo30SecExecCount = dianTaoLotteryWatchVideo30SecExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchVideo60SecExecCount() {
+        return dianTaoLotteryWatchVideo60SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchVideo60SecExecCount() {
+        this.dianTaoLotteryWatchVideo60SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchVideo60SecExecCount(int dianTaoLotteryWatchVideo60SecExecCount) {
+        this.dianTaoLotteryWatchVideo60SecExecCount = dianTaoLotteryWatchVideo60SecExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchVideo3MinExecCount() {
+        return dianTaoLotteryWatchVideo3MinExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchVideo3MinExecCount() {
+        this.dianTaoLotteryWatchVideo3MinExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchVideo3MinExecCount(int dianTaoLotteryWatchVideo3MinExecCount) {
+        this.dianTaoLotteryWatchVideo3MinExecCount = dianTaoLotteryWatchVideo3MinExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchLive60SecExecCount() {
+        return dianTaoLotteryWatchLive60SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchLive60SecExecCount() {
+        this.dianTaoLotteryWatchLive60SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchLive60SecExecCount(int dianTaoLotteryWatchLive60SecExecCount) {
+        this.dianTaoLotteryWatchLive60SecExecCount = dianTaoLotteryWatchLive60SecExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchLive3MinExecCount() {
+        return dianTaoLotteryWatchLive3MinExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchLive3MinExecCount() {
+        this.dianTaoLotteryWatchLive3MinExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchLive3MinExecCount(int dianTaoLotteryWatchLive3MinExecCount) {
+        this.dianTaoLotteryWatchLive3MinExecCount = dianTaoLotteryWatchLive3MinExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchGoldenLive30SecExecCount() {
+        return dianTaoLotteryWatchGoldenLive30SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchGoldenLive30SecExecCount() {
+        this.dianTaoLotteryWatchGoldenLive30SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchGoldenLive30SecExecCount(int dianTaoLotteryWatchGoldenLive30SecExecCount) {
+        this.dianTaoLotteryWatchGoldenLive30SecExecCount = dianTaoLotteryWatchGoldenLive30SecExecCount;
+        return this;
+    }
+
+    public int getDianTaoLotteryWatchGoldenLive60SecExecCount() {
+        return dianTaoLotteryWatchGoldenLive60SecExecCount;
+    }
+
+    public TaskExecCount increaseDianTaoLotteryWatchGoldenLive60SecExecCount() {
+        this.dianTaoLotteryWatchGoldenLive60SecExecCount++;
+        return this;
+    }
+
+    public TaskExecCount setDianTaoLotteryWatchGoldenLive60SecExecCount(int dianTaoLotteryWatchGoldenLive60SecExecCount) {
+        this.dianTaoLotteryWatchGoldenLive60SecExecCount = dianTaoLotteryWatchGoldenLive60SecExecCount;
         return this;
     }
 

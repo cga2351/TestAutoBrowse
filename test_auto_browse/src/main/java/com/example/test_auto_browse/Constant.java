@@ -156,6 +156,7 @@ public class Constant {
     public static final String STR_DIAN_TAO_START_NO_AVAILABLE_ENERGY = "体力不足";
     public static final String STR_DIAN_TAO_START_GET_ENERGY = "体力+";
     public static final String STR_DIAN_TAO_SWIPE_RIGHT_TO_VERIFY = "向右滑动验证";
+    public static final String STR_DIAN_TAO_LOTTERY = "幸运大抽奖";
 
     public static final String STR_WEI_SHI_JUMP_ADS = "跳过";
     public static final String STR_WEI_SHI_TEEN_PROTECTION = "青少年保护功能提示";
@@ -296,8 +297,8 @@ public class Constant {
     public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 0;
 
-    public static final int DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
-    public static final int DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 5;
+    public static final int DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 20;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
@@ -309,6 +310,14 @@ public class Constant {
     public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 4;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
+
+    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_LOTTERY_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_LOTTERY_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 8;
+    public static final int DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 10;
 
     public static final int JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT = 0;
     public static final int JING_DONG_BROWSE_GOODS_MAX_EXEC_COUNT = 0;

@@ -1,15 +1,11 @@
-package com.example.test_auto_browse.task.diantao;
+package com.example.test_auto_browse.task.diantao.work;
 
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
-import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
-import com.example.test_auto_browse.utils.DateUtil;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
-
-import java.io.File;
 
 public class DianTaoWorkRepeatTaskWatchLive3Min extends DianTaoWorkRepeatTask{
     private DianTaoWorkRepeatTaskWatchLive3Min() {}

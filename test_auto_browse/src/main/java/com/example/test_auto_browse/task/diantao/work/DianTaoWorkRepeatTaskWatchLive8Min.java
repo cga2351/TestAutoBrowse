@@ -1,24 +1,20 @@
-package com.example.test_auto_browse.task.diantao;
+package com.example.test_auto_browse.task.diantao.work;
 
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
-import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
-import com.example.test_auto_browse.utils.DateUtil;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
-import java.io.File;
-
-public class DianTaoWorkRepeatTaskWatchLive5Min extends DianTaoWorkRepeatTask{
-    private DianTaoWorkRepeatTaskWatchLive5Min() {}
-    private static DianTaoWorkRepeatTaskWatchLive5Min instance;
+public class DianTaoWorkRepeatTaskWatchLive8Min extends DianTaoWorkRepeatTask{
+    private DianTaoWorkRepeatTaskWatchLive8Min() {}
+    private static DianTaoWorkRepeatTaskWatchLive8Min instance;
     public static IBrowseTask getInstance() {
         if (null == instance) {
             synchronized (IBrowseTask.class) {
                 if (null == instance) {
-                    instance = new DianTaoWorkRepeatTaskWatchLive5Min();
+                    instance = new DianTaoWorkRepeatTaskWatchLive8Min();
                 }
             }
         }
@@ -27,54 +23,54 @@ public class DianTaoWorkRepeatTaskWatchLive5Min extends DianTaoWorkRepeatTask{
 
     @Override
     public int waitTaskEndMaxTime() {
-        return 1000 * 60 * 5 + 1000 * 30;
+        return 1000 * 60 * 8 + 1000 * 30;
     }
 
     @Override
     protected int getMaxExecCount() {
-        return Constant.DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT;
+        return Constant.DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT;
     }
 
     @Override
     protected int getLeftExecCount() {
         return getMaxExecCount() -
-                LocalStorageUtil.getCachedTaskExecCount().getDianTaoWorkWatchLive5MinExecCount();
+                LocalStorageUtil.getCachedTaskExecCount().getDianTaoWorkWatchLive8MinExecCount();
     }
 
     @Override
     public void increaseExecCount() {
         LocalStorageUtil.updateCachedTaskExecCount(LocalStorageUtil.getCachedTaskExecCount()
-                .increaseDianTaoWorkWatchLive5MinExecCount());
+                .increaseDianTaoWorkWatchLive8MinExecCount());
     }
 
     @Override
     protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
-        // click watch live 5min
-        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_5Min))) {
+        // click watch live 8min
+        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_8Min))) {
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
-                // enter live window, and wait 5min
-                int watchDuration = 1000 * 60 * 5 + 1000 * 10;
+                // enter live window, and wait 8min
+                int watchDuration = 1000 * 60 * 8 + 1000 * 10;
                 result = watchVideoOrLive(watchDuration, false, true);
-                Logger.debug("DianTaoWorkRepeatTaskWatchLive5Min.autoBrowse(), watchVideoOrLive result = " + result);
+                Logger.debug("DianTaoWorkRepeatTaskWatchLive8Min.autoBrowse(), watchVideoOrLive result = " + result);
             } else {
                 // entry live window failed, exit task
-                Logger.debug("DianTaoWorkRepeatTaskWatchLive5Min.autoBrowse(), enter live window failed");
+                Logger.debug("DianTaoWorkRepeatTaskWatchLive8Min.autoBrowse(), enter live window failed");
             }
         } else {
-            Logger.debug("DianTaoWorkRepeatTaskWatchLive5Min.autoBrowse(), click watch live 5min failed");
+            Logger.debug("DianTaoWorkRepeatTaskWatchLive8Min.autoBrowse(), click watch live 8min failed");
         }
 
         UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_" + getClass().getSimpleName());
         if (null != UiDriver.find(new UiSelector().textContains("休息会呗"))) {
-            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/screenshots/debugScreenshots/checkWorkWatchLiveFailure_5Min.xml");
+            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/screenshots/debugScreenshots/checkWorkWatchLiveFailure_8Min.xml");
         }
 
         // return to work page
         backToWorkPage();
 
-        Logger.debug("DianTaoWorkRepeatTaskWatchLive5Min.autoBrowse(), result=" + result);
+        Logger.debug("DianTaoWorkRepeatTaskWatchLive8Min.autoBrowse(), result=" + result);
         return result;
     }
 }

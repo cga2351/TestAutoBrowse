@@ -14,6 +14,7 @@ public class SleepTask extends BrowseBaseTask {
 
     private long sleepTaskDuration = Constant.DEFAULT_SLEEP_DURATION;
     private static SleepTask instance;
+    private long lastTimedTaskExecTime = 0;
 
     public static IBrowseTask getInstance() {
         if (null == instance) {
@@ -134,12 +135,17 @@ public class SleepTask extends BrowseBaseTask {
 //    }
 
     private void runTimedTaskForAllApps() throws InterruptedException {
-        IBrowseTask autoBrowseTask = TimedTaskForAllApps.getInstance();
-        if (autoBrowseTask.initTask()) {
-            autoBrowseTask.runTask();
+        if (System.currentTimeMillis() - lastTimedTaskExecTime > 1000 * 60 * 20) {
+            IBrowseTask autoBrowseTask = TimedTaskForAllApps.getInstance();
+            if (autoBrowseTask.initTask()) {
+                autoBrowseTask.runTask();
+            } else {
+                Logger.debug("runTimedTaskForAllApps(), TimedTaskForAllApps init failed");
+            }
+            autoBrowseTask.endTask();
+            lastTimedTaskExecTime = System.currentTimeMillis();
         } else {
-            Logger.debug("runTimedTaskForAllApps(), TimedTaskForAllApps init failed");
+            Logger.debug("runTimedTaskForAllApps(), not the time to run timed task");
         }
-        autoBrowseTask.endTask();
     }
 }
