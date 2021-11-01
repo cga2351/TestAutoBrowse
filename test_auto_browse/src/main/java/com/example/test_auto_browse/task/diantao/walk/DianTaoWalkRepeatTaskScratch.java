@@ -5,6 +5,7 @@ import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
 import java.util.Calendar;
@@ -25,19 +26,17 @@ public class DianTaoWalkRepeatTaskScratch extends DianTaoWalkRepeatTask {
 
     @Override
     public int waitTaskEndMaxTime() {
-        return 1000 * 60 * 3;
+//        return 1000 * 60 * 3;
+        return 1000 * 60 * 5;
     }
 
     @Override
-    public boolean isTaskAvailable() {
-        // task execute after 10:00, return 1 means can execute task
+    protected int getLeftExecCount() {
         if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10) {
-            return true;
+            return 1;
         } else {
-            return false;
+            return 0;
         }
-
-//        return false;
     }
 
     @Override

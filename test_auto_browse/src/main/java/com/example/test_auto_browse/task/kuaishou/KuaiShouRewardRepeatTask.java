@@ -23,7 +23,7 @@ public class KuaiShouRewardRepeatTask extends KuaiShouBaseTask {
 
     @Override
     public int waitTaskEndMaxTime() {
-        return 1000 * 30 * getMaxExecCount() + 1000 * 30;
+        return 1000 * 60 * 10 + 1000 * 30;
     }
 
     @Override

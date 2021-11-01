@@ -23,7 +23,8 @@ public class DianTaoLotteryRepeatTaskWatchVideo30Sec extends DianTaoLotteryRepea
 
     @Override
     public int waitTaskEndMaxTime() {
-        return 1000 * 30 + 1000 * 30;
+//        return 1000 * 30 + 1000 * 30;
+        return 1000 * 60 * 10 + 1000 * 30;
     }
 
     @Override

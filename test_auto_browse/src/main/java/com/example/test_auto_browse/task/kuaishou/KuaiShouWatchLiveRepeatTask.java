@@ -23,7 +23,7 @@ public class KuaiShouWatchLiveRepeatTask extends KuaiShouBaseTask {
 
     @Override
     public int waitTaskEndMaxTime() {
-        return 1000 * 90 * getMaxExecCount() + 1000 * 30;
+        return 1000 * 60 * 10 + 1000 * 30;
     }
 
     @Override
@@ -50,23 +50,49 @@ public class KuaiShouWatchLiveRepeatTask extends KuaiShouBaseTask {
         UiSelector uiSelector = new UiSelector().textContains(Constant.STR_KUAI_SHOU_1100_GOLD_WATCH_LIVE_TASK);
         if (UiDriver.swipeUpToFindObject(uiSelector)) {
             if (UiDriver.findAndClick(uiSelector)) {
-                Thread.sleep(1000 * 90 + 1000 * 10);
-            }
 
-            // check live count down end
-            if (checkLiveCountDownEnd(1000 * 60)) {
-                Thread.sleep(2000);
-                UiDriver.pressBack();
-
-                if (null != UiDriver.find(new UiSelector().text(Constant.STR_KUAI_SHOU_FOLLOW_AND_EXIT))) {
-                    UiDriver.findAndClick(new UiSelector().text(Constant.STR_KUAI_SHOU_EXIT));
-                    Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), close the follow popup dialog");
+                // new version kuaishou has this step
+                if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.STR_KUAI_SHOU_LIVE_LIST_TITLE))) {
+                    Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), select a live window");
+                    if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.STR_KUAI_SHOU_LIVE_LIST_ITEM))) {
+                        Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), click live window item success");
+                    } else {
+                        Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), click live window item failed");
+                    }
                 }
 
-                result = true;
+                // check if enter the live window success
+                if (null != UiDriver.find(new UiSelector().resourceId(Constant.ID_KUAI_SHOU_AWARD_COUNT_DOWN), Constant.WAIT_TIME_10_SEC) ||
+                        null != UiDriver.find(new UiSelector().resourceId(Constant.ID_KUAI_SHOU_AWARD_COUNT_DOWN_NEW_VERSION), Constant.WAIT_TIME_10_SEC)) {
+                    Thread.sleep(1000 * 90 + 1000 * 10);
+                    // check live count down end
+                    if (checkLiveCountDownEnd(1000 * 60)) {
+                        Thread.sleep(2000);
+                        UiDriver.pressBack();
+
+                        if (null != UiDriver.find(new UiSelector().text(Constant.STR_KUAI_SHOU_FOLLOW_AND_EXIT))) {
+                            UiDriver.findAndClick(new UiSelector().text(Constant.STR_KUAI_SHOU_EXIT));
+                            Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), close the follow popup dialog");
+                        }
+
+                        // new version need to exit the live list window and re-enter the live window
+                        if (null != UiDriver.find(new UiSelector().resourceId(Constant.STR_KUAI_SHOU_LIVE_LIST_TITLE))) {
+                            Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), new version, need to exit the live list page");
+                            UiDriver.pressBack();
+                        }
+
+                        result = true;
+                    } else {
+                        Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), wait live count down end failed");
+                    }
+                } else {
+                    Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), enter live window failed");
+                }
             } else {
-                Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), wait live count down end failed");
+                Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), click 1100 live task failed");
             }
+        } else {
+            Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), find 1100 live task button failed");
         }
 
         Logger.debug("KuaiShouWatchLiveRepeatTask.autoBrowse(), result=" + result);

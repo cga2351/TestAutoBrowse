@@ -29,6 +29,11 @@ public class KuaiShouBrowseVideoRepeatTask extends KuaiShouBaseTask {
     }
 
     @Override
+    public int waitTaskEndMaxTime() {
+        return 1000 * 60 * 5 + 1000 * 30;
+    }
+
+    @Override
     protected int getMaxExecCount() {
         return Constant.KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT;
     }

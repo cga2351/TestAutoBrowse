@@ -36,28 +36,28 @@ public class SysUtil {
         // init all apps' launcher name
         packageLauncherNames.put(Constant.PKG_NAME_TOU_TIAO_LITE, Constant.PKG_LAUNCHER_TOU_TIAO_LITE);
         packageLauncherNames.put(Constant.PKG_NAME_DIAN_TAO, Constant.PKG_LAUNCHER_DIAN_TAO);
-        packageLauncherNames.put(Constant.PKG_NAME_WEI_SHI, Constant.PKG_LAUNCHER_WEI_SHI);
+//        packageLauncherNames.put(Constant.PKG_NAME_WEI_SHI, Constant.PKG_LAUNCHER_WEI_SHI);
         packageLauncherNames.put(Constant.PKG_NAME_KUAI_SHOU, Constant.PKG_LAUNCHER_KUAI_SHOU);
-        packageLauncherNames.put(Constant.PKG_NAME_JING_DONG, Constant.PKG_LAUNCHER_JING_DONG);
+//        packageLauncherNames.put(Constant.PKG_NAME_JING_DONG, Constant.PKG_LAUNCHER_JING_DONG);
         packageLauncherNames.put(Constant.PKG_NAME_QU_KAN, Constant.PKG_LAUNCHER_QU_KAN);
         packageLauncherNames.put(Constant.PKG_NAME_QI_YI, Constant.PKG_LAUNCHER_QI_YI);
-        packageLauncherNames.put(Constant.PKG_NAME_DOU_YIN, Constant.PKG_LAUNCHER_DOU_YIN);
+//        packageLauncherNames.put(Constant.PKG_NAME_DOU_YIN, Constant.PKG_LAUNCHER_DOU_YIN);
 
         // init all apps' package name
         allAppsPackageName.add(Constant.PKG_NAME_TOU_TIAO_LITE);
         allAppsPackageName.add(Constant.PKG_NAME_DIAN_TAO);
 //        allAppsPackageName.add(Constant.PKG_NAME_WEI_SHI);
         allAppsPackageName.add(Constant.PKG_NAME_KUAI_SHOU);
-        allAppsPackageName.add(Constant.PKG_NAME_JING_DONG);
+//        allAppsPackageName.add(Constant.PKG_NAME_JING_DONG);
         allAppsPackageName.add(Constant.PKG_NAME_QU_KAN);
         allAppsPackageName.add(Constant.PKG_NAME_QI_YI);
-        allAppsPackageName.add(Constant.PKG_NAME_DOU_YIN);
 
+//        allAppsPackageName.add(Constant.PKG_NAME_DOU_YIN);
 //        allAppsPackageName.add(Constant.PKG_NAME_ALI_PAY);
-        allAppsPackageName.add(Constant.PKG_NAME_K_GE);
+//        allAppsPackageName.add(Constant.PKG_NAME_K_GE);
         allAppsPackageName.add(Constant.PKG_NAME_WAN_DOU_JIA);
-        allAppsPackageName.add(Constant.PKG_NAME_XIMALAYA);
-        allAppsPackageName.add(Constant.PKG_NAME_BAIDU);
+//        allAppsPackageName.add(Constant.PKG_NAME_XIMALAYA);
+//        allAppsPackageName.add(Constant.PKG_NAME_BAIDU);
 //        allAppsPackageName.add(Constant.PKG_NAME_WEI_XIN);
     }
 

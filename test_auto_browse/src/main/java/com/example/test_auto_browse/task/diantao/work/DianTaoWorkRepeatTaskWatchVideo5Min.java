@@ -23,7 +23,8 @@ public class DianTaoWorkRepeatTaskWatchVideo5Min extends DianTaoWorkRepeatTask{
 
     @Override
     public int waitTaskEndMaxTime() {
-        return 1000 * 60 * 5 + 1000 * 30;
+//        return 1000 * 60 * 5 + 1000 * 30;
+        return 1000 * 60 * 10 + 1000 * 30;
     }
 
     @Override

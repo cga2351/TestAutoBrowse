@@ -70,11 +70,14 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
             // switch to the my tab page
             if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.ID_DIAN_TAO_HOME_TAB_ITEM).instance(3), Constant.WAIT_TIME_20_SEC)) {
 
-//                // check if has verification swipe of "向右滑动验证"
-//                checkSwipeRightVerification(5000);
+                if (null == UiDriver.find(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER), Constant.WAIT_TIME_15_SEC)) {
+                    // check if has verification swipe of "向右滑动验证"
+                    checkSwipeRightVerification(5000);
+                }
 
                 // open gold center
-                if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER), Constant.WAIT_TIME_15_SEC)) {
+//                if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER), Constant.WAIT_TIME_15_SEC)) {
+                if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER))) {
                     // dismiss popup window
                     if (Constant.BUILD_CONFIG.equals("release")) {
                         dismissPopupWindow();
@@ -299,10 +302,10 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
                         + ", endY = " + endY
                 );
 
-                UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_beforeSwipe_" + getClass().getSimpleName());
+                UiDriver.saveDebugScreenshot("checkSwipeRightVerification_beforeSwipe_" + getClass().getSimpleName());
                 UiDriver.swipe(startX, startY, endX, endY, 30);
-                UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_afterSwipe_" + getClass().getSimpleName());
-                UiDriver.saveDebugScreenshotWithDelay("checkWorkWatchLiveFailure_afterSwipeAndWait2s_" + getClass().getSimpleName(), 2000);
+                UiDriver.saveDebugScreenshot("checkSwipeRightVerification_afterSwipe_" + getClass().getSimpleName());
+                UiDriver.saveDebugScreenshotWithDelay("checkSwipeRightVerification_afterSwipeAndWait2s_" + getClass().getSimpleName(), 2000);
             }
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();

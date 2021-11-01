@@ -80,6 +80,10 @@ public class SleepTask extends BrowseBaseTask {
                 + ", batteryTemp=" + batteryTemp
                 + ", batteryVoltage=" + batteryVoltage);
 
+        // sleep 10min first
+        Thread.sleep(1000 * 60 * 10);
+        sleep10MinCount++;
+
         while (batteryLevel < Constant.BATTERY_LEVEL_THRESHOLD ||
                 batteryTemp > Constant.BATTERY_TEMPERATURE_THRESHOLD) {
             // sleep 10min

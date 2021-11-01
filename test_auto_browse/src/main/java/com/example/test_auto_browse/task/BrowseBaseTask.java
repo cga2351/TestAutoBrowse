@@ -59,24 +59,6 @@ public abstract class BrowseBaseTask implements IBrowseTask {
 //            curExecCountToday = 0;
         }
 
-
-//        if (isRepeatInfinitelyTask()) {
-//            Logger.debug("BrowseBaseTask.isTaskAvailable()"
-//                    + ", curTime = " + curTime
-//                    + ", taskStartTimeToday = " + taskStartTimeToday
-//                    + ", getMaxExecTime() = " + getMaxExecTime()
-//                    );
-//            // repeat infinitely task only running max time everyday
-//            if (curTime - taskStartTimeToday >= getMaxExecTime()) {
-//                isAvailable = false;
-//            }
-//        } else {
-//            // other task can run max count everyday
-////            isAvailable = getMaxExecCount() > curExecCountToday;
-//            isAvailable = getLeftExecCount() > 0;
-//            Logger.debug("BrowseBaseTask.isTaskAvailable(), task = " + getClass().getSimpleName() + ", getLeftExecCount() = " + getLeftExecCount());
-//        }
-
         isAvailable = getLeftExecCount() > 0;
         Logger.debug("BrowseBaseTask.isTaskAvailable(), task = " + getClass().getSimpleName() + ", getLeftExecCount() = " + getLeftExecCount());
 
@@ -154,19 +136,23 @@ public abstract class BrowseBaseTask implements IBrowseTask {
             // start kill other apps periodically
             startKillOtherAppsPeriodically();
 
-            taskResult = autoBrowse();
+            // task need to run waitTaskEndMaxTime() at least
+            do {
+                taskResult = autoBrowse();
 
-            // execute success, increase the execute count
-            if (taskResult) {
-                increaseExecCount();
-            } else {
-                // get screenshot and save pic
-                String savePath = Constant.SD_PATH_FAILED_SCREENSHOTS
-                        + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_UNDERLINE, System.currentTimeMillis())
-                        + "_runTaskFailed_" + getClass().getSimpleName()
-                        + ".jpg";
-                UiDriver.saveScreenshot(new File(savePath));
-            }
+                // execute success, increase the execute count
+                if (taskResult) {
+                    increaseExecCount();
+                } else {
+                    // get screenshot and save pic
+                    String savePath = Constant.SD_PATH_FAILED_SCREENSHOTS
+                            + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_UNDERLINE, System.currentTimeMillis())
+                            + "_runTaskFailed_" + getClass().getSimpleName()
+                            + ".jpg";
+                    UiDriver.saveScreenshot(new File(savePath));
+                }
+            } while (taskResult && isTaskAvailable() &&
+                    System.currentTimeMillis() - startTime < waitTaskEndMaxTime());
         } catch (InterruptedException e) {
             interruptedException = e;
         } finally {

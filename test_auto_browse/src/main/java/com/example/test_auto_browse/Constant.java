@@ -48,9 +48,9 @@ public class Constant {
     public static final String PKG_NAME_DOU_YIN = "com.ss.android.ugc.aweme.lite";
 
     public static final String PKG_NAME_ALI_PAY = "com.eg.android.AlipayGphone";
-    public static final String PKG_NAME_K_GE = "com.tencent.kg.android.lite";
+//    public static final String PKG_NAME_K_GE = "com.tencent.kg.android.lite";
     public static final String PKG_NAME_WAN_DOU_JIA = "com.wandoujia.phoenix2";
-    public static final String PKG_NAME_XIMALAYA = "com.ximalaya.ting.lite";
+//    public static final String PKG_NAME_XIMALAYA = "com.ximalaya.ting.lite";
     public static final String PKG_NAME_BAIDU = "com.baidu.searchbox.lite";
     public static final String PKG_NAME_WEI_XIN = "com.tencent.mm";
 
@@ -170,6 +170,7 @@ public class Constant {
     public static final String ID_KUAI_SHOU_POPUP_DIALOG = "com.kuaishou.nebula:id/img_nebula_pull_new_dialog";
     public static final String ID_KUAI_SHOU_COSE_POPUP_DIALOG = "com.kuaishou.nebula:id/close";
     public static final String ID_KUAI_SHOU_AWARD_COUNT_DOWN = "com.kuaishou.nebula:id/award_count_down_text";
+    public static final String ID_KUAI_SHOU_AWARD_COUNT_DOWN_NEW_VERSION = "com.kuaishou.nebula:id/award_count_down_group";
     public static final String STR_KUAI_SHOU_GO_TO_GET_GOLD = "去赚钱";
     public static final String STR_KUAI_SHOU_TASK_CENTER = "任务中心";
     public static final String STR_KUAI_SHOU_SIGN_TO_GET_GOLD = "签到领金币";
@@ -186,6 +187,9 @@ public class Constant {
     public static final String STR_KUAI_SHOU_I_KNOW = "我知道了";
     public static final String STR_KUAI_SHOU_FOLLOW_AND_EXIT = "关注并退出";
     public static final String STR_KUAI_SHOU_EXIT = "退出";
+    public static final String STR_KUAI_SHOU_LIVE_LIST_TITLE = "com.kuaishou.nebula:id/award_progress_num";
+    public static final String STR_KUAI_SHOU_LIVE_LIST_ITEM = "com.kuaishou.nebula:id/constraint_layout_live_item_container";
+
 
     public static final String ID_JING_DONG_BROWSE_NEXT = "com.jd.jdlite:id/ll_task_bottom_next";
     public static final String ID_JING_DONG_GOLD_PROGRESS = "com.jd.jdlite:id/progressbar2";
@@ -278,20 +282,20 @@ public class Constant {
 
     // all task execute count (normal) ------------------------------------------
     public static final int TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 100;
-    public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 1;
+    public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
     public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 10;
     public static final int TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT = 10;
 
     public static final int KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT = 10;
-    public static final int KUAI_SHOU_WATCH_LIVE_MAX_EXEC_COUNT = 10;
+    public static final int KUAI_SHOU_WATCH_LIVE_MAX_EXEC_COUNT = 10;//10;
     public static final int KUAI_SHOU_REWARD_MAX_EXEC_COUNT = 10;
-    public static final int KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT = 2;
+    public static final int KUAI_SHOU_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
 
-    public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 1;
-    public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 5;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 5;
+    public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
@@ -303,13 +307,13 @@ public class Constant {
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 3;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 4;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 4;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 0;
 
     public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
     public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 20;
@@ -422,6 +426,6 @@ public class Constant {
 
 
     // build config
-//    public static String BUILD_CONFIG = "debug";
-    public static String BUILD_CONFIG = "release";
+    public static String BUILD_CONFIG = "debug";
+//    public static String BUILD_CONFIG = "release";
 }
