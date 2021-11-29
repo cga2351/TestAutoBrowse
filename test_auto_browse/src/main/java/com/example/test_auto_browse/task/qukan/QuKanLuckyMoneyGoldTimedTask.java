@@ -5,6 +5,7 @@ import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.task.TimedTaskAvailableChecker;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
@@ -22,6 +23,14 @@ public class QuKanLuckyMoneyGoldTimedTask extends QuKanBaseTask {
         return instance;
     }
 
+    // for timed task
+    TimedTaskAvailableChecker timedTaskChecker = new TimedTaskAvailableChecker() {
+        @Override
+        protected int getExecInterval() {
+            return 1000 * 60 * 60;
+        }
+    };
+
     @Override
     protected int getMaxExecCount() {
         return Constant.QU_KAN_LUCKY_MONEY_GOLD_MAX_EXEC_COUNT;
@@ -29,8 +38,12 @@ public class QuKanLuckyMoneyGoldTimedTask extends QuKanBaseTask {
 
     @Override
     protected int getLeftExecCount() {
-        return getMaxExecCount() -
-                LocalStorageUtil.getCachedTaskExecCount().getQuKanLuckyMoneyGoldExecCount();
+        if (timedTaskChecker.isTimedTaskAvailable()) {
+            return getMaxExecCount() - LocalStorageUtil.getCachedTaskExecCount()
+                    .getQuKanLuckyMoneyGoldExecCount();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -54,6 +67,9 @@ public class QuKanLuckyMoneyGoldTimedTask extends QuKanBaseTask {
         // get headline gold
         result = getHeadlineGold();
         Logger.debug("QuKanLuckyMoneyGoldTimedTask.autoBrowse(), getHeadlineGold result = " + result);
+
+        // set the last success time, even though task failed
+        timedTaskChecker.setLastSuccessTime(System.currentTimeMillis());
 
         return result;
     }

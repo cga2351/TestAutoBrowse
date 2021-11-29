@@ -4,6 +4,7 @@ import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.task.TimedTaskAvailableChecker;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
@@ -21,6 +22,14 @@ public class QiYiTreasureBoxTimedTask extends QiYiBaseTask {
         return instance;
     }
 
+    // for timed task
+    TimedTaskAvailableChecker timedTaskChecker = new TimedTaskAvailableChecker() {
+        @Override
+        protected int getExecInterval() {
+            return 1000 * 60 * 60;
+        }
+    };
+
     @Override
     protected int getMaxExecCount() {
         return Constant.QI_YI_TREASURE_BOX_MAX_EXEC_COUNT;
@@ -28,8 +37,12 @@ public class QiYiTreasureBoxTimedTask extends QiYiBaseTask {
 
     @Override
     protected int getLeftExecCount() {
-        return getMaxExecCount() -
-                LocalStorageUtil.getCachedTaskExecCount().getQiYiTreasureBoxExecCount();
+        if (timedTaskChecker.isTimedTaskAvailable()) {
+            return getMaxExecCount() - LocalStorageUtil.getCachedTaskExecCount()
+                    .getQiYiTreasureBoxExecCount();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -47,6 +60,10 @@ public class QiYiTreasureBoxTimedTask extends QiYiBaseTask {
 
         // get home page right top gold
         getRightTopGold();
+
+        if (result) {
+            timedTaskChecker.setLastSuccessTime(System.currentTimeMillis());
+        }
 
         Logger.debug("QiYiTreasureBoxTimedTask.autoBrowse(), result=" + result);
         return result;

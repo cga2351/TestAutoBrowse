@@ -4,6 +4,7 @@ import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.task.TimedTaskAvailableChecker;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
@@ -28,6 +29,14 @@ public class KuaiShouTreasureBoxTimedTask extends KuaiShouBaseTask {
         return instance;
     }
 
+    // for timed task
+    TimedTaskAvailableChecker timedTaskChecker = new TimedTaskAvailableChecker() {
+        @Override
+        protected int getExecInterval() {
+            return 1000 * 60 * 20;
+        }
+    };
+
     @Override
     protected int getMaxExecCount() {
         return Constant.KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT;
@@ -35,8 +44,12 @@ public class KuaiShouTreasureBoxTimedTask extends KuaiShouBaseTask {
 
     @Override
     protected int getLeftExecCount() {
-        return getMaxExecCount() -
-                LocalStorageUtil.getCachedTaskExecCount().getKuaiShouTreasureBoxExecCount();
+        if (timedTaskChecker.isTimedTaskAvailable()) {
+            return getMaxExecCount() - LocalStorageUtil.getCachedTaskExecCount()
+                    .getKuaiShouTreasureBoxExecCount();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -60,6 +73,10 @@ public class KuaiShouTreasureBoxTimedTask extends KuaiShouBaseTask {
             result = true;
         } else {
             Logger.debug("KuaiShouTreasureBoxTimedTask.autoBrowse(), open treasure box failed");
+        }
+
+        if (result) {
+            timedTaskChecker.setLastSuccessTime(System.currentTimeMillis());
         }
 
         Logger.debug("KuaiShouTreasureBoxTimedTask.autoBrowse(), result=" + result);

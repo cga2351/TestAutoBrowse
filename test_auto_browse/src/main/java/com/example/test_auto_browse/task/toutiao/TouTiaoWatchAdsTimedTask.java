@@ -4,6 +4,7 @@ import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.task.TimedTaskAvailableChecker;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
@@ -21,6 +22,15 @@ public class TouTiaoWatchAdsTimedTask extends TouTiaoBaseTask {
         return instance;
     }
 
+
+    // for timed task
+    TimedTaskAvailableChecker timedTaskChecker = new TimedTaskAvailableChecker() {
+        @Override
+        protected int getExecInterval() {
+            return 1000 * 60 * 10;
+        }
+    };
+
     @Override
     protected int getMaxExecCount() {
         return Constant.TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT;
@@ -28,8 +38,12 @@ public class TouTiaoWatchAdsTimedTask extends TouTiaoBaseTask {
 
     @Override
     protected int getLeftExecCount() {
-        return getMaxExecCount() -
-                LocalStorageUtil.getCachedTaskExecCount().getTouTiaoWatchAdsExecCount();
+        if (timedTaskChecker.isTimedTaskAvailable()) {
+            return getMaxExecCount() - LocalStorageUtil.getCachedTaskExecCount()
+                    .getTouTiaoWatchAdsExecCount();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -44,34 +58,15 @@ public class TouTiaoWatchAdsTimedTask extends TouTiaoBaseTask {
 
         // swipe up to click button to open the watch ads window
         UiSelector uiSelector = new UiSelector().text(Constant.STR_TOU_TIAO_WATCH_ADS_TO_GET_GOLD);
-        int swipeCount = 0;
-        boolean foundWatchAds = false;
-        while (swipeCount < 5 && !foundWatchAds) {
-            if (null != UiDriver.findInVisibleRect(uiSelector)) {
-                Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), found watch ads button");
-                foundWatchAds = true;
-            } else {
-                // try to open the task list
-                if(UiDriver.findAndClick(new UiSelector().text(Constant.STR_TOU_TIAO_MORE_TASK), 2000)) {
-                    Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), open more task list");
-                }
-
-                // swipe up to find again
-                UiDriver.swipeUp800pxSlowly();
-                swipeCount++;
-                Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), swipe up to find again, swipeCount = " + swipeCount);
-            }
+        if (UiDriver.swipeUpToFindAndClickObject(uiSelector, 7)) {
+            touTiaoWatchAds();
+            result = true;
+        } else {
+            Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), click watch ads failed");
         }
 
-        if (foundWatchAds) {
-            if (UiDriver.findAndClick(uiSelector)) {
-                touTiaoWatchAds();
-                result = true;
-            } else {
-                Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), open watch ads to get gold window failed");
-            }
-        } else {
-            Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), can't swipe up to find watch ads");
+        if (result) {
+            timedTaskChecker.setLastSuccessTime(System.currentTimeMillis());
         }
 
         Logger.debug("TouTiaoWatchAdsTask.autoBrowse(), result = " + result);

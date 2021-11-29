@@ -4,34 +4,25 @@ import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTask;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
 import java.util.Calendar;
 
-/**
- * author : yuliang
- * mail : yuliang@navercorp.com
- * date : 2021/5/24
- * description :
- */
-
-public class DianTaoWalkRepeatTaskWatchLive30Sec extends DianTaoWalkRepeatTask {
-    private DianTaoWalkRepeatTaskWatchLive30Sec() {}
-    private static DianTaoWalkRepeatTaskWatchLive30Sec instance;
+public class DianTaoWalkRepeatTaskWatchGoldenLive30Sec extends DianTaoWalkRepeatTask {
+    private DianTaoWalkRepeatTaskWatchGoldenLive30Sec() {}
+    private static DianTaoWalkRepeatTaskWatchGoldenLive30Sec instance;
     public static IBrowseTask getInstance() {
         if (null == instance) {
             synchronized (IBrowseTask.class) {
                 if (null == instance) {
-                    instance = new DianTaoWalkRepeatTaskWatchLive30Sec();
+                    instance = new DianTaoWalkRepeatTaskWatchGoldenLive30Sec();
                 }
             }
         }
         return instance;
     }
-
-    private boolean singleTaskAllSuccess;
-    private int singleTaskLastSuccessDay;
 
     @Override
     public int waitTaskEndMaxTime() {
@@ -41,52 +32,60 @@ public class DianTaoWalkRepeatTaskWatchLive30Sec extends DianTaoWalkRepeatTask {
 
     @Override
     protected int getMaxExecCount() {
-        return Constant.DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT;
+        return Constant.DIAN_TAO_WALK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT;
     }
 
     @Override
     protected int getLeftExecCount() {
-        return getMaxExecCount() -
-                LocalStorageUtil.getCachedTaskExecCount().getDianTaoWalkWatchLive30SecExecCount();
+        // task only available after 18:00
+        Calendar calendar = Calendar.getInstance();
+        int curHour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        if (curHour >= 18) {
+            return getMaxExecCount() -
+                    LocalStorageUtil.getCachedTaskExecCount().getDianTaoWalkWatchGoldenLive30SecExecCount();
+        } else {
+            return 0;
+        }
     }
 
     @Override
     public void increaseExecCount() {
         LocalStorageUtil.updateCachedTaskExecCount(LocalStorageUtil.getCachedTaskExecCount()
-                .increaseDianTaoWalkWatchLive30SecExecCount());
+                .increaseDianTaoWalkWatchGoldenLive30SecExecCount());
     }
 
     @Override
-    public boolean autoBrowse() throws InterruptedException {
+    protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
 
         // watch live 30s
         // click get walk steps
         if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GET_WALK_STEPS))) {
             // click watch live 30s
-            UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_30Sec);
+            UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_GOLDEN_LIVE_30Sec);
             if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
                 if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
-                    // enter live window, and wait 40s
+                    // enter live window, and wait 30sec
                     int watchDuration = 1000 * 30 + 1000 * 10;
                     result = watchVideoOrLive(watchDuration, false, true);
-                    Logger.debug("DianTaoWalkRepeatTaskWatchLive30Sec.autoBrowse(), watch result = " + result);
+                    Logger.debug("DianTaoWalkRepeatTaskWatchGoldenLive30Sec.autoBrowse(), watch result = " + result);
                 } else {
                     // entry live window failed, exit task
-                    Logger.debug("DianTaoWalkRepeatTaskWatchLive30Sec.autoBrowse(), enter live window failed");
+                    Logger.debug("DianTaoWalkRepeatTaskWatchGoldenLive30Sec.autoBrowse(), enter live window failed");
                 }
             } else {
-                Logger.debug("DianTaoWalkRepeatTaskWatchLive30Sec.autoBrowse(), click watch live 30s failed");
+                Logger.debug("DianTaoWalkRepeatTaskWatchGoldenLive30Sec.autoBrowse(), click watch live golden live 30sec failed");
             }
 
             // press back
             UiDriver.pressBack();
             Thread.sleep(2000);
         } else {
-            Logger.debug("DianTaoWalkRepeatTaskWatchLive30Sec.autoBrowse(), click get walk steps failed");
+            Logger.debug("DianTaoWalkRepeatTaskWatchGoldenLive30Sec.autoBrowse(), click get walk steps failed");
         }
 
-        Logger.debug("DianTaoWalkRepeatTaskWatchLive30Sec.autoBrowse(), result=" + result);
+        Logger.debug("DianTaoWalkRepeatTaskWatchGoldenLive30Sec.autoBrowse(), result=" + result);
         return result;
     }
 }

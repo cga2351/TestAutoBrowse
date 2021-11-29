@@ -66,6 +66,7 @@ public class Constant {
     public static final String STR_TOU_TIAO_JUMP_ADS = "跳过";
     public static final String STR_TOU_TIAO_TASK = "任务";
     public static final String STR_TOU_TIAO_COMMON_TASK = "日常任务";
+    public static final String STR_TOU_TIAO_TASK_PAGE_TITLE = "金币自动兑换成现金";
     public static final String STR_TOU_TIAO_NO_NETWORK = "网络不给力";
     public static final String STR_TOU_TIAO_OPEN_TREASURE_BOX = "开宝箱得金币";
     public static final String STR_TOU_TIAO_WATCHED_ADS_VIDEO_TO_GET_MORE = "看完视频再领";
@@ -76,6 +77,7 @@ public class Constant {
     public static final String STR_TOU_TIAO_WATCH_MORE = "再看一个";
     public static final String STR_TOU_TIAO_NO_MORE_ADS = "当前无新视频";
     public static final String STR_TOU_TIAO_COLON = ":";
+    public static final String STR_TOU_TIAO_GET_SIGN_GOLD = "直接领取";
     public static final String STR_TOU_TIAO_HAVE_A_LOOK= "去看看";
     public static final String STR_TOU_TIAO_WATCH_VIDEO_TO_GET_GOLD = "看视频赚钱";
     public static final String STR_TOU_TIAO_CLOSE_POPUP = "图片";
@@ -111,9 +113,11 @@ public class Constant {
     public static final String STR_DIAN_TAO_WATCH_VIDEO_30Sec = "看视频30秒";
     public static final String STR_DIAN_TAO_WATCH_VIDEO_3Min = "看视频3分钟";
     public static final String STR_DIAN_TAO_WATCH_VIDEO_5Min = "看视频5分钟";
+    public static final String STR_DIAN_TAO_WATCH_DISCOVER_GOODS_5Min = "看发现好物5分钟";
     public static final String STR_DIAN_TAO_WATCH_GOLDEN_LIVE_30Sec = "看黄金8点档直播30秒";
     public static final String STR_DIAN_TAO_WATCH_GOLDEN_LIVE_60Sec = "看黄金8点档直播60秒";
     public static final String STR_DIAN_TAO_WATCH_GOLDEN_LIVE_3Min = "看黄金8点档直播3分钟";
+    public static final String STR_DIAN_TAO_WATCH_LIVE_10Sec = "看直播10秒";
     public static final String STR_DIAN_TAO_WATCH_LIVE_30Sec = "看直播30秒";
     public static final String STR_DIAN_TAO_WATCH_LIVE_60Sec = "看直播60秒";
     public static final String STR_DIAN_TAO_WATCH_LIVE_3Min = "看直播3分钟";
@@ -138,8 +142,13 @@ public class Constant {
     public static final String STR_DIAN_TAO_BROWSE_SPECIAL_PRICE_MARKET_30SEC = "浏览特价卖场30秒";
     public static final String STR_DIAN_TAO_PLAY_GAME = "去玩消消乐";
     public static final String STR_DIAN_TAO_GO_TO_FERTILIZE = "去芭芭农场施肥";
+    public static final String STR_DIAN_TAO_BROWSE_GOODS_MARKET_30s = "浏览好货卖场30秒";
+    public static final String STR_DIAN_TAO_BROWSE_RECOMMEND_30s = "浏览精选推荐30秒";
+    public static final String STR_DIAN_TAO_BROWSE_NEW_ARRIVAL_30s = "浏览上新日历";
     public static final String STR_DIAN_TAO_SPECIAL_PRICE_MARKET_SWIPE = "滑动浏览";
     public static final String STR_DIAN_TAO_THUMP_UP_20_TIMES = "去直播间残暴点赞20次";
+    public static final String STR_DIAN_TAO_BROWSE_RECOMMEND_20s = "浏览精选推荐20秒";
+    public static final String STR_DIAN_TAO_SWIPE_TO_BROWSE = "滑动浏览";
     public static final String STR_DIAN_TAO_TASK_TASK_COMPLETED = "任务完成";
     public static final String STR_DIAN_TAO_TASK_CONGRATULATE_TASK_COMPLETED = "恭喜完成任务";
     public static final String STR_DIAN_TAO_TASK_FOLLOW = "关注";
@@ -157,6 +166,7 @@ public class Constant {
     public static final String STR_DIAN_TAO_START_GET_ENERGY = "体力+";
     public static final String STR_DIAN_TAO_SWIPE_RIGHT_TO_VERIFY = "向右滑动验证";
     public static final String STR_DIAN_TAO_LOTTERY = "幸运大抽奖";
+    public static final String STR_DIAN_TAO_WORK_MORE_TASKS = "查看更多任务";
 
     public static final String STR_WEI_SHI_JUMP_ADS = "跳过";
     public static final String STR_WEI_SHI_TEEN_PROTECTION = "青少年保护功能提示";
@@ -271,6 +281,7 @@ public class Constant {
 
     // debug/release data ----------------------------------------------------------------
     // ----------------------------- for real -----------------------------
+    public static final long WAIT_TIME_25_SEC = 1000 * 25;
     public static final long WAIT_TIME_20_SEC = 1000 * 20;
     public static final long WAIT_TIME_15_SEC = 1000 * 15;
     public static final long WAIT_TIME_10_SEC = 1000 * 10;
@@ -283,7 +294,7 @@ public class Constant {
     // all task execute count (normal) ------------------------------------------
     public static final int TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 100;
     public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
-    public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 10;
+    public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 3;
     public static final int TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT = 10;
 
     public static final int KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT = 10;
@@ -293,35 +304,41 @@ public class Constant {
 
     public static final int DIAN_TAO_BROWSE_LIVE_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_WALK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_WALK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_10SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 0;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 3;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WALK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_WALK_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_WALK_WATCH_DISCOVER_GOODS_5MIN_MAX_EXEC_COUNT = 0;
 
-    public static final int DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
+    public static final int DIAN_TAO_WORK_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 20;
-    public static final int DIAN_TAO_WORK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WORK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 20;
     public static final int DIAN_TAO_WORK_WATCH_VIDEO_5MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WORK_WATCH_GOLDEN_LIVE_3MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 0;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 3;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 4;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 4;
-    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WORK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WORK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WORK_WATCH_DISCOVER_GOODS_5MIN_MAX_EXEC_COUNT = 3;
 
-    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 20;
-    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 20;
-    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 20;
-    public static final int DIAN_TAO_LOTTERY_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_LOTTERY_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 8;
-    public static final int DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;
-    public static final int DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 10;
+    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_30SEC_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_60SEC_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_LOTTERY_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_LOTTERY_WATCH_LIVE_60SEC_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_LOTTERY_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_LOTTERY_WATCH_GOLDEN_LIVE_60SEC_MAX_EXEC_COUNT = 0;
 
     public static final int JING_DONG_BROWSE_ACTIVITY_MAX_EXEC_COUNT = 0;
     public static final int JING_DONG_BROWSE_GOODS_MAX_EXEC_COUNT = 0;
@@ -426,6 +443,6 @@ public class Constant {
 
 
     // build config
-    public static String BUILD_CONFIG = "debug";
-//    public static String BUILD_CONFIG = "release";
+//    public static String BUILD_CONFIG = "debug";
+    public static String BUILD_CONFIG = "release";
 }

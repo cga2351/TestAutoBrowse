@@ -4,7 +4,7 @@ import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
-import com.example.test_auto_browse.task.TimedBaseTask;
+import com.example.test_auto_browse.task.TimedTaskAvailableChecker;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
@@ -29,6 +29,14 @@ public class TouTiaoTreasureBoxTimedTask extends TouTiaoBaseTask {
         return instance;
     }
 
+    // for timed task
+    TimedTaskAvailableChecker timedTaskChecker = new TimedTaskAvailableChecker() {
+        @Override
+        protected int getExecInterval() {
+            return 1000 * 60 * 10;
+        }
+    };
+
     @Override
     protected int getMaxExecCount() {
         return Constant.TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT;
@@ -36,8 +44,12 @@ public class TouTiaoTreasureBoxTimedTask extends TouTiaoBaseTask {
 
     @Override
     protected int getLeftExecCount() {
-        return getMaxExecCount() - LocalStorageUtil.getCachedTaskExecCount()
-                .getTouTiaoTreasureBoxExecCount();
+        if (timedTaskChecker.isTimedTaskAvailable()) {
+            return getMaxExecCount() - LocalStorageUtil.getCachedTaskExecCount()
+                    .getTouTiaoTreasureBoxExecCount();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -61,8 +73,11 @@ public class TouTiaoTreasureBoxTimedTask extends TouTiaoBaseTask {
             Logger.debug("TouTiaoTreasureBoxTimedTask.autoBrowse(), open treasure box failed");
         }
 
-        Logger.debug("TouTiaoTreasureBoxTimedTask.autoBrowse(), result=" + result);
+        if (result) {
+            timedTaskChecker.setLastSuccessTime(System.currentTimeMillis());
+        }
 
+        Logger.debug("TouTiaoTreasureBoxTimedTask.autoBrowse(), result=" + result);
         return result;
     }
 }

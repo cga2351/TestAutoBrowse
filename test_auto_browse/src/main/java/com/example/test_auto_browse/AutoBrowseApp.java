@@ -19,13 +19,20 @@ import com.example.test_auto_browse.task.diantao.lottery.DianTaoLotteryRepeatTas
 import com.example.test_auto_browse.task.diantao.lottery.DianTaoLotteryRepeatTaskWatchVideo60Sec;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskScratch;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskStepsToGold;
+import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchDiscoverGoods5Min;
+import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchGoldenLive30Sec;
+import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchGoldenLive60Sec;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchLive10Min;
+import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchLive10Sec;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchLive30Sec;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchLive3Min;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchLive5Min;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchLive8Min;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchVideo30Sec;
+import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchVideo3Min;
 import com.example.test_auto_browse.task.diantao.walk.DianTaoWalkRepeatTaskWatchVideo60Sec;
+import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTask;
+import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchDiscoverGoods5Min;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchGoldenLive30Sec;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchGoldenLive3Min;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchGoldenLive60Sec;
@@ -36,9 +43,11 @@ import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatch
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchLive60Sec;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchLive8Min;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchVideo30Sec;
+import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchVideo3Min;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchVideo5Min;
 import com.example.test_auto_browse.task.IBrowseTask;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchVideo60Sec;
+import com.example.test_auto_browse.task.diantao.work.DianTaoWorkTimedTaskCheckWork;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseActivityRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseGoodsRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseVideoRepeatTask;
@@ -50,7 +59,10 @@ import com.example.test_auto_browse.task.qiyi.QiYiBrowseAdsRepeatTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseArticleRepeatTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseShortVideoRepeatTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseVideoRepeatTask;
+import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseGoodsTimedTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseVideoRepeatTask;
+import com.example.test_auto_browse.task.toutiao.TouTiaoTreasureBoxTimedTask;
+import com.example.test_auto_browse.task.toutiao.TouTiaoWatchAdsTimedTask;
 import com.example.test_auto_browse.utils.DateUtil;
 import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
@@ -224,46 +236,52 @@ public class AutoBrowseApp {
         allRepeatTasks.add(DianTaoBrowseLiveRepeatTask.getInstance());      // 2
 
         // walk
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive30Sec.getInstance());      // 3
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo30Sec.getInstance());      // 3
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo60Sec.getInstance());     // 4
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo30Sec.getInstance());      // 5
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo3Min.getInstance());     // 4
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive30Sec.getInstance());      // 5
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive3Min.getInstance());       // 6
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive5Min.getInstance());       // 7
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive8Min.getInstance());       // 8
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive10Min.getInstance());      // 9
-        allRepeatTasks.add(DianTaoWalkRepeatTaskScratch.getInstance());     // 10
-        allRepeatTasks.add(DianTaoWalkRepeatTaskStepsToGold.getInstance());     // 11
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive10Min.getInstance());      // 10
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchGoldenLive30Sec.getInstance());      // 11
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchGoldenLive60Sec.getInstance());      // 12
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchDiscoverGoods5Min.getInstance());      // 13
+        allRepeatTasks.add(DianTaoWalkRepeatTaskScratch.getInstance());     // 14
+        allRepeatTasks.add(DianTaoWalkRepeatTaskStepsToGold.getInstance());     // 15
 
         // work
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchGoldenLive30Sec.getInstance());      // 12
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchGoldenLive60Sec.getInstance());      // 13
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchGoldenLive3Min.getInstance());      // 14
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive30Sec.getInstance());      // 15
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive60Sec.getInstance());      // 16
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive3Min.getInstance());       // 17
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive5Min.getInstance());       // 18
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive8Min.getInstance());       // 19
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive10Min.getInstance());      // 20
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo60Sec.getInstance());     // 21
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo30Sec.getInstance());      // 22
-        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo5Min.getInstance());      // 23
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchGoldenLive30Sec.getInstance());      // 16
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchGoldenLive60Sec.getInstance());      // 17
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchGoldenLive3Min.getInstance());      // 18
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive30Sec.getInstance());      // 19
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive60Sec.getInstance());      // 20
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive3Min.getInstance());       // 21
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive5Min.getInstance());       // 22
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive8Min.getInstance());       // 23
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchLive10Min.getInstance());      // 24
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo30Sec.getInstance());      // 25
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo60Sec.getInstance());     // 26
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo3Min.getInstance());      // 27
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchVideo5Min.getInstance());      // 28
+        allRepeatTasks.add(DianTaoWorkRepeatTaskWatchDiscoverGoods5Min.getInstance());      // 29
 
         // lottery
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchVideo30Sec.getInstance());      // 24
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchVideo60Sec.getInstance());      // 25
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchVideo3Min.getInstance());      // 26
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchLive60Sec.getInstance());      // 27
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchLive3Min.getInstance());      // 28
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchGoldenLive30Sec.getInstance());      // 29
-        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchGoldenLive60Sec.getInstance());      // 30
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchVideo30Sec.getInstance());      // 30
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchVideo60Sec.getInstance());      // 31
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchVideo3Min.getInstance());      // 32
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchLive60Sec.getInstance());      // 33
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchLive3Min.getInstance());      // 34
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchGoldenLive30Sec.getInstance());      // 35
+        allRepeatTasks.add(DianTaoLotteryRepeatTaskWatchGoldenLive60Sec.getInstance());      // 36
 
-        allRepeatTasks.add(KuaiShouBrowseVideoRepeatTask.getInstance());        // 31
-        allRepeatTasks.add(KuaiShouWatchLiveRepeatTask.getInstance());      // 32
-        allRepeatTasks.add(KuaiShouRewardRepeatTask.getInstance());     // 33
-        allRepeatTasks.add(QuKanBrowseShortVideoRepeatTask.getInstance());      // 34
-        allRepeatTasks.add(QuKanBrowseArticleRepeatTask.getInstance());     // 35
-        allRepeatTasks.add(QuKanBrowseVideoRepeatTask.getInstance());       // 36
-        allRepeatTasks.add(QiYiBrowseAdsRepeatTask.getInstance());      // 37
+        allRepeatTasks.add(KuaiShouBrowseVideoRepeatTask.getInstance());        // 37
+        allRepeatTasks.add(KuaiShouWatchLiveRepeatTask.getInstance());      // 38
+        allRepeatTasks.add(KuaiShouRewardRepeatTask.getInstance());     // 39
+        allRepeatTasks.add(QuKanBrowseShortVideoRepeatTask.getInstance());      // 40
+        allRepeatTasks.add(QuKanBrowseArticleRepeatTask.getInstance());     // 41
+        allRepeatTasks.add(QuKanBrowseVideoRepeatTask.getInstance());       // 42
+        allRepeatTasks.add(QiYiBrowseAdsRepeatTask.getInstance());      // 43
 
 
         /////////////////////////////////////////////////////////////////////////////////////
@@ -790,20 +808,19 @@ public class AutoBrowseApp {
 ////            sendRepeatTaskMsg(LocalStorageUtil.getCachedTaskExecCount().getNextTaskIndex());
 //            sendRepeatTaskMsg(45);
             ///////////////////////////////////////////////////////////////////////////
-//            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/errorDump.xml");
+//            UiDriver.dumpXml2File("/sdcard/dump.xml");
             /////////////////////////////////////////////////////////////////////////////
 
-//            UiDriver.find(new UiSelector().text("已签到"));
+//            UiDriver.findAll(new UiSelector().text("更多任务"));
 
-
-
-            IBrowseTask task = KuaiShouBrowseVideoRepeatTask.getInstance();
+            IBrowseTask task = TouTiaoBrowseGoodsTimedTask.getInstance();
             if (task.initTask()) {
                 int count = 0;
-                while (count < 20) {
+                int totalCount = 1;
+                while (count < totalCount) {
                     boolean taskResult = task.runTask();
 //                task.endTask();
-                    Logger.debug("KuaiShouBrowseVideoRepeatTask end, taskResult=" + taskResult);
+                    Logger.debug("TouTiaoBrowseGoodsTimedTask end, taskResult=" + taskResult);
                     if (taskResult) {
                         count++;
                     }

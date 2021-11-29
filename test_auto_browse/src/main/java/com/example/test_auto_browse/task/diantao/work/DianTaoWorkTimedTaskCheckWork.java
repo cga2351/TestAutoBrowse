@@ -8,6 +8,8 @@ import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.CoordsAdapter;
 import com.example.test_auto_browse.UiDriver;
 import com.example.test_auto_browse.task.IBrowseTask;
+import com.example.test_auto_browse.task.TimedTaskAvailableChecker;
+import com.example.test_auto_browse.utils.LocalStorageUtil;
 import com.example.test_auto_browse.utils.Logger;
 
 public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
@@ -24,6 +26,23 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
         return instance;
     }
 
+    // for timed task
+    TimedTaskAvailableChecker timedTaskChecker = new TimedTaskAvailableChecker() {
+        @Override
+        protected int getExecInterval() {
+            return 1000 * 60 * 60 * 2;
+        }
+    };
+
+    @Override
+    protected int getLeftExecCount() {
+        if (timedTaskChecker.isTimedTaskAvailable()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     @Override
     protected boolean autoBrowse() throws InterruptedException {
         boolean result = false;
@@ -31,8 +50,10 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
         // wait page load end and get energy
         getTimedEnergy();
 
-        // click sign to get energy
-        UiDriver.click(CoordsAdapter.getDianTaoWorkSign());
+        // get sign energy
+        if (null == UiDriver.find(new UiSelector().textStartsWith("连续签到 6/7 天"))) {
+            UiDriver.click(CoordsAdapter.getDianTaoWorkSign());
+        }
 
         // get work gold
         UiObject getWorkGold = UiDriver.find(new UiSelector().textStartsWith(Constant.STR_DIAN_TAO_GET_WORK_GOLD));
@@ -51,6 +72,10 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
 
         // start next work
         result = startNextWork();
+
+        if (result) {
+            timedTaskChecker.setLastSuccessTime(System.currentTimeMillis());
+        }
 
         Logger.debug("DianTaoWorkTimedTaskCheckWork.autoBrowse(), result=" + result);
         return result;
@@ -86,18 +111,21 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
 
         if (UiDriver.findAndClick(new UiSelector().textStartsWith(Constant.STR_DIAN_TAO_I_AM_WORKING))) {
             Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), work not completed");
-            result = true;
         } else {
             // select the cook work
             if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_COOK_WORK))) {
                 if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_START_WORK))) {
                     Thread.sleep(2000);
-                    Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), start work success");
-                    result = true;
+                    if (null != UiDriver.find(new UiSelector().textStartsWith("01:59:"))) {
+                        Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), start work success");
+                        result = true;
+                    } else {
+                        Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), start work failed");
+                    }
                 } else if (null != UiDriver.find(new UiSelector().textStartsWith(Constant.STR_DIAN_TAO_START_NO_AVAILABLE_ENERGY))) {
                     Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), no available energy");
                 } else {
-                    Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), start work failed");
+                    Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), find start work button failed");
                 }
             } else {
                 Logger.debug("DianTaoWorkTimedTaskCheckWork.startNextWork(), select cook work failed");
@@ -113,6 +141,12 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
         if (null != UiDriver.find(uiSelector)) {
             Thread.sleep(5000);
             UiDriver.findAndClick(uiSelector);
+        }
+
+        // dismiss the more task popup and re-enter the work page
+        if (null != UiDriver.find(new UiSelector().text(Constant.STR_DIAN_TAO_WORK_MORE_TASKS))) {
+            UiDriver.pressBack();
+            UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WORK_TO_GET_GOLD));
         }
     }
 }

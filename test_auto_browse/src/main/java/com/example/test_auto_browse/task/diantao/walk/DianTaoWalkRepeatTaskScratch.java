@@ -27,16 +27,17 @@ public class DianTaoWalkRepeatTaskScratch extends DianTaoWalkRepeatTask {
     @Override
     public int waitTaskEndMaxTime() {
 //        return 1000 * 60 * 3;
-        return 1000 * 60 * 5;
+        return 1000 * 60 * 10;
     }
 
     @Override
     protected int getLeftExecCount() {
-        if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10) {
-            return 1;
-        } else {
-            return 0;
-        }
+//        if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10) {
+//            return 1;
+//        } else {
+//            return 0;
+//        }
+        return 0;
     }
 
     @Override

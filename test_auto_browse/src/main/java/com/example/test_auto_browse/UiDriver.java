@@ -117,10 +117,18 @@ public class UiDriver {
     }
 
     public static UiObject find(UiSelector uiSelector)  throws InterruptedException  {
-        return find(uiSelector, defaultTimeout);
+        return findInVisibleRect(uiSelector, defaultTimeout);
     }
 
     public static UiObject find(UiSelector uiSelector, long timeout) throws InterruptedException {
+        return findInVisibleRect(uiSelector, timeout);
+    }
+
+    public static UiObject findInVisibleRect(UiSelector uiSelector) throws InterruptedException {
+        return findInVisibleRect(uiSelector, defaultTimeout);
+    }
+    public static UiObject findInVisibleRect(UiSelector uiSelector, long timeout) throws InterruptedException {
+        UiObject result = null;
         UiObject targetObject = null;
         long startTime = System.currentTimeMillis();
         long lastPrintLogTime = 0;
@@ -132,42 +140,34 @@ public class UiDriver {
                 break;
             }
             if (System.currentTimeMillis() - lastPrintLogTime > 2000) {
-                Logger.debug("find(), uiSelector = " + uiSelector + ", find target failed, retry");
+                Logger.debug("findInVisibleRect(), uiSelector = " + uiSelector + ", find target failed, retry");
                 lastPrintLogTime = System.currentTimeMillis();
             }
             Thread.sleep(500);
         }
 
-        Logger.debug("find()"
+        Logger.debug("findInVisibleRect()"
                 + ", uiSelector=" + uiSelector.toString()
                 + ", time = " + (System.currentTimeMillis() - startTime)
                 + ", found = " + (null != targetObject));
 
-        if (null == targetObject && Constant.BUILD_CONFIG.equals("debug")) {
-            // find object failed, save dump
-            dumpXml2File("/sdcard/errorDump.xml");
-        }
-
-        return targetObject;
-    }
-
-    public static UiObject findInVisibleRect(UiSelector uiSelector) throws InterruptedException {
-        return findInVisibleRect(uiSelector, defaultTimeout);
-    }
-    public static UiObject findInVisibleRect(UiSelector uiSelector, long timeout) throws InterruptedException {
-        UiObject result = null;
-        UiObject target = find(uiSelector, timeout);
-        if (null != target) {
-            if (isInScreen(target)) {
-                if (isInVisibleRect(target)) {
-                    Logger.debug("findInVisibleRect(), target object is in visible rect");
-                    result = target;
+        // check if in the visible rect
+        if (null != targetObject) {
+            if (isInScreen(targetObject)) {
+                if (isInVisibleRect(targetObject)) {
+                    result = targetObject;
+                    Logger.debug("findInVisibleRect(), target object found, " + result);
                 } else {
                     Logger.debug("findInVisibleRect(), target object is out of visible rect");
                 }
             } else {
                 Logger.debug("findInVisibleRect(), target object is out of screen");
             }
+        }
+
+        if (null == result && Constant.BUILD_CONFIG.equals("debug")) {
+            // find object failed, save dump
+            dumpXml2File("/sdcard/errorDump.xml");
         }
 
         return result;
@@ -277,18 +277,22 @@ public class UiDriver {
         UiObject target = find(uiSelector, timeout);
         if (null != target) {
             try {
-                if (isInScreen(target)) {
-                    if (isInVisibleRect(target)) {
-                        Logger.debug("findAndClick(), call object click method");
-                        target.click();
-                    } else {
-                        Logger.debug("findAndClick(), click coords");
-                        clickUiObjectCoords(target);
-                    }
-                    result = true;
-                } else {
-                    Logger.debug("findAndClick(), target object is out of screen");
-                }
+                Logger.debug("findAndClick(), call object click method");
+                target.click();
+                result = true;
+
+//                if (isInScreen(target)) {
+//                    if (isInVisibleRect(target)) {
+//                        Logger.debug("findAndClick(), call object click method");
+//                        target.click();
+//                    } else {
+//                        Logger.debug("findAndClick(), click coords");
+//                        clickUiObjectCoords(target);
+//                    }
+//                    result = true;
+//                } else {
+//                    Logger.debug("findAndClick(), target object is out of screen");
+//                }
             } catch (UiObjectNotFoundException e) {
                 e.printStackTrace();
             }
@@ -362,18 +366,21 @@ public class UiDriver {
         UiObject target = find(uiSelector, timeout);
         if (null != target) {
             try {
-                if (isInScreen(target)) {
-                    if (isInVisibleRect(target)) {
-                        Logger.debug("findAndLongPress(), call object click method");
-                        target.longClick();
-                    } else {
-                        Logger.debug("findAndLongPress(), click coords");
-                        longPressUiObjectCoords(target);
-                    }
-                    result = true;
-                } else {
-                    Logger.debug("findAndLongPress(), target object is out of screen");
-                }
+                Logger.debug("findAndLongPress(), call object click method");
+                target.longClick();
+
+//                if (isInScreen(target)) {
+//                    if (isInVisibleRect(target)) {
+//                        Logger.debug("findAndLongPress(), call object click method");
+//                        target.longClick();
+//                    } else {
+//                        Logger.debug("findAndLongPress(), click coords");
+//                        longPressUiObjectCoords(target);
+//                    }
+//                    result = true;
+//                } else {
+//                    Logger.debug("findAndLongPress(), target object is out of screen");
+//                }
             } catch (UiObjectNotFoundException e) {
                 e.printStackTrace();
             }
@@ -603,32 +610,34 @@ public class UiDriver {
 
     public static boolean swipeUpToFindObject(UiSelector uiSelector, int maxSwipeCount) throws InterruptedException{
         int reTryCount = 0;
-        boolean isInScreen = UiDriver.isInScreen(UiDriver.find(uiSelector, 10000));
+//        boolean isInScreen = UiDriver.isInScreen(UiDriver.find(uiSelector, 10000));
+        UiObject targetObject = UiDriver.find(uiSelector, 10000);
 
-        while (!isInScreen && reTryCount < maxSwipeCount) {
-            Logger.debug("UiDriver.swipeUpToFindObject(), is not in screen, swipe once and retry");
-            UiDriver.swipeUp600pxSlowly();
-            isInScreen = UiDriver.isInScreen(UiDriver.find(uiSelector));
+        while (null == targetObject && reTryCount < maxSwipeCount) {
+            Logger.debug("UiDriver.swipeUpToFindObject(), not find object, swipe once and retry");
+            UiDriver.swipeUp800pxSlowly();
+            targetObject = UiDriver.find(uiSelector);
             reTryCount++;
         }
 
-        Logger.debug("UiDriver.swipeUpToFindObject(), result=" + isInScreen);
-        return isInScreen;
+        Logger.debug("UiDriver.swipeUpToFindObject(), targetObject = " + targetObject);
+        return null != targetObject;
     }
 
     public static boolean swipeDownToFindObject(UiSelector uiSelector, int maxSwipeCount) throws InterruptedException{
         int reTryCount = 0;
-        boolean isInScreen = UiDriver.isInScreen(UiDriver.find(uiSelector));
+//        boolean isInScreen = UiDriver.isInScreen(UiDriver.find(uiSelector));
+        UiObject targetObject = UiDriver.find(uiSelector, 10000);
 
-        while (!isInScreen && reTryCount < maxSwipeCount) {
+        while (null == targetObject && reTryCount < maxSwipeCount) {
             Logger.debug("UiDriver.swipeDownToFindObject(), is not in screen, swipe once and retry");
             UiDriver.swipeDown600pxSlowly();
-            isInScreen = UiDriver.isInScreen(UiDriver.find(uiSelector));
+            targetObject = UiDriver.find(uiSelector);
             reTryCount++;
         }
 
-        Logger.debug("UiDriver.swipeDownToFindObject(), result=" + isInScreen);
-        return isInScreen;
+        Logger.debug("UiDriver.swipeDownToFindObject(), targetObject = " + targetObject);
+        return null != targetObject;
     }
 
     public static void dumpXml2File(String filePath) {

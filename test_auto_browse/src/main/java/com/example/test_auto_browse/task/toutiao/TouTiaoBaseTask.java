@@ -66,6 +66,9 @@ public abstract class TouTiaoBaseTask extends BrowseBaseTask {
             // switch center tab
             boolean switchCenterTab = switchCenterTab();
 
+            // get sign gold
+            getSignGold();
+
             if (switchCenterTab) {
                 // check daily task
                 checkDailyTask();
@@ -102,7 +105,7 @@ public abstract class TouTiaoBaseTask extends BrowseBaseTask {
             }
         }
 
-        if (null == UiDriver.find(new UiSelector().text(Constant.STR_TOU_TIAO_COMMON_TASK), Constant.WAIT_TIME_10_SEC)) {
+        if (null == UiDriver.find(new UiSelector().textContains(Constant.STR_TOU_TIAO_TASK_PAGE_TITLE), Constant.WAIT_TIME_25_SEC)) {
             if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_TOU_TIAO_NO_NETWORK))) {
                 Logger.debug("TouTiaoBaseTask.switchCenterTab(), no network, click to retry");
                 UiDriver.click_ScreenCenter();
@@ -110,6 +113,14 @@ public abstract class TouTiaoBaseTask extends BrowseBaseTask {
         }
 
         return switchCenterTab;
+    }
+
+    public void getSignGold() throws InterruptedException {
+        if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_TOU_TIAO_GET_SIGN_GOLD))) {
+            Logger.debug("TouTiaoBaseTask.getSignGold(), get sign gold success");
+        } else {
+            Logger.debug("TouTiaoBaseTask.getSignGold(), no sign gold");
+        }
     }
 
     public void getDailyTaskGold() throws InterruptedException {

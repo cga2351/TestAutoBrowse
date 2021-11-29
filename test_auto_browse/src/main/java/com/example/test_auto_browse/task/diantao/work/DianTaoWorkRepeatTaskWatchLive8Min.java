@@ -62,10 +62,10 @@ public class DianTaoWorkRepeatTaskWatchLive8Min extends DianTaoWorkRepeatTask{
             Logger.debug("DianTaoWorkRepeatTaskWatchLive8Min.autoBrowse(), click watch live 8min failed");
         }
 
-        UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_" + getClass().getSimpleName());
-        if (null != UiDriver.find(new UiSelector().textContains("休息会呗"))) {
-            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/screenshots/debugScreenshots/checkWorkWatchLiveFailure_8Min.xml");
-        }
+//        UiDriver.saveDebugScreenshot("checkWorkWatchLiveFailure_" + getClass().getSimpleName());
+//        if (null != UiDriver.find(new UiSelector().textContains("休息会呗"))) {
+//            UiDriver.dumpXml2File("/sdcard/testAutoBrowse/screenshots/debugScreenshots/checkWorkWatchLiveFailure_8Min.xml");
+//        }
 
         // return to work page
         backToWorkPage();
