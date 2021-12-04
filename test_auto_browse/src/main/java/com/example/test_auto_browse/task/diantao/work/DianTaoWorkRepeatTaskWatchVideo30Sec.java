@@ -50,7 +50,7 @@ public class DianTaoWorkRepeatTaskWatchVideo30Sec extends DianTaoWorkRepeatTask{
 
         // click watch video 3min
         if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_VIDEO_30Sec))) {
-            if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
+            if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE), Constant.WAIT_TIME_10_SEC)) {
                 // enter video window, and wait 30s
                 int watchDuration = 1000 * 30 + 1000 * 10;
                 result = watchVideoOrLive(watchDuration, true, false);

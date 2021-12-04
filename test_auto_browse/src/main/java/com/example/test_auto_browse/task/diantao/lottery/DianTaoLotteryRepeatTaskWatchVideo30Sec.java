@@ -51,7 +51,7 @@ public class DianTaoLotteryRepeatTaskWatchVideo30Sec extends DianTaoLotteryRepea
         // watch video 30 sec
         UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_VIDEO_30Sec);
         if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
-            if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
+            if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE), Constant.WAIT_TIME_10_SEC)) {
                 // enter video window, and wait 30s
                 int watchDuration = 1000 * 30 + 1000 * 10;
                 result = watchVideoOrLive(watchDuration, true, false);

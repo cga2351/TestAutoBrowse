@@ -8,6 +8,7 @@ public class TaskExecCount {
     long saveDate;
     int touTiaoTreasureBoxExecCount;        //TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT
     int touTiaoBrowseVideoExecCount;        //TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT
+    int touTiaoSurpriseGoldExecCount;        //TOU_TIAO_SURPRISE_GOLD_MAX_EXEC_COUNT
     int touTiaoBrowseGoodsExecCount;            //TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT
     int touTiaoWatchAdsExecCount;           //TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT
     int kuaiShouTreasureBoxExecCount;           //KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT
@@ -66,6 +67,7 @@ public class TaskExecCount {
         saveDate = taskExecCount.saveDate;
         touTiaoTreasureBoxExecCount = taskExecCount.touTiaoTreasureBoxExecCount;
         touTiaoBrowseVideoExecCount = taskExecCount.touTiaoBrowseVideoExecCount;
+        touTiaoSurpriseGoldExecCount = taskExecCount.touTiaoSurpriseGoldExecCount;
         touTiaoBrowseGoodsExecCount = taskExecCount.touTiaoBrowseGoodsExecCount;
         touTiaoWatchAdsExecCount = taskExecCount.touTiaoWatchAdsExecCount;
         kuaiShouTreasureBoxExecCount = taskExecCount.kuaiShouTreasureBoxExecCount;
@@ -122,6 +124,7 @@ public class TaskExecCount {
     public void setAllTaskToMaxExecCount() {
         touTiaoTreasureBoxExecCount = Constant.TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT;
         touTiaoBrowseVideoExecCount = Constant.TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT;
+        touTiaoSurpriseGoldExecCount = Constant.TOU_TIAO_SURPRISE_GOLD_MAX_EXEC_COUNT;
         touTiaoBrowseGoodsExecCount = Constant.TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT;
         touTiaoWatchAdsExecCount = Constant.TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT;
         kuaiShouTreasureBoxExecCount = Constant.KUAI_SHOU_TREASURE_BOX_MAX_EXEC_COUNT;
@@ -183,6 +186,7 @@ public class TaskExecCount {
                 ", saveDate=" + DateUtil.getFormatDate(DateUtil.DATA_FORMAT_yyyy_MM_dd_hh_mm_ss_HYPHEN, saveDate) +
                 ", touTiaoTreasureBoxExecCount=" + touTiaoTreasureBoxExecCount +
                 ", touTiaoBrowseVideoExecCount=" + touTiaoBrowseVideoExecCount +
+                ", touTiaoSurpriseGoldExecCount=" + touTiaoSurpriseGoldExecCount +
                 ", touTiaoBrowseGoodsExecCount=" + touTiaoBrowseGoodsExecCount +
                 ", touTiaoWatchAdsExecCount=" + touTiaoWatchAdsExecCount +
                 ", kuaiShouTreasureBoxExecCount=" + kuaiShouTreasureBoxExecCount +
@@ -280,6 +284,19 @@ public class TaskExecCount {
 
     public void setTouTiaoBrowseVideoExecCount(int touTiaoBrowseVideoExecCount) {
         this.touTiaoBrowseVideoExecCount = touTiaoBrowseVideoExecCount;
+    }
+
+    public int getTouTiaoSurpriseGoldExecCount() {
+        return touTiaoSurpriseGoldExecCount;
+    }
+
+    public TaskExecCount increaseTouTiaoSurpriseGoldExecCount() {
+        this.touTiaoSurpriseGoldExecCount++;
+        return this;
+    }
+
+    public void setTouTiaoSurpriseGoldExecCount(int touTiaoSurpriseGoldExecCount) {
+        this.touTiaoSurpriseGoldExecCount = touTiaoSurpriseGoldExecCount;
     }
 
     public int getTouTiaoBrowseGoodsExecCount() {

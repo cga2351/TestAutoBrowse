@@ -66,10 +66,11 @@ public class Constant {
     public static final String STR_TOU_TIAO_JUMP_ADS = "跳过";
     public static final String STR_TOU_TIAO_TASK = "任务";
     public static final String STR_TOU_TIAO_COMMON_TASK = "日常任务";
+    public static final String STR_TOU_TIAO_HOME_PAGE = "首页";
+    public static final String STR_TOU_TIAO_SURPRISE_GOLD = "阅读惊喜奖励";
     public static final String STR_TOU_TIAO_TASK_PAGE_TITLE = "金币自动兑换成现金";
     public static final String STR_TOU_TIAO_NO_NETWORK = "网络不给力";
     public static final String STR_TOU_TIAO_OPEN_TREASURE_BOX = "开宝箱得金币";
-    public static final String STR_TOU_TIAO_WATCHED_ADS_VIDEO_TO_GET_MORE = "看完视频再领";
     public static final String STR_TOU_TIAO_CLOSE_ADS = "关闭";
     public static final String STR_TOU_TIAO_CLOSE_ADS_CONFIRM = "坚持退出";
     public static final String STR_TOU_TIAO_WAIT_ADS_END_1 = "领金币";
@@ -83,7 +84,9 @@ public class Constant {
     public static final String STR_TOU_TIAO_CLOSE_POPUP = "图片";
     public static final String STR_TOU_TIAO_DAILY_TASK = "每日任务";
     public static final String STR_TOU_TIAO_GET_GOLD = "领取";
-    public static final String STR_TOU_TIAO_WATCH_ADS_VIDEO_TO_GET_MORE = "看视频再领";
+//    public static final String STR_TOU_TIAO_WATCH_ADS_VIDEO_TO_GET_MORE = "看视频再领";
+//    public static final String STR_TOU_TIAO_WATCHED_ADS_VIDEO_TO_GET_MORE = "看完视频再领";
+    public static final String STR_TOU_TIAO_WATCH_ADS_TO_GET_MORE = "视频再领";
     public static final String STR_TOU_TIAO_GET_MEAL_GOLD = "吃饭补贴";
     public static final String STR_TOU_TIAO_GET_SLEEP_GOLD = "睡觉赚钱";
     public static final String STR_TOU_TIAO_GET_WALKING_GOLD = "走路赚钱";
@@ -255,6 +258,7 @@ public class Constant {
     public static final String STR_QI_YI_GET_GOLD = "领金币";
     public static final String STR_QI_YI_GET_MORE = "再赚";
     public static final String STR_QI_YI_OPEN_TREASURE_BOX = "开宝箱领金币";
+    public static final String STR_QI_YI_AFTER_S_COMPLETE = "后完成";
 
     public static final String STR_DOU_YIN_I_KNOW = "我知道了";
     public static final String STR_DOU_YIN_RECOMMEND_FRIENDS = "朋友推荐";
@@ -293,7 +297,8 @@ public class Constant {
 
     // all task execute count (normal) ------------------------------------------
     public static final int TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 100;
-    public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 50;
+    public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 2;
+    public static final int TOU_TIAO_SURPRISE_GOLD_MAX_EXEC_COUNT = 30;
     public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 3;
     public static final int TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT = 10;
 
@@ -309,8 +314,8 @@ public class Constant {
     public static final int DIAN_TAO_WALK_WATCH_VIDEO_3MIN_MAX_EXEC_COUNT = 20;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_10SEC_MAX_EXEC_COUNT = 10;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_30SEC_MAX_EXEC_COUNT = 0;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 0;
-    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 0;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_3MIN_MAX_EXEC_COUNT = 1;
+    public static final int DIAN_TAO_WALK_WATCH_LIVE_5MIN_MAX_EXEC_COUNT = 1;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_8MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WALK_WATCH_LIVE_10MIN_MAX_EXEC_COUNT = 0;
     public static final int DIAN_TAO_WALK_WATCH_GOLDEN_LIVE_30SEC_MAX_EXEC_COUNT = 10;

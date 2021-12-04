@@ -156,7 +156,7 @@ public class UiDriver {
             if (isInScreen(targetObject)) {
                 if (isInVisibleRect(targetObject)) {
                     result = targetObject;
-                    Logger.debug("findInVisibleRect(), target object found, " + result);
+                    Logger.debug("findInVisibleRect(), target object found");
                 } else {
                     Logger.debug("findInVisibleRect(), target object is out of visible rect");
                 }

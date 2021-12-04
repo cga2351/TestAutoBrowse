@@ -61,6 +61,7 @@ import com.example.test_auto_browse.task.qukan.QuKanBrowseShortVideoRepeatTask;
 import com.example.test_auto_browse.task.qukan.QuKanBrowseVideoRepeatTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseGoodsTimedTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoBrowseVideoRepeatTask;
+import com.example.test_auto_browse.task.toutiao.TouTiaoSurpriseGoldRepeatTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.toutiao.TouTiaoWatchAdsTimedTask;
 import com.example.test_auto_browse.utils.DateUtil;
@@ -232,17 +233,19 @@ public class AutoBrowseApp {
         }
 
         allRepeatTasks.add(TouTiaoBrowseVideoRepeatTask.getInstance());     // 0
+        allRepeatTasks.add(TouTiaoSurpriseGoldRepeatTask.getInstance());     // 0
         allRepeatTasks.add(DianTaoBrowseVideoRepeatTask.getInstance());     // 1
         allRepeatTasks.add(DianTaoBrowseLiveRepeatTask.getInstance());      // 2
 
         // walk
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo30Sec.getInstance());      // 3
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo60Sec.getInstance());     // 4
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo3Min.getInstance());     // 4
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive30Sec.getInstance());      // 5
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive3Min.getInstance());       // 6
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive5Min.getInstance());       // 7
-        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive8Min.getInstance());       // 8
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchVideo3Min.getInstance());     // 5
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive10Sec.getInstance());      // 6
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive30Sec.getInstance());      // 7
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive3Min.getInstance());       // 8
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive5Min.getInstance());       // 9
+        allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive8Min.getInstance());       // 10
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchLive10Min.getInstance());      // 10
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchGoldenLive30Sec.getInstance());      // 11
         allRepeatTasks.add(DianTaoWalkRepeatTaskWatchGoldenLive60Sec.getInstance());      // 12
@@ -811,21 +814,29 @@ public class AutoBrowseApp {
 //            UiDriver.dumpXml2File("/sdcard/dump.xml");
             /////////////////////////////////////////////////////////////////////////////
 
-//            UiDriver.findAll(new UiSelector().text("更多任务"));
 
-            IBrowseTask task = TouTiaoBrowseGoodsTimedTask.getInstance();
-            if (task.initTask()) {
-                int count = 0;
-                int totalCount = 1;
-                while (count < totalCount) {
-                    boolean taskResult = task.runTask();
-//                task.endTask();
-                    Logger.debug("TouTiaoBrowseGoodsTimedTask end, taskResult=" + taskResult);
-                    if (taskResult) {
-                        count++;
-                    }
-                }
+            while(true) {
+                UiDriver.find(new UiSelector().descriptionMatches(".*\\d{1,5}评论$"), 3000);
+                Thread.sleep(2000);
             }
+
+
+
+
+//            IBrowseTask task = TouTiaoSurpriseGoldRepeatTask.getInstance();
+//            if (task.initTask()) {
+//                int count = 0;
+//                int totalCount = 2;
+//                while (count < totalCount) {
+//                    boolean taskResult = task.runTask();
+////                task.endTask();
+//                    Logger.debug("TouTiaoSurpriseGoldRepeatTask end, taskResult=" + taskResult);
+//                    if (taskResult) {
+//                        count++;
+//                    }
+//                }
+//            }
+
 
 
 //            UiDriver.swipeUpToFindAndClickObject(new UiSelector().text("看广告赚金币"));

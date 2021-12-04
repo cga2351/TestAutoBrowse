@@ -55,7 +55,7 @@ public abstract class TouTiaoBaseTask extends BrowseBaseTask {
 
         if (super.initTask()) {
             // jump the launch ads if first run
-            UiDriver.findAndClick(new UiSelector().text(Constant.STR_TOU_TIAO_JUMP_ADS));
+            UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_TOU_TIAO_JUMP_ADS));
 
             // close home page popup
             if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_TOU_TIAO_HAVE_A_LOOK))) {
@@ -130,7 +130,7 @@ public abstract class TouTiaoBaseTask extends BrowseBaseTask {
             Logger.debug("TouTiaoBaseTask.getDailyTaskGold(), getDailyTaskGold = " + getDailyTaskGold);
 
             if (getDailyTaskGold) {
-                boolean getMoreResult = UiDriver.findAndClick(new UiSelector().textStartsWith(Constant.STR_TOU_TIAO_WATCH_ADS_VIDEO_TO_GET_MORE));
+                boolean getMoreResult = UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_TOU_TIAO_WATCH_ADS_TO_GET_MORE));
                 Logger.debug("TouTiaoBaseTask.getDailyTaskGold(), getMoreResult = " + getMoreResult);
                 if (getMoreResult) {
                     if (!touTiaoWatchAds()) {
@@ -310,7 +310,12 @@ public abstract class TouTiaoBaseTask extends BrowseBaseTask {
 
             hasAds = true;
         } else {
-            Logger.debug("TouTiaoBaseTask.touTiaoWatchAds(), open ads page failed");
+            Logger.debug("TouTiaoBaseTask.touTiaoWatchAds(), open ads page failed, check if has ads or open voice button");
+            if (null != UiDriver.find(new UiSelector().description("广告"), 3000) &&
+                    null != UiDriver.find(new UiSelector().description("开启声音"), 3000)) {
+                Logger.debug("TouTiaoBaseTask.touTiaoWatchAds(), close ads page");
+                UiDriver.pressBack();
+            }
         }
 
         return hasAds;

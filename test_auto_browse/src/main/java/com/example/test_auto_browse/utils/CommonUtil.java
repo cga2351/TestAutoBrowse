@@ -35,7 +35,7 @@ public class CommonUtil {
     private static final long SCENARIO_RESULT_KEEP_PERIOD = 20 * 60 * 1000L;   //10 minutes
     private static final long EMULATOR_SCENARIO_RESULT_KEEP_PERIOD = 20 * 60 * 1000L;   //10 minutes
 
-    private static final long SCREENSHOTS_FILES_KEEP_PERIOD = 5 * 24 * 60 * 60 * 1000L;  //5 days
+    private static final long SCREENSHOTS_FILES_KEEP_PERIOD = 2 * 24 * 60 * 60 * 1000L;  //2 days
 
     public static void deleteOldFiles() {
         // delete old log files

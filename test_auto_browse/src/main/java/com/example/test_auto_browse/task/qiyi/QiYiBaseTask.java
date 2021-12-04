@@ -101,13 +101,13 @@ public abstract class QiYiBaseTask extends BrowseBaseTask {
 
         // wait count down end, max wait 2 min
         long startWaitTime = System.currentTimeMillis();
-        while (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE), 3000) &&
+        while (null != UiDriver.find(new UiSelector().textContains(Constant.STR_QI_YI_AFTER_S_COMPLETE), 3000) &&
                 (System.currentTimeMillis() - startWaitTime) < 1000 * 60 * 2) {
             UiDriver.swipeUp600pxFast();
             Thread.sleep(1000 * 10);
         }
 
-        if (null == UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE), 3000)) {
+        if (null == UiDriver.find(new UiSelector().textContains(Constant.STR_QI_YI_AFTER_S_COMPLETE), 3000)) {
             result = true;
         }
 

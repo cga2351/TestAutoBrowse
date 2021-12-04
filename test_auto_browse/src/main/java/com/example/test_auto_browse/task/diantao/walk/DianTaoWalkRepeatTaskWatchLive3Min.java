@@ -54,7 +54,7 @@ public class DianTaoWalkRepeatTaskWatchLive3Min extends DianTaoWalkRepeatTask {
             // click watch live 3min
             UiSelector selector = new UiSelector().text(Constant.STR_DIAN_TAO_WATCH_LIVE_3Min);
             if (UiDriver.swipeUpToFindObject(selector) && UiDriver.findAndClick(selector)) {
-                if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE))) {
+                if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_AFTER_S_COMPLETE), Constant.WAIT_TIME_10_SEC)) {
                     // enter live window, and wait 3min
                     int watchDuration = 1000 * 60 * 3 + 1000 * 10;
                     result = watchVideoOrLive(watchDuration, false, true);

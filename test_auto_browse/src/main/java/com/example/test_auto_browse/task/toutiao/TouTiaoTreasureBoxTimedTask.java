@@ -64,7 +64,7 @@ public class TouTiaoTreasureBoxTimedTask extends TouTiaoBaseTask {
 
         // open treasure box
         if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_TOU_TIAO_OPEN_TREASURE_BOX), Constant.WAIT_TIME_15_SEC)) {
-            if (UiDriver.findAndClick(new UiSelector().textStartsWith(Constant.STR_TOU_TIAO_WATCHED_ADS_VIDEO_TO_GET_MORE))) {
+            if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_TOU_TIAO_WATCH_ADS_TO_GET_MORE))) {
                 // watch ads video to get more
                 touTiaoWatchAds();
             }

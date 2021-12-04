@@ -302,10 +302,10 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
                         + ", endY = " + endY
                 );
 
-                UiDriver.saveDebugScreenshot("checkSwipeRightVerification_beforeSwipe_" + getClass().getSimpleName());
+//                UiDriver.saveDebugScreenshot("checkSwipeRightVerification_beforeSwipe_" + getClass().getSimpleName());
                 UiDriver.swipe(startX, startY, endX, endY, 30);
-                UiDriver.saveDebugScreenshot("checkSwipeRightVerification_afterSwipe_" + getClass().getSimpleName());
-                UiDriver.saveDebugScreenshotWithDelay("checkSwipeRightVerification_afterSwipeAndWait2s_" + getClass().getSimpleName(), 2000);
+//                UiDriver.saveDebugScreenshot("checkSwipeRightVerification_afterSwipe_" + getClass().getSimpleName());
+//                UiDriver.saveDebugScreenshotWithDelay("checkSwipeRightVerification_afterSwipeAndWait2s_" + getClass().getSimpleName(), 2000);
             }
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
