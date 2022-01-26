@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
+import com.android.uiautomator.common.UiWatchers;
 import com.android.uiautomator.core.UiAutomatorBridge;
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.bean.TaskExecCount;
@@ -119,6 +120,8 @@ public class AutoBrowseApp {
         CoordsAdapter.init();
         LocalStorageUtil.init();
 
+        startAnrCheckTimer();
+
         // light screen on first
         UiDriver.lightScreenOn();
 
@@ -159,6 +162,23 @@ public class AutoBrowseApp {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private void startAnrCheckTimer() {
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    if (null != UiDriver.find(new UiSelector().textContains("是否将其关闭"), 3000)) {
+                        if (UiDriver.findAndClick(new UiSelector().textContains("确定"))) {
+                            Logger.debug("found anr dialog, click the close success");
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, 1000 * 60);
     }
 
     private void initAutoBrowseSchedulingThread() {

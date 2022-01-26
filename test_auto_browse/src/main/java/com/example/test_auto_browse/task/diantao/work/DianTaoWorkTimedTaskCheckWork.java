@@ -111,6 +111,7 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
         boolean result = false;
         UiDriver.saveDebugScreenshot("checkStartWorkFailed_beforeClickStartWork_" + getClass().getSimpleName());
         UiDriver.click(CoordsAdapter.getDianTaoWorkToGetGoldCoords());
+        Thread.sleep(2000);
         UiDriver.saveDebugScreenshot("checkStartWorkFailed_afterClickStartWork_" + getClass().getSimpleName());
 
         if (UiDriver.findAndClick(new UiSelector().textStartsWith(Constant.STR_DIAN_TAO_I_AM_WORKING))) {
@@ -151,6 +152,7 @@ public class DianTaoWorkTimedTaskCheckWork extends DianTaoWorkRepeatTask {
         if (UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_WORK_MORE_TASKS))) {
             Thread.sleep(3000);
             UiDriver.click_Top300px_Center();
+            Thread.sleep(2000);
         }
 
         UiDriver.saveDebugScreenshot("checkStartWorkFailed_afterDismissMoreTaskList_" + getClass().getSimpleName());

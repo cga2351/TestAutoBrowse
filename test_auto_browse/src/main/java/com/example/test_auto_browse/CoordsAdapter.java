@@ -44,13 +44,16 @@ public class CoordsAdapter {
         HuaWeiP8MaxMap.put(WeiShiMineTab, new Point(975, 1765));
         HuaWeiP8MaxMap.put(DianTaoScratch, new Point(960, 380));
         HuaWeiP8MaxMap.put(DianTaoScratchMeGetGold, new Point(550, 850));
-        HuaWeiP8MaxMap.put(DianTaoWorkToGodGold, new Point(850,1350));
-        HuaWeiP8MaxMap.put(DianTaoGetEnergy, new Point(380, 1400));
+//        HuaWeiP8MaxMap.put(DianTaoWorkToGodGold, new Point(850,1350));
+        HuaWeiP8MaxMap.put(DianTaoWorkToGodGold, new Point(850,1150));
+//        HuaWeiP8MaxMap.put(DianTaoGetEnergy, new Point(380, 1400));
+        HuaWeiP8MaxMap.put(DianTaoGetEnergy, new Point(380, 1200));
         HuaWeiP8MaxMap.put(DianTaoLuckyDraw, new Point( 560, 1770));
         HuaWeiP8MaxMap.put(JingDongGetGold, new Point( 560, 860));
         HuaWeiP8MaxMap.put(QuKanLuckyMoney, new Point( 960, 1600));
         HuaWeiP8MaxMap.put(DouYinGoldCenter, new Point( 550, 1760));
-        HuaWeiP8MaxMap.put(DianTaoWorkSign, new Point( 640, 1560));
+//        HuaWeiP8MaxMap.put(DianTaoWorkSign, new Point( 640, 1560));
+        HuaWeiP8MaxMap.put(DianTaoWorkSign, new Point( 640, 1390));
 
         // for "Hisense F23"
         HashMap<String, Point> HISENSE_F23Map = coordsMap.get(MODEL_NAME_HISENSE_F23);
