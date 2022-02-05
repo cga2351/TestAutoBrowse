@@ -46,18 +46,32 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         getSignLuckyDraw();
     }
 
-    private void getSignGold() throws InterruptedException {
-        // if no sign, click to sign
-        // click sign may failed, retry 10s
-        long startTime = System.currentTimeMillis();
-        while (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_GO_TO_SIGN)) &&
-                (System.currentTimeMillis() - startTime) < 1000 * 10) {
-            Thread.sleep(2000);
+//    public void getSignGold() throws InterruptedException {
+//        // if no sign, click to sign
+//        // click sign may failed, retry 10s
+//        long startTime = System.currentTimeMillis();
+//        while (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_GO_TO_SIGN)) &&
+//                (System.currentTimeMillis() - startTime) < 1000 * 10) {
+//            Thread.sleep(2000);
+//        }
+//
+//        if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_CLICK_TO_SIGN), 2000)) {
+//            Logger.debug("DianTaoBaseTask.getSignGold(), sign success");
+//        }
+//    }
+
+    public void getSignGold() throws InterruptedException {
+        if (UiDriver.swipeUpToFindAndClickObject(new UiSelector().textContains(Constant.STR_DIAN_TAO_SIGN_TODAY))) {
+            Logger.debug("DianTaoBaseTask.getSignGold(), click sign today success");
+            if (null != UiDriver.find(new UiSelector().textContains(Constant.STR_DIAN_TAO_GET_SIGN_GOLD_FAILED))) {
+                Logger.debug("DianTaoBaseTask.getSignGold(), get sign gold failed");
+            }
+        } else {
+            Logger.debug("DianTaoBaseTask.getSignGold(), click sign today failed");
         }
 
-        if (UiDriver.findAndClick(new UiSelector().textContains(Constant.STR_DIAN_TAO_CLICK_TO_SIGN), 2000)) {
-            Logger.debug("DianTaoBaseTask.getSignGold(), sign success");
-        }
+        Thread.sleep(3000);
+        UiDriver.pressBack();
     }
 
     @Override
@@ -67,8 +81,12 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
 
         boolean result = false;
         if (super.initTask()) {
+            if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.STR_DIAN_TAO_I_KNOW), Constant.WAIT_TIME_20_SEC)) {
+                Logger.debug("DianTaoBaseTask.initTask(), dismiss teenager protection");
+            }
+
             // switch to the my tab page
-            if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.ID_DIAN_TAO_HOME_TAB_ITEM).instance(3), Constant.WAIT_TIME_20_SEC)) {
+            if (UiDriver.findAndClick(new UiSelector().resourceId(Constant.ID_DIAN_TAO_HOME_TAB_ITEM).instance(3))) {
 
                 if (null == UiDriver.find(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER), Constant.WAIT_TIME_15_SEC)) {
                     // check if has verification swipe of "向右滑动验证"
@@ -104,20 +122,30 @@ public abstract class DianTaoBaseTask extends BrowseBaseTask {
         return result;
     }
 
+//    private void dismissPopupWindow() throws InterruptedException {
+//        int curDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+//
+//        if (lastDismissPopupWindowDay != curDay) {
+//            // if has popup, press back, and re-enter gold center, total 3 times
+//            int i = 0;
+//            while (i < 3) {
+//                Thread.sleep(5000);
+//                UiDriver.pressBack();
+//                Thread.sleep(1000);
+//                UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER));
+//                i++;
+//            }
+//
+//            lastDismissPopupWindowDay = curDay;
+//        }
+//    }
+
     private void dismissPopupWindow() throws InterruptedException {
         int curDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
         if (lastDismissPopupWindowDay != curDay) {
-            // if has popup, press back, and re-enter gold center, total 3 times
-            int i = 0;
-            while (i < 3) {
-                Thread.sleep(5000);
-                UiDriver.pressBack();
-                Thread.sleep(1000);
-                UiDriver.findAndClick(new UiSelector().text(Constant.STR_DIAN_TAO_GOLD_CENTER));
-                i++;
-            }
-
+            Thread.sleep(5000);
+            UiDriver.pressBack();
             lastDismissPopupWindowDay = curDay;
         }
     }

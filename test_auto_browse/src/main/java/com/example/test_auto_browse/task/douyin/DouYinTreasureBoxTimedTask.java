@@ -26,12 +26,12 @@ public class DouYinTreasureBoxTimedTask extends DouYinBaseTask {
 
         // open treasure box
         if (UiDriver.findAndClick(new UiSelector().description(Constant.STR_DOU_YIN_OPEN_TREASURE_BOX), Constant.WAIT_TIME_15_SEC)) {
-//            Thread.sleep(3000);
-//            if (UiDriver.findAndClick(new UiSelector().descriptionStartsWith(Constant.STR_DOU_YIN_WATCH_ADS_TO_GET_MORE))) {
-//                // watch ads video to get more
-//                result = douYinWatchAds();
-//                Logger.debug("DouYinTreasureBoxTimedTask.autoBrowse(), watch ads result=" + result);
-//            }
+            Thread.sleep(3000);
+            if (UiDriver.findAndClick(new UiSelector().descriptionStartsWith(Constant.STR_DOU_YIN_WATCH_ADS_TO_GET_MORE))) {
+                // watch ads video to get more
+                result = douYinWatchAds();
+                Logger.debug("DouYinTreasureBoxTimedTask.autoBrowse(), watch ads result=" + result);
+            }
             result = true;
         } else {
             Logger.debug("DouYinTreasureBoxTimedTask.autoBrowse(), open treasure box failed");

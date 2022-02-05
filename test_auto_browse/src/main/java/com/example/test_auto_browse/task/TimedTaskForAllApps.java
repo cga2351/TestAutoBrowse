@@ -2,6 +2,7 @@ package com.example.test_auto_browse.task;
 
 import com.example.test_auto_browse.Constant;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkTimedTaskCheckWork;
+import com.example.test_auto_browse.task.douyin.DouYinTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.kuaishou.KuaiShouTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.qiyi.QiYiTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.qukan.QuKanLuckyMoneyGoldTimedTask;
@@ -91,14 +92,13 @@ public class TimedTaskForAllApps extends BrowseBaseTask {
             }
 
 
-
-//            // dou yin treasure box task
-//            task = DouYinTreasureBoxTimedTask.getInstance();
-//            if (task.initTask()) {
-//                taskResult = task.runTask();
-//                task.endTask();
-//                Logger.debug("TimedTaskForAllApps.autoBrowse(), DouYinTreasureBoxTimedTask end, taskResult=" + taskResult);
-//            }
+            // dou yin treasure box task
+            task = DouYinTreasureBoxTimedTask.getInstance();
+            if (task.initTask()) {
+                taskResult = task.runTask();
+                task.endTask();
+                Logger.debug("TimedTaskForAllApps.autoBrowse(), DouYinTreasureBoxTimedTask end, taskResult=" + taskResult);
+            }
 
 //            // dou yin watch ads task
 //            task = DouYinWatchAdsTimedTask.getInstance();

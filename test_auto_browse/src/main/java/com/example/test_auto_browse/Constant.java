@@ -136,6 +136,7 @@ public class Constant {
     public static final String STR_DIAN_TAO_CHECK_MORE_TASKS = "查看更多任务";
     public static final String STR_DIAN_TAO_GET_STEPS_GOLD = "领取";
     public static final String STR_DIAN_TAO_GET_ENERGY_DRINK_FAILED = "哇哦, 被您的激情打败啦, 稍后再试哦";
+    public static final String STR_DIAN_TAO_GET_STEPS_GOLD_FAILED = "还差几步";
     public static final String STR_DIAN_TAO_WATCH_LIVE_TO_GET_MORE = "再得";
 //    public static final String STR_DIAN_TAO_I_KNOW = "我知道了";
     public static final String STR_DIAN_TAO_REGULATION = "规则";
@@ -158,6 +159,7 @@ public class Constant {
     public static final String STR_DIAN_TAO_WORK_TO_GET_GOLD = "打工赚元宝";
     public static final String STR_DIAN_TAO_WORK_SIGN = "连续签到";
     public static final String STR_DIAN_TAO_SIGN_TODAY = "今日签到";
+    public static final String STR_DIAN_TAO_GET_SIGN_GOLD_FAILED = "今日元宝已抢光";
     public static final String STR_DIAN_TAO_LUCK_DRAW_HIS = "开奖记录";
     public static final String STR_DIAN_TAO_GET_WORK_GOLD = "领取";
     public static final String STR_DIAN_TAO_WATCH_LIVE = "看直播";
@@ -298,7 +300,7 @@ public class Constant {
     // all task execute count (normal) ------------------------------------------
     public static final int TOU_TIAO_TREASURE_BOX_MAX_EXEC_COUNT = 100;
     public static final int TOU_TIAO_BROWSE_VIDEO_MAX_EXEC_COUNT = 2;
-    public static final int TOU_TIAO_SURPRISE_GOLD_MAX_EXEC_COUNT = 30;
+    public static final int TOU_TIAO_SURPRISE_GOLD_MAX_EXEC_COUNT = 0;
     public static final int TOU_TIAO_BROWSE_GOODS_MAX_EXEC_COUNT = 3;
     public static final int TOU_TIAO_WATCH_ADS_MAX_EXEC_COUNT = 10;
 

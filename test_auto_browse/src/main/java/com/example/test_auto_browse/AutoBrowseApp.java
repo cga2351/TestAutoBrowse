@@ -7,6 +7,7 @@ import android.os.Message;
 
 import com.android.uiautomator.common.UiWatchers;
 import com.android.uiautomator.core.UiAutomatorBridge;
+import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiSelector;
 import com.example.test_auto_browse.bean.TaskExecCount;
 import com.example.test_auto_browse.task.diantao.DianTaoBrowseLiveRepeatTask;
@@ -49,6 +50,7 @@ import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatch
 import com.example.test_auto_browse.task.IBrowseTask;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkRepeatTaskWatchVideo60Sec;
 import com.example.test_auto_browse.task.diantao.work.DianTaoWorkTimedTaskCheckWork;
+import com.example.test_auto_browse.task.douyin.DouYinTreasureBoxTimedTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseActivityRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseGoodsRepeatTask;
 import com.example.test_auto_browse.task.jingdong.JingDongBrowseVideoRepeatTask;
@@ -835,27 +837,31 @@ public class AutoBrowseApp {
             /////////////////////////////////////////////////////////////////////////////
 
 
-            while(true) {
-                UiDriver.find(new UiSelector().descriptionMatches(".*\\d{1,5}评论$"), 3000);
-                Thread.sleep(2000);
-            }
-
-
-
-
-//            IBrowseTask task = TouTiaoSurpriseGoldRepeatTask.getInstance();
-//            if (task.initTask()) {
-//                int count = 0;
-//                int totalCount = 2;
-//                while (count < totalCount) {
-//                    boolean taskResult = task.runTask();
-////                task.endTask();
-//                    Logger.debug("TouTiaoSurpriseGoldRepeatTask end, taskResult=" + taskResult);
-//                    if (taskResult) {
-//                        count++;
-//                    }
-//                }
+//            while(true) {
+//                UiDriver.find(new UiSelector().descriptionMatches(".*\\d{1,5}评论$"), 3000);
+//                Thread.sleep(2000);
 //            }
+
+
+
+
+//            IBrowseTask task = DianTaoWalkRepeatTaskStepsToGold.getInstance();
+//            ((DianTaoWalkRepeatTaskStepsToGold)task).getSignGold();
+
+
+            IBrowseTask task = DouYinTreasureBoxTimedTask.getInstance();
+            if (task.initTask()) {
+                int count = 0;
+                int totalCount = 2;
+//                while (count < totalCount) {
+                    boolean taskResult = task.runTask();
+//                task.endTask();
+                    Logger.debug("DouYinTreasureBoxTimedTask end, taskResult=" + taskResult);
+                    if (taskResult) {
+                        count++;
+                    }
+//                }
+            }
 
 
 
