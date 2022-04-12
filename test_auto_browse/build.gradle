@@ -18,15 +18,16 @@ buildscript {
 //    }
 //}
 
-build.doLast {
-    println("build.doLast(), entry")
-
-    // copy file with flavor name
-    tasks.copyFlavorFile.execute()
-
-    // convert to dex file with flavor name
-    tasks.dxConvert.execute()
-}
+build.finalizedBy 'copyFlavorFile'
+//build.doLast {
+//    println("build.doLast(), entry")
+//
+////    // copy file with flavor name
+////    tasks.copyFlavorFile.execute()
+//
+////    // convert to dex file with flavor name
+////    tasks.dxConvert.execute()
+//}
 
 
 def FLAVOR = ""
@@ -62,7 +63,7 @@ def isMacOS() {
 }
 
 task copyFlavorFile(type: Exec) {
-    println("copyFile(), entry")
+    println("copyFlavorFile(), entry")
 
     def buildOutput
     def outputFile
@@ -83,6 +84,8 @@ task copyFlavorFile(type: Exec) {
         outputFileWithFlavor = buildOutput + project.name + "_" + FLAVOR + ".jar"
         commandLine "cp", outputFile, outputFileWithFlavor
     }
+
+    finalizedBy 'dxConvert'
 }
 
 dependencies {
@@ -93,6 +96,7 @@ dependencies {
 }
 
 task dxConvert(type : Exec) {
+    println("dxConvert(), entry")
     def AndroidHome = System.getenv("ANDROID_HOME")
 
     if (isLinux() || isMacOS()) {
